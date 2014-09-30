@@ -279,7 +279,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("/home/lucas/Documentos/Aulas Facul/6 Semestre/Software livre/netbeans/woodsoft/logo.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout jDBImageBlob1Layout = new javax.swing.GroupLayout(jDBImageBlob1);
         jDBImageBlob1.setLayout(jDBImageBlob1Layout);

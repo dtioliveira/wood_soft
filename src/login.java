@@ -54,7 +54,7 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Droid Sans", 1, 12)); // NOI18N
         jLabel3.setText("WoodSoft 1.0");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/home/lucas/Documentos/Aulas Facul/6 Semestre/Software livre/netbeans/woodsoft/logo.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("/home/diego/Documents/Projects/Other projects/wood_soft/logo.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +76,7 @@ public class login extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(login))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
                 .addContainerGap())
         );
