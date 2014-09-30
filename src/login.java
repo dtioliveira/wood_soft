@@ -1,11 +1,14 @@
 
 import javax.swing.ImageIcon;
+import javax.swing.*;
 
 
 public class login extends javax.swing.JFrame {
 
     public login() {
         initComponents();
+        jdblogin.connectDB();
+        QueryLogin.execQuery();
 
     }
 
@@ -14,14 +17,24 @@ public class login extends javax.swing.JFrame {
     private void initComponents() {
 
         jDBButtonCancel1 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
+        jdblogin = new lib.jdb.connection.JDBConnection();
+        QueryLogin = new lib.jdb.jdbquery.JDBQuery();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        login = new javax.swing.JTextField();
-        senha = new javax.swing.JTextField();
+        clogin = new javax.swing.JTextField();
+        csenha = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+
+        jdblogin.setURL("jdbc:mysql://localhost/woodsoft");
+        jdblogin.setDriver("com.mysql.jdbc.Driver");
+        jdblogin.setPassword("");
+        jdblogin.setUserName("root");
+
+        QueryLogin.setJDBConnection(jdblogin);
+        QueryLogin.setSQL("select login,senha from USUARIO");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOODSOFT");
@@ -46,15 +59,15 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        login.setName("login"); // NOI18N
+        clogin.setName("clogin"); // NOI18N
 
-        senha.setToolTipText("");
-        senha.setName("senha"); // NOI18N
+        csenha.setToolTipText("");
+        csenha.setName("csenha"); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Droid Sans", 1, 12)); // NOI18N
         jLabel3.setText("WoodSoft 1.0");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/home/diego/Documents/Projects/Other projects/wood_soft/logo.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,13 +83,13 @@ public class login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(senha, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(csenha, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(login))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clogin))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
                 .addContainerGap())
         );
@@ -90,11 +103,11 @@ public class login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(clogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addGap(12, 12, 12)
-                        .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(csenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
@@ -111,8 +124,15 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String loginUser = QueryLogin.getCurrentFieldValue("login");
+        String senhaUser = QueryLogin.getCurrentFieldValue("senha");
 
-        new frmPrincipal().setVisible(true);
+       //JOptionPane.showMessageDialog(rootPane, loginUser);
+        if ( clogin.getText().equals(loginUser) && csenha.getText().equals(senhaUser)){ 
+              
+      
+            
+               new frmPrincipal().setVisible(true);}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -151,6 +171,9 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private lib.jdb.jdbquery.JDBQuery QueryLogin;
+    private javax.swing.JTextField clogin;
+    private javax.swing.JTextField csenha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel1;
@@ -158,7 +181,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField login;
-    private javax.swing.JTextField senha;
+    private lib.jdb.connection.JDBConnection jdblogin;
     // End of variables declaration//GEN-END:variables
 }

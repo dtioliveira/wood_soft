@@ -4,6 +4,22 @@
   <NonVisualComponents>
     <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel1">
     </Component>
+    <Component class="lib.jdb.connection.JDBConnection" name="jdblogin">
+      <Properties>
+        <Property name="URL" type="java.lang.String" value="jdbc:mysql://localhost/woodsoft"/>
+        <Property name="driver" type="java.lang.String" value="com.mysql.jdbc.Driver"/>
+        <Property name="password" type="java.lang.String" value=""/>
+        <Property name="userName" type="java.lang.String" value="root"/>
+      </Properties>
+    </Component>
+    <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryLogin">
+      <Properties>
+        <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="jdblogin"/>
+        </Property>
+        <Property name="SQL" type="java.lang.String" value="select login,senha from USUARIO"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -43,15 +59,15 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="senha" alignment="1" max="32767" attributes="0"/>
+                          <Component id="csenha" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="login" alignment="0" max="32767" attributes="0"/>
+                          <Component id="clogin" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -69,11 +85,11 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="login" min="-2" max="-2" attributes="0"/>
+                      <Component id="clogin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="senha" min="-2" max="-2" attributes="0"/>
+                      <Component id="csenha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -114,15 +130,15 @@
         <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="login">
+    <Component class="javax.swing.JTextField" name="clogin">
       <Properties>
-        <Property name="name" type="java.lang.String" value="login" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="clogin" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="senha">
+    <Component class="javax.swing.JTextField" name="csenha">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="name" type="java.lang.String" value="senha" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="csenha" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -136,7 +152,7 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/diego/Documents/Projects/Other projects/wood_soft/logo.png"/>
+          <Image iconType="3" name="/logo.png"/>
         </Property>
       </Properties>
     </Component>
