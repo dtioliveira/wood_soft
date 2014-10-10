@@ -23,10 +23,10 @@ public class login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        clogin = new javax.swing.JTextField();
-        csenha = new javax.swing.JTextField();
+        textLogin = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        textSenha = new javax.swing.JPasswordField();
 
         jdblogin.setURL("jdbc:mysql://localhost/woodsoft");
         jdblogin.setDriver("com.mysql.jdbc.Driver");
@@ -34,7 +34,7 @@ public class login extends javax.swing.JFrame {
         jdblogin.setUserName("root");
 
         QueryLogin.setJDBConnection(jdblogin);
-        QueryLogin.setSQL("select login,senha from USUARIO");
+        QueryLogin.setSQL("select * from USUARIO");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOODSOFT");
@@ -59,15 +59,18 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        clogin.setName("clogin"); // NOI18N
-
-        csenha.setToolTipText("");
-        csenha.setName("csenha"); // NOI18N
+        textLogin.setName("textLogin"); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Droid Sans", 1, 12)); // NOI18N
         jLabel3.setText("WoodSoft 1.0");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
+
+        textSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,12 +86,12 @@ public class login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(csenha, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(clogin))
+                            .addComponent(textLogin)
+                            .addComponent(textSenha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
                 .addContainerGap())
@@ -103,12 +106,12 @@ public class login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addGap(12, 12, 12)
-                        .addComponent(csenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(jButton1)))
@@ -120,24 +123,34 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        QueryLogin.setSQL(" select * from USUARIO where login = '" + textLogin.getText() + "' and senha = '" + textSenha.getText()+ "'");
+        QueryLogin.execQuery();
+        
         String loginUser = QueryLogin.getCurrentFieldValue("login");
         String senhaUser = QueryLogin.getCurrentFieldValue("senha");
 
        //JOptionPane.showMessageDialog(rootPane, loginUser);
-        if ( clogin.getText().equals(loginUser) && csenha.getText().equals(senhaUser)){ 
+        if ( textLogin.getText().equals(loginUser) && textSenha.getText().equals(senhaUser)){ 
               
       
             
-               new frmPrincipal().setVisible(true);}
+               new frmPrincipal().setVisible(true);
+               dispose();}else
+        
+        JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos");
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSenhaActionPerformed
+
+             
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -172,8 +185,6 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private lib.jdb.jdbquery.JDBQuery QueryLogin;
-    private javax.swing.JTextField clogin;
-    private javax.swing.JTextField csenha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel1;
@@ -182,5 +193,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private lib.jdb.connection.JDBConnection jdblogin;
+    private javax.swing.JTextField textLogin;
+    private javax.swing.JPasswordField textSenha;
     // End of variables declaration//GEN-END:variables
 }

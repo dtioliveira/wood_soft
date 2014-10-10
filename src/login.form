@@ -17,7 +17,7 @@
         <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="jdblogin"/>
         </Property>
-        <Property name="SQL" type="java.lang.String" value="select login,senha from USUARIO"/>
+        <Property name="SQL" type="java.lang.String" value="select * from USUARIO"/>
       </Properties>
     </Component>
   </NonVisualComponents>
@@ -59,13 +59,13 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="csenha" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="clogin" alignment="0" max="32767" attributes="0"/>
+                          <Component id="textLogin" alignment="0" max="32767" attributes="0"/>
+                          <Component id="textSenha" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="51" max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -85,12 +85,12 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="clogin" min="-2" max="-2" attributes="0"/>
+                      <Component id="textLogin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="csenha" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="textSenha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -130,15 +130,9 @@
         <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="clogin">
+    <Component class="javax.swing.JTextField" name="textLogin">
       <Properties>
-        <Property name="name" type="java.lang.String" value="clogin" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="csenha">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="name" type="java.lang.String" value="csenha" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="textLogin" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -155,6 +149,11 @@
           <Image iconType="3" name="/logo.png"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="textSenha">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textSenhaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
