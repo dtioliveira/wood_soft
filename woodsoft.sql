@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Out-2014 às 04:23
+-- Generation Time: 10-Out-2014 às 09:19
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
   `cidade` varchar(45) DEFAULT NULL,
   `uf` varchar(2) DEFAULT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `clifortr`
@@ -54,7 +54,8 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
 INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`) VALUES
 (1, 'Jurídica', 'Fornecedor', 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BA', 1),
 (2, '', '', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 1),
-(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1);
+(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1),
+(7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2);
 
 -- --------------------------------------------------------
 
@@ -325,16 +326,21 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nome` varchar(45) DEFAULT NULL,
   `setor` varchar(45) DEFAULT NULL,
   `login` varchar(10) DEFAULT NULL,
-  `senha` varchar(10) DEFAULT NULL
+  `senha` varchar(10) DEFAULT NULL,
+  `compras` tinyint(1) NOT NULL DEFAULT '0',
+  `estoque` tinyint(1) NOT NULL DEFAULT '0',
+  `producao` tinyint(1) NOT NULL DEFAULT '0',
+  `vendas` tinyint(1) NOT NULL DEFAULT '0',
+  `administracao` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`) VALUES
-(1, 'teste', NULL, 'teste', 'teste'),
-(2, 'lucas Henrique', 'TI', 'lucas', '123');
+INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`, `compras`, `estoque`, `producao`, `vendas`, `administracao`) VALUES
+(1, 'teste', NULL, 'teste', 'teste', 1, 1, 1, 1, 1),
+(2, 'lucas Henrique', 'TI', 'lucas', '123', 0, 0, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -490,7 +496,7 @@ ALTER TABLE `veiteped`
 -- AUTO_INCREMENT for table `clifortr`
 --
 ALTER TABLE `clifortr`
-MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `escadpro`
 --

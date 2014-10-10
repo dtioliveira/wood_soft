@@ -22,7 +22,7 @@
         <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="DBCon"/>
         </Property>
-        <Property name="SQL" type="java.lang.String" value="Select * from CLIFORTR"/>
+        <Property name="SQL" type="java.lang.String" value="Select * from CLIFORTR where tipo = &apos;Fornecedor&apos;"/>
       </Properties>
     </Component>
     <Component class="lib.jdb.control.jdblookupfield.JDBLookUpField" name="jDBLookUpField1">
@@ -99,6 +99,30 @@
         <Property name="SQL" type="java.lang.String" value="select * from proiteop"/>
       </Properties>
     </Component>
+    <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryCliente">
+      <Properties>
+        <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="DBCon"/>
+        </Property>
+        <Property name="SQL" type="java.lang.String" value="select * from CLIFORTR where tipo = &apos;Cliente&apos;"/>
+      </Properties>
+    </Component>
+    <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryTransp">
+      <Properties>
+        <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="DBCon"/>
+        </Property>
+        <Property name="SQL" type="java.lang.String" value="select * from CLIFORTR where tipo = &apos;Transportadora&apos;"/>
+      </Properties>
+    </Component>
+    <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryUsuario">
+      <Properties>
+        <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="DBCon"/>
+        </Property>
+        <Property name="SQL" type="java.lang.String" value="select * from USUARIO"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -133,12 +157,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="PaneCompras" min="-2" pref="1159" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="PaneEstoque" min="-2" pref="1169" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="PaneEstoque" min="-2" pref="1165" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="PaneProducao" min="-2" pref="1151" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="PaneVendas" min="-2" pref="1124" max="-2" attributes="0"/>
-              <EmptySpace pref="190" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="PaneAdm" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -150,8 +176,9 @@
                   <Component id="jDBImageBlob1" max="32767" attributes="0"/>
                   <Component id="PaneCompras" max="32767" attributes="0"/>
                   <Component id="PaneEstoque" alignment="1" pref="0" max="32767" attributes="0"/>
-                  <Component id="PaneVendas" max="32767" attributes="0"/>
+                  <Component id="PaneVendas" pref="0" max="32767" attributes="0"/>
                   <Component id="PaneProducao" alignment="0" max="32767" attributes="0"/>
+                  <Component id="PaneAdm" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
@@ -172,17 +199,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-              <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-              <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
-              <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
-              <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnCompras" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnEstoque" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnProducao" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnVendas" alignment="0" max="32767" attributes="0"/>
+              <Component id="btnAdmin" alignment="0" max="32767" attributes="0"/>
               <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
               <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="iduser" min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -192,15 +224,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnCompras" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnEstoque" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnProducao" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnVendas" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jButton5" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnAdmin" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="iduser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -210,39 +244,43 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnCompras">
           <Properties>
             <Property name="text" type="java.lang.String" value="COMPRAS"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnComprasMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnComprasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnEstoque">
           <Properties>
             <Property name="text" type="java.lang.String" value="ESTOQUE"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstoqueActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnVendas">
           <Properties>
             <Property name="text" type="java.lang.String" value="VENDAS"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVendasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="btnAdmin">
           <Properties>
             <Property name="text" type="java.lang.String" value="ADMINISTRA&#xc7;&#xc3;O"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton7">
@@ -250,12 +288,13 @@
             <Property name="text" type="java.lang.String" value="AJUDA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnProducao">
           <Properties>
             <Property name="text" type="java.lang.String" value="PRODU&#xc7;&#xc3;O"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProducaoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton6">
@@ -273,13 +312,18 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="iduser">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="iduser"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JTabbedPane" name="PaneCompras">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel4">
+        <Container class="javax.swing.JPanel" name="frmFornecedor">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Fornecedores">
@@ -836,7 +880,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="frmPedido">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Pedidos de Compras">
@@ -1396,7 +1440,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="frmRecebimento">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Recebimento de Compras">
@@ -1951,7 +1995,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel5">
+        <Container class="javax.swing.JPanel" name="frmRelComp">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Relat&#xf3;rios">
@@ -1982,7 +2026,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel6">
+        <Container class="javax.swing.JPanel" name="frmGrupoPro">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Grupos de Produto">
@@ -2038,7 +2082,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="495" max="32767" attributes="0"/>
+                      <EmptySpace pref="491" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2210,7 +2254,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel7">
+        <Container class="javax.swing.JPanel" name="frmSubGrupoPro">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Sub-Grupo de Produtos">
@@ -2264,7 +2308,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="593" max="32767" attributes="0"/>
+                      <EmptySpace pref="589" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2429,7 +2473,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel11">
+        <Container class="javax.swing.JPanel" name="frmTipoPro">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Tipo de Produto">
@@ -2483,7 +2527,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="606" max="32767" attributes="0"/>
+                      <EmptySpace pref="602" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2638,7 +2682,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel8">
+        <Container class="javax.swing.JPanel" name="frmProdutos">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Produtos">
@@ -3075,7 +3119,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel10">
+        <Container class="javax.swing.JPanel" name="frmProducao">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Ordem de Produ&#xe7;&#xe3;o">
@@ -3596,7 +3640,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel13">
+        <Container class="javax.swing.JPanel" name="Clientes">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Cadastro de Clientes">
@@ -3608,32 +3652,545 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jDBTextField67" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="1003" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jDBLabelCount59" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jDBTextField73" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jDBLabelCount60" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jDBTextField74" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jDBTextField78" min="-2" pref="325" max="-2" attributes="0"/>
+                                                      <EmptySpace pref="149" max="32767" attributes="0"/>
+                                                      <Component id="jDBTextField82" min="-2" pref="57" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jDBLabelCount64" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jDBLabelCount69" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jDBLabelCount58" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jDBTextField69" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                                          <Component id="jDBLabelCount57" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jDBLabelCount56" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                                              <Component id="jDBTextField76" alignment="0" min="-2" pref="275" max="-2" attributes="0"/>
+                                                                              <Component id="jDBLabelCount62" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                          </Group>
+                                                                          <Component id="jDBLabelCount65" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                                          <Component id="jDBLabelCount66" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                          <Component id="jDBComboBox6" alignment="0" max="32767" attributes="0"/>
+                                                                      </Group>
+                                                                  </Group>
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <EmptySpace min="255" pref="255" max="-2" attributes="0"/>
+                                                                      <Component id="jDBTextField79" min="-2" pref="135" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                                                              <Component id="jDBLabelCount61" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                                              <Component id="jDBLabelCount54" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jDBTextField72" min="-2" pref="290" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <Component id="jDBTextField75" min="-2" pref="178" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jDBLabelCount4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jDBButtonNew13" min="-2" pref="116" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                                                      <Component id="jDBButtonCancel12" min="-2" pref="147" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                                      <Component id="jDBButtonDelete12" min="-2" pref="109" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                                      <Component id="jDBButtonSave11" min="-2" pref="112" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                                              <Component id="jDBComboBox4" min="-2" pref="104" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jDBLabelCount55" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jDBComboBox5" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="jDBTextField71" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jDBTextField70" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jDBTextField77" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                          <Component id="jDBLabelCount63" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jDBTextField80" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                          <Component id="jDBLabelCount67" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jDBLabelCount68" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="jDBTextField81" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                      <Component id="jDBTextField67" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="551" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBLabelCount4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount54" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount55" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBTextField69" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBLabelCount56" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount63" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount67" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount68" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBTextField77" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField80" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField81" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField70" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBLabelCount57" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount62" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount66" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBTextField71" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField76" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBLabelCount58" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount61" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount65" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBTextField72" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField75" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField79" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBLabelCount59" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount60" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount64" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBLabelCount69" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jDBButtonDelete12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBButtonNew13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBButtonCancel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBButtonSave11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jDBTextField73" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBTextField74" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBTextField78" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBTextField82" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="141" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField67">
+            <Component class="javax.swing.JLabel" name="jLabel35">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jDBTextField67"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cadastro de Clientes"/>
               </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Cliente"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField69">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="fieldName" type="java.lang.String" value="idclifor"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount54">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pessoa"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox4">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Jur&#xed;dica"/>
+                    <StringItem index="1" value="F&#xed;sica"/>
+                  </StringArray>
+                </Property>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="pessoa"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount55">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox5">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Ativo"/>
+                    <StringItem index="1" value="Inativo"/>
+                    <StringItem index="2" value="Inapto"/>
+                    <StringItem index="3" value=" "/>
+                  </StringArray>
+                </Property>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="situacao"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField70">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="razao"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount56">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Raz&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount57">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fantasia"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField71">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="fantasia"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount58">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField72">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="endereco"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount59">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefone"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField73">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="telefone"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField74">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="contato"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount60">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome Contato"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField75">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="bairro"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount61">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bairro"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField76">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryFornecedor"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cidade"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount62">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cidade"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField77">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cnpj"/>
+                <Property name="maxLength" type="java.lang.Integer" value="14"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount63">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CNPJ"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField78">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="email"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount64">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E-mail"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField79">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cep"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBTextField79ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount65">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CEP"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox6">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="22">
+                    <StringItem index="0" value="AC"/>
+                    <StringItem index="1" value="AL"/>
+                    <StringItem index="2" value="AM"/>
+                    <StringItem index="3" value="AP"/>
+                    <StringItem index="4" value="BA"/>
+                    <StringItem index="5" value="CE"/>
+                    <StringItem index="6" value="DF"/>
+                    <StringItem index="7" value="ES"/>
+                    <StringItem index="8" value="GO"/>
+                    <StringItem index="9" value="MG"/>
+                    <StringItem index="10" value="MS"/>
+                    <StringItem index="11" value="MT"/>
+                    <StringItem index="12" value="PE"/>
+                    <StringItem index="13" value="PR"/>
+                    <StringItem index="14" value="RJ"/>
+                    <StringItem index="15" value="RO"/>
+                    <StringItem index="16" value="RR"/>
+                    <StringItem index="17" value="RS"/>
+                    <StringItem index="18" value="SC"/>
+                    <StringItem index="19" value="SE"/>
+                    <StringItem index="20" value="SP"/>
+                    <StringItem index="21" value="TO"/>
+                  </StringArray>
+                </Property>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="uf"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount66">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="UF"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField80">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cpf"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount67">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CPF"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField81">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="inscEst"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount68">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inscri&#xe7;&#xe3;o Estadual"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount69">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField82">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="id_usuario"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel12">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="jDBButtonSave11">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonSave11ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttondelete.JDBButtonDelete" name="jDBButtonDelete12">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="jDBButtonNew13">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryCliente"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonNew13ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel14">
+        <Container class="javax.swing.JPanel" name="Transportadora">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Cadastro de Transportadoras">
@@ -3645,17 +4202,556 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1119" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount70" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="905" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jDBLabelCount76" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBTextField87" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jDBLabelCount77" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBTextField88" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jDBTextField90" min="-2" pref="325" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="149" max="32767" attributes="0"/>
+                                                  <Component id="jDBTextField96" min="-2" pref="57" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jDBLabelCount79" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="jDBLabelCount86" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jDBLabelCount75" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jDBTextField83" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                                      <Component id="jDBLabelCount74" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jDBLabelCount73" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                                          <Component id="jDBTextField91" alignment="0" min="-2" pref="275" max="-2" attributes="0"/>
+                                                                          <Component id="jDBLabelCount80" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <Component id="jDBLabelCount85" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Component id="jDBLabelCount83" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                      <Component id="jDBComboBox9" alignment="0" max="32767" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <EmptySpace min="255" pref="255" max="-2" attributes="0"/>
+                                                                  <Component id="jDBTextField95" min="-2" pref="135" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                                                          <Component id="jDBLabelCount78" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                                          <Component id="jDBLabelCount71" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jDBTextField86" min="-2" pref="290" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="jDBTextField89" min="-2" pref="178" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jDBButtonNew14" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                                                  <Component id="jDBButtonCancel13" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                                  <Component id="jDBButtonDelete13" min="-2" pref="109" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                                  <Component id="jDBButtonSave12" min="-2" pref="112" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                                          <Component id="jDBComboBox7" min="-2" pref="104" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jDBLabelCount72" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBComboBox8" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jDBTextField85" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jDBTextField84" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jDBTextField92" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                      <Component id="jDBLabelCount81" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jDBTextField93" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                      <Component id="jDBLabelCount82" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jDBLabelCount84" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jDBTextField94" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="659" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="jDBLabelCount70" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="523" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBLabelCount71" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount72" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBTextField83" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBLabelCount73" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount81" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount82" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount84" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBTextField92" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBTextField93" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBTextField94" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBTextField84" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBLabelCount74" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount80" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount83" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBTextField85" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBTextField91" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBLabelCount75" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount78" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount85" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBTextField86" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBTextField89" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBTextField95" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jDBLabelCount76" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount77" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount79" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDBLabelCount86" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jDBButtonDelete13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDBButtonNew14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDBButtonCancel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDBButtonSave12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jDBTextField87" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDBTextField88" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDBTextField90" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDBTextField96" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="123" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount70">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Transportadora"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField83">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="fieldName" type="java.lang.String" value="idclifor"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox7">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Jur&#xed;dica"/>
+                    <StringItem index="1" value="F&#xed;sica"/>
+                  </StringArray>
+                </Property>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="pessoa"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount71">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pessoa"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox8">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Ativo"/>
+                    <StringItem index="1" value="Inativo"/>
+                    <StringItem index="2" value="Inapto"/>
+                    <StringItem index="3" value=" "/>
+                  </StringArray>
+                </Property>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="situacao"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount72">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField84">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="razao"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount73">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Raz&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount74">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fantasia"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField85">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="fantasia"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount75">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField86">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="endereco"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount76">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefone"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField87">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="telefone"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField88">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="contato"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount77">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome Contato"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField89">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="bairro"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount78">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bairro"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField90">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="email"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount79">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E-mail"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField91">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cidade"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount80">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cidade"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField92">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cnpj"/>
+                <Property name="maxLength" type="java.lang.Integer" value="14"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount81">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CNPJ"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="jDBButtonNew14">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonNew14ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel13">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttondelete.JDBButtonDelete" name="jDBButtonDelete13">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField93">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cpf"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount82">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CPF"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox9">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="22">
+                    <StringItem index="0" value="AC"/>
+                    <StringItem index="1" value="AL"/>
+                    <StringItem index="2" value="AM"/>
+                    <StringItem index="3" value="AP"/>
+                    <StringItem index="4" value="BA"/>
+                    <StringItem index="5" value="CE"/>
+                    <StringItem index="6" value="DF"/>
+                    <StringItem index="7" value="ES"/>
+                    <StringItem index="8" value="GO"/>
+                    <StringItem index="9" value="MG"/>
+                    <StringItem index="10" value="MS"/>
+                    <StringItem index="11" value="MT"/>
+                    <StringItem index="12" value="PE"/>
+                    <StringItem index="13" value="PR"/>
+                    <StringItem index="14" value="RJ"/>
+                    <StringItem index="15" value="RO"/>
+                    <StringItem index="16" value="RR"/>
+                    <StringItem index="17" value="RS"/>
+                    <StringItem index="18" value="SC"/>
+                    <StringItem index="19" value="SE"/>
+                    <StringItem index="20" value="SP"/>
+                    <StringItem index="21" value="TO"/>
+                  </StringArray>
+                </Property>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="uf"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount83">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="UF"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField94">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="inscEst"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount84">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inscri&#xe7;&#xe3;o Estadual"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField95">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cep"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBTextField95ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount85">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CEP"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField96">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="id_usuario"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount86">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="jDBButtonSave12">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryTransp"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonSave12ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel36">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cadastro de Transportadoras"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel15">
+        <Container class="javax.swing.JPanel" name="Vendas">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Vendas">
@@ -3667,17 +4763,35 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1119" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="954" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="659" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="601" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel37">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Vendas de Produtos"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel16">
+        <Container class="javax.swing.JPanel" name="NFE">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="NF-e">
@@ -3698,6 +4812,428 @@
               </Group>
             </DimensionLayout>
           </Layout>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JTabbedPane" name="PaneAdm">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="frmUsuario">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Usu&#xe1;rios">
+                <Property name="tabTitle" type="java.lang.String" value="Usu&#xe1;rios"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jDBRadioButton1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jDBRadioButton2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel46" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jDBRadioButton3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jDBRadioButton4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jDBRadioButton5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel48" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel39" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBTextField97" min="-2" pref="411" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBTextField98" min="-2" pref="294" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jDBButtonNew12" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jDBButtonRefresh5" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                          <Component id="jDBButtonDelete14" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="jDBButtonPrevious6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jDBButtonCancel14" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="jDBButtonSave13" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jDBButtonNext6" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="jDBButtonFirst4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                          <Component id="jDBButtonLast4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jDBTextField67" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jDBTextField99" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBTextField100" min="-2" pref="112" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jDBTextField67" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBTextField97" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField98" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBTextField99" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBTextField100" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBRadioButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBButtonNew12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonCancel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonSave13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonRefresh5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonDelete14" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jDBButtonFirst4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonPrevious6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonNext6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDBButtonLast4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="77" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel38">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cadastro de Usu&#xe1;rios"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField67">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="id_usuario"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField97">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="nome"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField98">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="setor"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField99">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="login"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField100">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="senha"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel39">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel40">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome Do Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel41">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Setor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel42">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Login"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel43">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Senha"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel44">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Estoque"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel45">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Compras"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel46">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Produ&#xe7;&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel47">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Vendas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel48">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Administra&#xe7;&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel49">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Permiss&#xf5;es do Usu&#xe1;rio (Acesso aos m&#xf3;dulos)"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbradiobutton.JDBRadioButton" name="jDBRadioButton2">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="estoque"/>
+                <Property name="text" type="java.lang.String" value="Liberado"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbradiobutton.JDBRadioButton" name="jDBRadioButton3">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="producao"/>
+                <Property name="text" type="java.lang.String" value="Liberado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBRadioButton3ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdbradiobutton.JDBRadioButton" name="jDBRadioButton4">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="vendas"/>
+                <Property name="text" type="java.lang.String" value="Liberado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBRadioButton4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdbradiobutton.JDBRadioButton" name="jDBRadioButton5">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="administracao"/>
+                <Property name="text" type="java.lang.String" value="Liberado"/>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="jDBButtonNew12">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel14">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="jDBButtonSave13">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh" name="jDBButtonRefresh5">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonfirst.JDBButtonFirst" name="jDBButtonFirst4">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious" name="jDBButtonPrevious6">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonnext.JDBButtonNext" name="jDBButtonNext6">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonlast.JDBButtonLast" name="jDBButtonLast4">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttondelete.JDBButtonDelete" name="jDBButtonDelete14">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbradiobutton.JDBRadioButton" name="jDBRadioButton1">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryUsuario"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="compras"/>
+                <Property name="text" type="java.lang.String" value="Liberado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBRadioButton1ActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

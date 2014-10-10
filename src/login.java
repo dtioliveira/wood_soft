@@ -4,6 +4,7 @@ import javax.swing.*;
 
 
 public class login extends javax.swing.JFrame {
+    public String User;
 
     public login() {
         initComponents();
@@ -40,11 +41,21 @@ public class login extends javax.swing.JFrame {
         setTitle("WOODSOFT");
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
 
@@ -132,6 +143,36 @@ public class login extends javax.swing.JFrame {
         
         String loginUser = QueryLogin.getCurrentFieldValue("login");
         String senhaUser = QueryLogin.getCurrentFieldValue("senha");
+        User = QueryLogin.getCurrentFieldValue("id_usuario");
+        frmPrincipal.usuario = User;
+       //JOptionPane.showMessageDialog(rootPane, loginUser);
+        if ( textLogin.getText().equals(loginUser) && textSenha.getText().equals(senhaUser)){ 
+              
+      
+            
+               new frmPrincipal().setVisible(true);
+               dispose();
+        }else
+        
+        JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos");
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSenhaActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+     
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+          QueryLogin.setSQL(" select * from USUARIO where login = '" + textLogin.getText() + "' and senha = '" + textSenha.getText()+ "'");
+        QueryLogin.execQuery();
+        
+        String loginUser = QueryLogin.getCurrentFieldValue("login");
+        String senhaUser = QueryLogin.getCurrentFieldValue("senha");
 
        //JOptionPane.showMessageDialog(rootPane, loginUser);
         if ( textLogin.getText().equals(loginUser) && textSenha.getText().equals(senhaUser)){ 
@@ -142,13 +183,7 @@ public class login extends javax.swing.JFrame {
                dispose();}else
         
         JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos");
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textSenhaActionPerformed
+    }//GEN-LAST:event_jButton1KeyPressed
 
              
     public static void main(String args[]) {
