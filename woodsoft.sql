@@ -2,10 +2,10 @@
 -- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Tempo de geração: 30/09/2014 às 01:07
+-- Host: 127.0.0.1
+-- Generation Time: 10-Out-2014 às 04:23
 -- Versão do servidor: 5.5.39
--- Versão do PHP: 5.4.31
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,16 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `woodsoft`
+-- Database: `woodsoft`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `CLIFORTR`
+-- Estrutura da tabela `clifortr`
 --
 
-CREATE TABLE IF NOT EXISTS `CLIFORTR` (
+CREATE TABLE IF NOT EXISTS `clifortr` (
 `idclifor` int(11) NOT NULL,
   `pessoa` varchar(8) DEFAULT NULL,
   `tipo` varchar(10) DEFAULT NULL,
@@ -48,27 +48,27 @@ CREATE TABLE IF NOT EXISTS `CLIFORTR` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Fazendo dump de dados para tabela `CLIFORTR`
+-- Extraindo dados da tabela `clifortr`
 --
 
-INSERT INTO `CLIFORTR` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`) VALUES
-(1, NULL, NULL, 'teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`) VALUES
+(1, 'Jurídica', 'Fornecedor', 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BA', 1),
 (2, '', '', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 1),
 (4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `CPCADPED`
+-- Estrutura da tabela `cpcadped`
 --
 
-CREATE TABLE IF NOT EXISTS `CPCADPED` (
+CREATE TABLE IF NOT EXISTS `cpcadped` (
   `id_pedido` int(11) NOT NULL,
   `cod_fornecedor` int(11) NOT NULL,
-  `data_cad` datetime DEFAULT NULL,
+  `data_cad` date DEFAULT NULL,
   `situacao` varchar(45) DEFAULT NULL,
-  `data_alt` datetime DEFAULT NULL,
-  `data_ent` datetime DEFAULT NULL,
+  `data_alt` date DEFAULT NULL,
+  `data_ent` date DEFAULT NULL,
   `valor_frete` double DEFAULT NULL,
   `valor_ipi_total` double DEFAULT NULL,
   `valor_icms_total` double DEFAULT NULL,
@@ -77,19 +77,23 @@ CREATE TABLE IF NOT EXISTS `CPCADPED` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `CPCADPED`
+-- Extraindo dados da tabela `cpcadped`
 --
 
-INSERT INTO `CPCADPED` (`id_pedido`, `cod_fornecedor`, `data_cad`, `situacao`, `data_alt`, `data_ent`, `valor_frete`, `valor_ipi_total`, `valor_icms_total`, `valor_total`, `id_usuario`) VALUES
-(1, 1, NULL, '', NULL, NULL, 1, 1, 1, 1, 1);
+INSERT INTO `cpcadped` (`id_pedido`, `cod_fornecedor`, `data_cad`, `situacao`, `data_alt`, `data_ent`, `valor_frete`, `valor_ipi_total`, `valor_icms_total`, `valor_total`, `id_usuario`) VALUES
+(0, 2, NULL, '', NULL, '2014-10-01', 45, 897, 768, 876, 1),
+(1, 2, NULL, '', NULL, '2014-09-03', 1, 1, 1, 1, 1),
+(2, 1, NULL, '', NULL, NULL, 87, 87, 7678, 8767, 2),
+(3, 2, NULL, '', NULL, NULL, 8, 7, 6, 56, 1),
+(4, 2, NULL, '', NULL, '2014-08-08', 7, 7, 7, 7, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `CPCADREC`
+-- Estrutura da tabela `cpcadrec`
 --
 
-CREATE TABLE IF NOT EXISTS `CPCADREC` (
+CREATE TABLE IF NOT EXISTS `cpcadrec` (
   `id_fornecedor` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
   `nota_fiscal` varchar(45) DEFAULT NULL,
@@ -108,10 +112,10 @@ CREATE TABLE IF NOT EXISTS `CPCADREC` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `CPITEPED`
+-- Estrutura da tabela `cpiteped`
 --
 
-CREATE TABLE IF NOT EXISTS `CPITEPED` (
+CREATE TABLE IF NOT EXISTS `cpiteped` (
   `id_pedido` int(11) NOT NULL,
   `num_item` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL,
@@ -131,13 +135,23 @@ CREATE TABLE IF NOT EXISTS `CPITEPED` (
   `total_item` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `cpiteped`
+--
+
+INSERT INTO `cpiteped` (`id_pedido`, `num_item`, `idproduto`, `descricao_item`, `qntde`, `unidade`, `fator_conv`, `valor_unit`, `valor_ipi`, `valor_icms`, `valor_total_item`, `per_ipi`, `per_icms`, `perc_iss`, `frete`, `desconto`, `total_item`) VALUES
+(0, 1, 4, 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 4, 'item de teste', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 4, 'item de teste', 78, '0', 0, 987, 987, 987, 87897, 0, 0, 0, 0, 0, 909790),
+(1, 2, 4, 'item de teste', 34, '', 0, 82, 98, 78, 87, 0, 8, 7, 79, 0, 379);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `CPITEREC`
+-- Estrutura da tabela `cpiterec`
 --
 
-CREATE TABLE IF NOT EXISTS `CPITEREC` (
+CREATE TABLE IF NOT EXISTS `cpiterec` (
   `item` int(11) NOT NULL,
   `qtde` int(11) DEFAULT NULL,
   `vlr_unit` double DEFAULT NULL,
@@ -153,10 +167,10 @@ CREATE TABLE IF NOT EXISTS `CPITEREC` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ESCADPRO`
+-- Estrutura da tabela `escadpro`
 --
 
-CREATE TABLE IF NOT EXISTS `ESCADPRO` (
+CREATE TABLE IF NOT EXISTS `escadpro` (
 `idproduto` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `comprimento` double NOT NULL,
@@ -171,62 +185,65 @@ CREATE TABLE IF NOT EXISTS `ESCADPRO` (
   `idtipoProduto` int(11) NOT NULL,
   `idsubgrupopro` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Fazendo dump de dados para tabela `ESCADPRO`
+-- Extraindo dados da tabela `escadpro`
 --
 
-INSERT INTO `ESCADPRO` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`) VALUES
-(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 1, 1, 1),
-(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1);
+INSERT INTO `escadpro` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`) VALUES
+(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 4, 0, 1),
+(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1),
+(6, 'Produto de teste 3', 234, 12, 123, 234, '12', 12.9, 'teste', '', '123124', 1, 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ESGRUPRO`
+-- Estrutura da tabela `esgrupro`
 --
 
-CREATE TABLE IF NOT EXISTS `ESGRUPRO` (
+CREATE TABLE IF NOT EXISTS `esgrupro` (
 `idgrupoProduto` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `abrev` varchar(5) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Fazendo dump de dados para tabela `ESGRUPRO`
+-- Extraindo dados da tabela `esgrupro`
 --
 
-INSERT INTO `ESGRUPRO` (`idgrupoProduto`, `nome`, `tipo`, `abrev`) VALUES
-(1, 'testegrupo', 'testetipo', 'TG');
+INSERT INTO `esgrupro` (`idgrupoProduto`, `nome`, `tipo`, `abrev`) VALUES
+(1, 'testegrupo', 'testetipo', 'TG'),
+(2, 'Grupo cadastrado pelo sistema', 'Matéria Prima', 'GPS');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ESSUBGRU`
+-- Estrutura da tabela `essubgru`
 --
 
-CREATE TABLE IF NOT EXISTS `ESSUBGRU` (
+CREATE TABLE IF NOT EXISTS `essubgru` (
   `idsubgrupopro` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `idgrupoProduto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `ESSUBGRU`
+-- Extraindo dados da tabela `essubgru`
 --
 
-INSERT INTO `ESSUBGRU` (`idsubgrupopro`, `nome`, `idgrupoProduto`) VALUES
+INSERT INTO `essubgru` (`idsubgrupopro`, `nome`, `idgrupoProduto`) VALUES
+(0, 'estoque direto', 2),
 (1, 'teste sub grupo', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ESTAB`
+-- Estrutura da tabela `estab`
 --
 
-CREATE TABLE IF NOT EXISTS `ESTAB` (
+CREATE TABLE IF NOT EXISTS `estab` (
   `id_estab` int(11) NOT NULL,
   `razao_social` varchar(45) DEFAULT NULL,
   `cnpj` varchar(45) DEFAULT NULL,
@@ -244,29 +261,31 @@ CREATE TABLE IF NOT EXISTS `ESTAB` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ESTIPPRO`
+-- Estrutura da tabela `estippro`
 --
 
-CREATE TABLE IF NOT EXISTS `ESTIPPRO` (
+CREATE TABLE IF NOT EXISTS `estippro` (
 `idtipoProduto` int(11) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `abrev` varchar(3) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Fazendo dump de dados para tabela `ESTIPPRO`
+-- Extraindo dados da tabela `estippro`
 --
 
-INSERT INTO `ESTIPPRO` (`idtipoProduto`, `tipo`, `abrev`) VALUES
-(1, 'tipo teste', 'tp');
+INSERT INTO `estippro` (`idtipoProduto`, `tipo`, `abrev`) VALUES
+(1, 'Matéria Prima', 'MP'),
+(4, 'Produto Acabado', 'PA'),
+(5, 'Resíduos', 'RE');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `PROCADOP`
+-- Estrutura da tabela `procadop`
 --
 
-CREATE TABLE IF NOT EXISTS `PROCADOP` (
+CREATE TABLE IF NOT EXISTS `procadop` (
   `id_op` int(11) NOT NULL,
   `ano_op` int(11) NOT NULL,
   `pedido_venda` int(11) DEFAULT NULL,
@@ -283,10 +302,10 @@ CREATE TABLE IF NOT EXISTS `PROCADOP` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `PROITEOP`
+-- Estrutura da tabela `proiteop`
 --
 
-CREATE TABLE IF NOT EXISTS `PROITEOP` (
+CREATE TABLE IF NOT EXISTS `proiteop` (
   `ano_op` int(11) NOT NULL,
   `item` int(10) unsigned NOT NULL,
   `tipo` varchar(45) DEFAULT NULL,
@@ -298,31 +317,32 @@ CREATE TABLE IF NOT EXISTS `PROITEOP` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `USUARIO`
+-- Estrutura da tabela `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `USUARIO` (
+CREATE TABLE IF NOT EXISTS `usuario` (
 `id_usuario` int(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `setor` varchar(45) DEFAULT NULL,
   `login` varchar(10) DEFAULT NULL,
   `senha` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Fazendo dump de dados para tabela `USUARIO`
+-- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `USUARIO` (`id_usuario`, `nome`, `setor`, `login`, `senha`) VALUES
-(1, 'teste', NULL, NULL, NULL);
+INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`) VALUES
+(1, 'teste', NULL, 'teste', 'teste'),
+(2, 'lucas Henrique', 'TI', 'lucas', '123');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `VECADPED`
+-- Estrutura da tabela `vecadped`
 --
 
-CREATE TABLE IF NOT EXISTS `VECADPED` (
+CREATE TABLE IF NOT EXISTS `vecadped` (
   `id_pedido` int(11) NOT NULL,
   `data` date DEFAULT NULL,
   `transportador` varchar(45) DEFAULT NULL,
@@ -353,10 +373,10 @@ CREATE TABLE IF NOT EXISTS `VECADPED` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `VEITEPED`
+-- Estrutura da tabela `veiteped`
 --
 
-CREATE TABLE IF NOT EXISTS `VEITEPED` (
+CREATE TABLE IF NOT EXISTS `veiteped` (
   `item` int(11) NOT NULL,
   `qtde` int(11) DEFAULT NULL,
   `vlr_unit` double DEFAULT NULL,
@@ -369,206 +389,206 @@ CREATE TABLE IF NOT EXISTS `VEITEPED` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `CLIFORTR`
+-- Indexes for table `clifortr`
 --
-ALTER TABLE `CLIFORTR`
+ALTER TABLE `clifortr`
  ADD PRIMARY KEY (`idclifor`), ADD KEY `fk_CLIFORTR_USUARIO1_idx` (`id_usuario`);
 
 --
--- Índices de tabela `CPCADPED`
+-- Indexes for table `cpcadped`
 --
-ALTER TABLE `CPCADPED`
+ALTER TABLE `cpcadped`
  ADD PRIMARY KEY (`id_pedido`), ADD KEY `fk_CPCADPED_CLIFORTR_idx` (`cod_fornecedor`), ADD KEY `fk_CPCADPED_USUARIO1_idx` (`id_usuario`);
 
 --
--- Índices de tabela `CPCADREC`
+-- Indexes for table `cpcadrec`
 --
-ALTER TABLE `CPCADREC`
+ALTER TABLE `cpcadrec`
  ADD PRIMARY KEY (`id_fornecedor`,`id_pedido`), ADD KEY `fk_CPCADREC_CLIFORTR1_idx` (`id_fornecedor`), ADD KEY `fk_CPCADREC_USUARIO1_idx` (`id_usuario`);
 
 --
--- Índices de tabela `CPITEPED`
+-- Indexes for table `cpiteped`
 --
-ALTER TABLE `CPITEPED`
+ALTER TABLE `cpiteped`
  ADD PRIMARY KEY (`num_item`,`id_pedido`), ADD KEY `fk_CPITEPED_CPCADPED1_idx` (`id_pedido`);
 
 --
--- Índices de tabela `CPITEREC`
+-- Indexes for table `cpiterec`
 --
-ALTER TABLE `CPITEREC`
+ALTER TABLE `cpiterec`
  ADD PRIMARY KEY (`item`), ADD KEY `fk_CPITEREC_ESCADPRO1_idx` (`idproduto`), ADD KEY `fk_CPITEREC_CPCADREC1_idx` (`id_fornecedor`,`id_pedido`);
 
 --
--- Índices de tabela `ESCADPRO`
+-- Indexes for table `escadpro`
 --
-ALTER TABLE `ESCADPRO`
+ALTER TABLE `escadpro`
  ADD PRIMARY KEY (`idproduto`), ADD KEY `fk_ESCADPRO_ESTIPPRO1_idx` (`idtipoProduto`), ADD KEY `fk_ESCADPRO_ESSUBGRU1_idx` (`idsubgrupopro`), ADD KEY `fk_ESCADPRO_USUARIO1_idx` (`id_usuario`);
 
 --
--- Índices de tabela `ESGRUPRO`
+-- Indexes for table `esgrupro`
 --
-ALTER TABLE `ESGRUPRO`
+ALTER TABLE `esgrupro`
  ADD PRIMARY KEY (`idgrupoProduto`);
 
 --
--- Índices de tabela `ESSUBGRU`
+-- Indexes for table `essubgru`
 --
-ALTER TABLE `ESSUBGRU`
+ALTER TABLE `essubgru`
  ADD PRIMARY KEY (`idsubgrupopro`), ADD KEY `fk_ESSUBGRU_ESGRUPRO1_idx` (`idgrupoProduto`);
 
 --
--- Índices de tabela `ESTAB`
+-- Indexes for table `estab`
 --
-ALTER TABLE `ESTAB`
+ALTER TABLE `estab`
  ADD PRIMARY KEY (`id_estab`);
 
 --
--- Índices de tabela `ESTIPPRO`
+-- Indexes for table `estippro`
 --
-ALTER TABLE `ESTIPPRO`
+ALTER TABLE `estippro`
  ADD PRIMARY KEY (`idtipoProduto`);
 
 --
--- Índices de tabela `PROCADOP`
+-- Indexes for table `procadop`
 --
-ALTER TABLE `PROCADOP`
+ALTER TABLE `procadop`
  ADD PRIMARY KEY (`id_op`,`ano_op`), ADD KEY `fk_PROCADOP_USUARIO1_idx` (`id_usuario`);
 
 --
--- Índices de tabela `PROITEOP`
+-- Indexes for table `proiteop`
 --
-ALTER TABLE `PROITEOP`
+ALTER TABLE `proiteop`
  ADD PRIMARY KEY (`ano_op`,`item`,`id_op`), ADD KEY `fk_PROITEOP_PROCADOP1_idx` (`id_op`), ADD KEY `fk_PROITEOP_ESCADPRO1_idx` (`idproduto`);
 
 --
--- Índices de tabela `USUARIO`
+-- Indexes for table `usuario`
 --
-ALTER TABLE `USUARIO`
+ALTER TABLE `usuario`
  ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Índices de tabela `VECADPED`
+-- Indexes for table `vecadped`
 --
-ALTER TABLE `VECADPED`
+ALTER TABLE `vecadped`
  ADD PRIMARY KEY (`id_pedido`), ADD KEY `fk_VECADPED_USUARIO1_idx` (`id_usuario`), ADD KEY `fk_VECADPED_CLIFORTR1_idx` (`id_cliente`), ADD KEY `fk_VECADPED_ESTAB1_idx` (`id_estab`);
 
 --
--- Índices de tabela `VEITEPED`
+-- Indexes for table `veiteped`
 --
-ALTER TABLE `VEITEPED`
+ALTER TABLE `veiteped`
  ADD PRIMARY KEY (`item`), ADD KEY `fk_VEITEPED_VECADPED1_idx` (`id_pedido`), ADD KEY `fk_VEITEPED_ESCADPRO1_idx` (`ESCADPRO_idproduto`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `CLIFORTR`
+-- AUTO_INCREMENT for table `clifortr`
 --
-ALTER TABLE `CLIFORTR`
+ALTER TABLE `clifortr`
 MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de tabela `ESCADPRO`
+-- AUTO_INCREMENT for table `escadpro`
 --
-ALTER TABLE `ESCADPRO`
-MODIFY `idproduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+ALTER TABLE `escadpro`
+MODIFY `idproduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT de tabela `ESGRUPRO`
+-- AUTO_INCREMENT for table `esgrupro`
 --
-ALTER TABLE `ESGRUPRO`
-MODIFY `idgrupoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `esgrupro`
+MODIFY `idgrupoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de tabela `ESTIPPRO`
+-- AUTO_INCREMENT for table `estippro`
 --
-ALTER TABLE `ESTIPPRO`
-MODIFY `idtipoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `estippro`
+MODIFY `idtipoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de tabela `USUARIO`
+-- AUTO_INCREMENT for table `usuario`
 --
-ALTER TABLE `USUARIO`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `usuario`
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `CLIFORTR`
+-- Limitadores para a tabela `clifortr`
 --
-ALTER TABLE `CLIFORTR`
-ADD CONSTRAINT `fk_CLIFORTR_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `USUARIO` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `clifortr`
+ADD CONSTRAINT `fk_CLIFORTR_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `CPCADPED`
+-- Limitadores para a tabela `cpcadped`
 --
-ALTER TABLE `CPCADPED`
-ADD CONSTRAINT `fk_CPCADPED_CLIFORTR` FOREIGN KEY (`cod_fornecedor`) REFERENCES `CLIFORTR` (`idclifor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_CPCADPED_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `USUARIO` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `cpcadped`
+ADD CONSTRAINT `fk_CPCADPED_CLIFORTR` FOREIGN KEY (`cod_fornecedor`) REFERENCES `clifortr` (`idclifor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_CPCADPED_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `CPCADREC`
+-- Limitadores para a tabela `cpcadrec`
 --
-ALTER TABLE `CPCADREC`
-ADD CONSTRAINT `fk_CPCADREC_CLIFORTR1` FOREIGN KEY (`id_fornecedor`) REFERENCES `CLIFORTR` (`idclifor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_CPCADREC_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `USUARIO` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `cpcadrec`
+ADD CONSTRAINT `fk_CPCADREC_CLIFORTR1` FOREIGN KEY (`id_fornecedor`) REFERENCES `clifortr` (`idclifor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_CPCADREC_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `CPITEPED`
+-- Limitadores para a tabela `cpiteped`
 --
-ALTER TABLE `CPITEPED`
-ADD CONSTRAINT `fk_CPITEPED_CPCADPED1` FOREIGN KEY (`id_pedido`) REFERENCES `CPCADPED` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `cpiteped`
+ADD CONSTRAINT `fk_CPITEPED_CPCADPED1` FOREIGN KEY (`id_pedido`) REFERENCES `cpcadped` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `CPITEREC`
+-- Limitadores para a tabela `cpiterec`
 --
-ALTER TABLE `CPITEREC`
-ADD CONSTRAINT `fk_CPITEREC_CPCADREC1` FOREIGN KEY (`id_fornecedor`, `id_pedido`) REFERENCES `CPCADREC` (`id_fornecedor`, `id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_CPITEREC_ESCADPRO1` FOREIGN KEY (`idproduto`) REFERENCES `ESCADPRO` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `cpiterec`
+ADD CONSTRAINT `fk_CPITEREC_CPCADREC1` FOREIGN KEY (`id_fornecedor`, `id_pedido`) REFERENCES `cpcadrec` (`id_fornecedor`, `id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_CPITEREC_ESCADPRO1` FOREIGN KEY (`idproduto`) REFERENCES `escadpro` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `ESCADPRO`
+-- Limitadores para a tabela `escadpro`
 --
-ALTER TABLE `ESCADPRO`
-ADD CONSTRAINT `fk_ESCADPRO_ESSUBGRU1` FOREIGN KEY (`idsubgrupopro`) REFERENCES `ESSUBGRU` (`idsubgrupopro`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_ESCADPRO_ESTIPPRO1` FOREIGN KEY (`idtipoProduto`) REFERENCES `ESTIPPRO` (`idtipoProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_ESCADPRO_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `USUARIO` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `escadpro`
+ADD CONSTRAINT `fk_ESCADPRO_ESSUBGRU1` FOREIGN KEY (`idsubgrupopro`) REFERENCES `essubgru` (`idsubgrupopro`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_ESCADPRO_ESTIPPRO1` FOREIGN KEY (`idtipoProduto`) REFERENCES `estippro` (`idtipoProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_ESCADPRO_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `ESSUBGRU`
+-- Limitadores para a tabela `essubgru`
 --
-ALTER TABLE `ESSUBGRU`
-ADD CONSTRAINT `fk_ESSUBGRU_ESGRUPRO1` FOREIGN KEY (`idgrupoProduto`) REFERENCES `ESGRUPRO` (`idgrupoProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `essubgru`
+ADD CONSTRAINT `fk_ESSUBGRU_ESGRUPRO1` FOREIGN KEY (`idgrupoProduto`) REFERENCES `esgrupro` (`idgrupoProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `PROCADOP`
+-- Limitadores para a tabela `procadop`
 --
-ALTER TABLE `PROCADOP`
-ADD CONSTRAINT `fk_PROCADOP_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `USUARIO` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `procadop`
+ADD CONSTRAINT `fk_PROCADOP_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `PROITEOP`
+-- Limitadores para a tabela `proiteop`
 --
-ALTER TABLE `PROITEOP`
-ADD CONSTRAINT `fk_PROITEOP_ESCADPRO1` FOREIGN KEY (`idproduto`) REFERENCES `ESCADPRO` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_PROITEOP_PROCADOP1` FOREIGN KEY (`id_op`) REFERENCES `PROCADOP` (`id_op`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `proiteop`
+ADD CONSTRAINT `fk_PROITEOP_ESCADPRO1` FOREIGN KEY (`idproduto`) REFERENCES `escadpro` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_PROITEOP_PROCADOP1` FOREIGN KEY (`id_op`) REFERENCES `procadop` (`id_op`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `VECADPED`
+-- Limitadores para a tabela `vecadped`
 --
-ALTER TABLE `VECADPED`
-ADD CONSTRAINT `fk_VECADPED_CLIFORTR1` FOREIGN KEY (`id_cliente`) REFERENCES `CLIFORTR` (`idclifor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_VECADPED_ESTAB1` FOREIGN KEY (`id_estab`) REFERENCES `ESTAB` (`id_estab`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_VECADPED_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `USUARIO` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `vecadped`
+ADD CONSTRAINT `fk_VECADPED_CLIFORTR1` FOREIGN KEY (`id_cliente`) REFERENCES `clifortr` (`idclifor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_VECADPED_ESTAB1` FOREIGN KEY (`id_estab`) REFERENCES `estab` (`id_estab`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_VECADPED_USUARIO1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `VEITEPED`
+-- Limitadores para a tabela `veiteped`
 --
-ALTER TABLE `VEITEPED`
-ADD CONSTRAINT `fk_VEITEPED_ESCADPRO1` FOREIGN KEY (`ESCADPRO_idproduto`) REFERENCES `ESCADPRO` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_VEITEPED_VECADPED1` FOREIGN KEY (`id_pedido`) REFERENCES `VECADPED` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `veiteped`
+ADD CONSTRAINT `fk_VEITEPED_ESCADPRO1` FOREIGN KEY (`ESCADPRO_idproduto`) REFERENCES `escadpro` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_VEITEPED_VECADPED1` FOREIGN KEY (`id_pedido`) REFERENCES `vecadped` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
