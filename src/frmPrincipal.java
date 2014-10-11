@@ -1,3 +1,5 @@
+import java.io.*;
+
 
 public class frmPrincipal extends javax.swing.JFrame {
     static String usuario;
@@ -394,6 +396,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         Vendas = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         NFE = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PaneAdm = new javax.swing.JTabbedPane();
         frmUsuario = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
@@ -3069,15 +3073,35 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         PaneVendas.addTab("Vendas", Vendas);
 
+        jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel50.setText("Exportação TXT para emissão da NF-e");
+
+        jButton1.setText("Gerar TXT de Teste");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout NFELayout = new javax.swing.GroupLayout(NFE);
         NFE.setLayout(NFELayout);
         NFELayout.setHorizontalGroup(
             NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1119, Short.MAX_VALUE)
+            .addGroup(NFELayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel50)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(846, Short.MAX_VALUE))
         );
         NFELayout.setVerticalGroup(
             NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGroup(NFELayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel50)
+                .addGap(54, 54, 54)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(475, Short.MAX_VALUE))
         );
 
         PaneVendas.addTab("NF-e", NFE);
@@ -3570,6 +3594,25 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDBRadioButton1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ try {  
+            // Gravando no arquivo TXT  
+            File arquivo;  
+  
+            arquivo = new File("TXT/NFE.txt");  
+            FileOutputStream fos = new FileOutputStream(arquivo);  
+            String texto = "NOTA FISCAL TESTE 123"
+                         + System.getProperty("line.separator")
+                         + "LINHA 2 TESTE";  
+            fos.write(texto.getBytes());  
+            fos.close();  
+  
+        }  
+        catch (Exception ee) {  
+            ee.printStackTrace();  
+        }         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3650,6 +3693,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel frmUsuario;
     private lib.jdb.control.jdbtextfield.JDBTextField id_pedido;
     private javax.swing.JLabel iduser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -3992,6 +4036,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
