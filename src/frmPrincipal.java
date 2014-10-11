@@ -17,6 +17,7 @@ public class frmPrincipal extends javax.swing.JFrame {
          QueryCliente.execQuery();
          QueryTransp.execQuery();
          QueryUsuario.execQuery();
+         QueryUserAt.execQuery();
          //QueryPedidoItem.execQuery();
         // System.out.println(QueryPedido.getParameters().toString());
     }
@@ -42,6 +43,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryCliente = new lib.jdb.jdbquery.JDBQuery();
         QueryTransp = new lib.jdb.jdbquery.JDBQuery();
         QueryUsuario = new lib.jdb.jdbquery.JDBQuery();
+        QueryUserAt = new lib.jdb.jdbquery.JDBQuery();
         jToolBar1 = new javax.swing.JToolBar();
         jDBImageBlob1 = new lib.jdb.control.jdbimageblob.JDBImageBlob();
         btnCompras = new javax.swing.JButton();
@@ -472,6 +474,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryUsuario.setJDBConnection(DBCon);
         QueryUsuario.setSQL("select * from USUARIO");
 
+        QueryUserAt.setJDBConnection(DBCon);
+        QueryUserAt.setSQL("select * from USUARIO");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOOD SOFT");
         setAutoRequestFocus(false);
@@ -486,7 +491,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         btnCompras.setText("COMPRAS");
         btnCompras.setToolTipText("");
-        btnCompras.setEnabled(false);
         btnCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnComprasMouseClicked(evt);
@@ -499,7 +503,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
 
         btnEstoque.setText("ESTOQUE");
-        btnEstoque.setEnabled(false);
         btnEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEstoqueActionPerformed(evt);
@@ -507,7 +510,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
 
         btnVendas.setText("VENDAS");
-        btnVendas.setEnabled(false);
         btnVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVendasActionPerformed(evt);
@@ -516,7 +518,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         btnAdmin.setText("ADMINISTRAÇÃO");
         btnAdmin.setToolTipText("");
-        btnAdmin.setEnabled(false);
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminActionPerformed(evt);
@@ -526,7 +527,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jButton7.setText("AJUDA");
 
         btnProducao.setText("PRODUÇÃO");
-        btnProducao.setEnabled(false);
         btnProducao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProducaoActionPerformed(evt);
@@ -3224,27 +3224,6 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel41)
                                         .addComponent(jDBTextField98, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(frmUsuarioLayout.createSequentialGroup()
-                                    .addComponent(jDBButtonNew12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jDBButtonRefresh5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(63, 63, 63)
-                                    .addComponent(jDBButtonDelete14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(25, 25, 25))
-                                .addGroup(frmUsuarioLayout.createSequentialGroup()
-                                    .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(frmUsuarioLayout.createSequentialGroup()
-                                            .addGap(150, 150, 150)
-                                            .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jDBButtonPrevious6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jDBButtonCancel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(56, 56, 56)
-                                            .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jDBButtonSave13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jDBButtonNext6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(jDBButtonFirst4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(62, 62, 62)
-                                    .addComponent(jDBButtonLast4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jDBTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(frmUsuarioLayout.createSequentialGroup()
                                     .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3253,7 +3232,30 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addGap(97, 97, 97)
                                     .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel43)
-                                        .addComponent(jDBTextField100, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(jDBTextField100, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmUsuarioLayout.createSequentialGroup()
+                                    .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(frmUsuarioLayout.createSequentialGroup()
+                                            .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(frmUsuarioLayout.createSequentialGroup()
+                                                    .addGap(150, 150, 150)
+                                                    .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jDBButtonPrevious6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jDBButtonCancel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(56, 56, 56)
+                                                    .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jDBButtonNext6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jDBButtonSave13, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jDBButtonFirst4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(62, 62, 62)
+                                            .addComponent(jDBButtonLast4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(frmUsuarioLayout.createSequentialGroup()
+                                            .addComponent(jDBButtonNew12, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jDBButtonRefresh5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(63, 63, 63)
+                                    .addComponent(jDBButtonDelete14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(25, 25, 25))))))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
         frmUsuarioLayout.setVerticalGroup(
@@ -3375,29 +3377,29 @@ public class frmPrincipal extends javax.swing.JFrame {
                        PaneAdm.setVisible(false);
                        iduser.setText(usuario);
                        
-                       QueryUsuario.setSQL(" select * from USUARIO where id_usuario = '" + iduser.getText() + "'");
-                       QueryUsuario.execQuery();
+                       QueryUserAt.setSQL(" select * from USUARIO where id_usuario = '" + iduser.getText() + "'");
+                       QueryUserAt.execQuery();
         
-                       String pcompras = QueryUsuario.getCurrentFieldValue("compras");
-                       String pestoque = QueryUsuario.getCurrentFieldValue("estoque");
-                       String pproducao = QueryUsuario.getCurrentFieldValue("producao");
-                       String pvendas = QueryUsuario.getCurrentFieldValue("vendas");
-                       String padmin = QueryUsuario.getCurrentFieldValue("administracao");
+                       String pcompras = QueryUserAt.getCurrentFieldValue("compras");
+                       String pestoque = QueryUserAt.getCurrentFieldValue("estoque");
+                       String pproducao = QueryUserAt.getCurrentFieldValue("producao");
+                       String pvendas = QueryUserAt.getCurrentFieldValue("vendas");
+                       String padmin = QueryUserAt.getCurrentFieldValue("administracao");
 
-                      if (pcompras == "true"){
-                           btnCompras.enable(true);
+                      if (pcompras == "false"){
+                           btnCompras.setVisible(false);
                        };
-                       if (pestoque == "true"){
-                           btnEstoque.enable(true);
+                       if (pestoque == "false"){
+                           btnEstoque.setVisible(false);
                        };
-                       if (pproducao == "true"){
-                           btnProducao.enable(true);
+                       if (pproducao == "false"){
+                           btnProducao.setVisible(false);
                        };
-                       if (pvendas == "true"){
-                           btnVendas.enable(true);
+                       if (pvendas == "false"){
+                           btnVendas.setVisible(false);
                        };
-                       if (padmin == "true"){
-                           btnAdmin.enable(true);
+                       if (padmin == "false"){
+                           btnAdmin.setVisible(false);
                        };
 
     }//GEN-LAST:event_esconderpainel
@@ -3626,6 +3628,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QuerySubGru;
     private lib.jdb.jdbquery.JDBQuery QueryTipoPro;
     private lib.jdb.jdbquery.JDBQuery QueryTransp;
+    private lib.jdb.jdbquery.JDBQuery QueryUserAt;
     private lib.jdb.jdbquery.JDBQuery QueryUsuario;
     private javax.swing.JPanel Transportadora;
     private javax.swing.JPanel Vendas;
