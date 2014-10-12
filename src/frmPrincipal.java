@@ -99,6 +99,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBComboBox1 = new lib.jdb.control.jdbcombobox.JDBComboBox();
         jDBComboBox2 = new lib.jdb.control.jdbcombobox.JDBComboBox();
         jDBComboBox3 = new lib.jdb.control.jdbcombobox.JDBComboBox();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         frmPedido = new javax.swing.JPanel();
         id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField2 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -593,18 +594,12 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        jDBButtonCancel3.setJDBQuery(QueryFornecedor);
-
-        jDBButtonDelete2.setJDBQuery(QueryFornecedor);
-
-        jDBButtonNew3.setJDBQuery(QueryFornecedor);
         jDBButtonNew3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDBButtonNew3ActionPerformed(evt);
             }
         });
 
-        jDBButtonSave1.setJDBQuery(QueryFornecedor);
         jDBButtonSave1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDBButtonSave1ActionPerformed(evt);
@@ -614,45 +609,32 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
         jLabel15.setText("Cadastro de Fornecedores");
 
-        jDBTextField13.setJDBQuery(QueryFornecedor);
         jDBTextField13.setEnabled(false);
         jDBTextField13.setFieldName("idclifor");
 
-        jDBTextField14.setJDBQuery(QueryFornecedor);
         jDBTextField14.setFieldName("id_usuario");
 
-        jDBTextField16.setJDBQuery(QueryFornecedor);
         jDBTextField16.setFieldName("razao");
 
-        jDBTextField17.setJDBQuery(QueryFornecedor);
         jDBTextField17.setFieldName("fantasia");
 
-        jDBTextField18.setJDBQuery(QueryFornecedor);
         jDBTextField18.setFieldName("cnpj");
         jDBTextField18.setMaxLength(new java.lang.Integer(14));
 
-        jDBTextField19.setJDBQuery(QueryFornecedor);
         jDBTextField19.setFieldName("cpf");
 
-        jDBTextField20.setJDBQuery(QueryFornecedor);
         jDBTextField20.setFieldName("inscEst");
 
-        jDBTextField21.setJDBQuery(QueryFornecedor);
         jDBTextField21.setFieldName("endereco");
 
-        jDBTextField22.setJDBQuery(QueryFornecedor);
         jDBTextField22.setFieldName("bairro");
 
-        jDBTextField25.setJDBQuery(QueryFornecedor);
         jDBTextField25.setFieldName("email");
 
-        jDBTextField26.setJDBQuery(QueryFornecedor);
         jDBTextField26.setFieldName("telefone");
 
-        jDBTextField28.setJDBQuery(QueryFornecedor);
         jDBTextField28.setFieldName("contato");
 
-        jDBTextField29.setJDBQuery(QueryFornecedor);
         jDBTextField29.setFieldName("cep");
         jDBTextField29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -660,7 +642,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jDBTextField30.setJDBQuery(QueryFornecedor);
         jDBTextField30.setFieldName("cidade");
 
         jDBLabelCount2.setText("ID Fornecedor");
@@ -705,16 +686,19 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
 
         jDBComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MG", "MS", "MT", "PE", "PR", "RJ", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
-        jDBComboBox1.setJDBQuery(QueryFornecedor);
         jDBComboBox1.setFieldName("uf");
 
         jDBComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
-        jDBComboBox2.setJDBQuery(QueryFornecedor);
         jDBComboBox2.setFieldName("pessoa");
 
         jDBComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo", "Inapto", " " }));
-        jDBComboBox3.setJDBQuery(QueryFornecedor);
         jDBComboBox3.setFieldName("situacao");
+
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout frmFornecedorLayout = new javax.swing.GroupLayout(frmFornecedor);
         frmFornecedor.setLayout(frmFornecedorLayout);
@@ -823,6 +807,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))))
+            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                .addGap(410, 410, 410)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         frmFornecedorLayout.setVerticalGroup(
             frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -831,7 +819,9 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jButton11))
-                .addGap(76, 76, 76)
+                .addGap(47, 47, 47)
+                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBLabelCount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDBLabelCount3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -896,7 +886,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         PaneCompras.addTab("Fornecedores", frmFornecedor);
 
-        id_pedido.setJDBQuery(QueryPedido);
         id_pedido.setFieldName("id_pedido");
         id_pedido.setName(""); // NOI18N
         id_pedido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -905,10 +894,8 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jDBTextField2.setJDBQuery(QueryPedido);
         jDBTextField2.setFieldName("cod_fornecedor");
 
-        jDBTextField3.setJDBQuery(QueryPedido);
         jDBTextField3.setFieldName("data_ent");
         jDBTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -916,23 +903,17 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jDBTextField5.setJDBQuery(QueryPedido);
         jDBTextField5.setEnabled(false);
         jDBTextField5.setFieldName("data_alt");
 
-        jDBTextField6.setJDBQuery(QueryPedido);
         jDBTextField6.setFieldName("valor_ipi_total");
 
-        jDBTextField7.setJDBQuery(QueryPedido);
         jDBTextField7.setFieldName("valor_frete");
 
-        jDBTextField8.setJDBQuery(QueryPedido);
         jDBTextField8.setFieldName("valor_icms_total");
 
-        jDBTextField9.setJDBQuery(QueryPedido);
         jDBTextField9.setFieldName("valor_total");
 
-        jDBTextField10.setJDBQuery(QueryBuscaForn);
         jDBTextField10.setFieldName("razao");
 
         jLabel1.setText("ID Pedido");
@@ -953,14 +934,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jLabel9.setText("Valor Total");
 
-        situacao.setJDBQuery(QueryPedido);
         situacao.setFieldName("situacao");
 
         jLabel10.setText("Nome do Fornecedor");
 
         jLabel11.setText("CNPJ");
 
-        jDBTextField12.setJDBQuery(QueryBuscaForn);
         jDBTextField12.setFieldName("cnpj");
 
         jLabel12.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
@@ -977,10 +956,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 "Item", "Código Produto", "Descrição do Item", "Quantidade", "Unidade", "Valor Unitário", "IPI", "ICMS", "Total do Item", "Valor frete", "Desconto"
             }
         ));
-        jDBTable1.setJDBQuery(QueryPedidoItem);
         jScrollPane1.setViewportView(jDBTable1);
 
-        jDBButtonNew1.setJDBQuery(QueryPedidoItem);
         jDBButtonNew1.setLabel("");
         jDBButtonNew1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -4001,6 +3978,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField97;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField98;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField99;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryPedido">
       <Properties>
@@ -481,6 +481,11 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="410" max="-2" attributes="0"/>
+                      <Component id="jFormattedTextField1" min="-2" pref="137" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -491,7 +496,9 @@
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jDBLabelCount2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBLabelCount3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -571,21 +578,21 @@
             <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel3">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="lib.jdb.control.jdbbuttondelete.JDBButtonDelete" name="jDBButtonDelete2">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="jDBButtonNew3">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
               </Properties>
               <Events>
@@ -595,7 +602,7 @@
             <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="jDBButtonSave1">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
               </Properties>
               <Events>
@@ -613,7 +620,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField13">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="fieldName" type="java.lang.String" value="idclifor"/>
@@ -622,7 +629,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField14">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="id_usuario"/>
               </Properties>
@@ -630,7 +637,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField16">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="razao"/>
               </Properties>
@@ -638,7 +645,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField17">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="fantasia"/>
               </Properties>
@@ -646,7 +653,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField18">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cnpj"/>
                 <Property name="maxLength" type="java.lang.Integer" value="14"/>
@@ -655,7 +662,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField19">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cpf"/>
               </Properties>
@@ -663,7 +670,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField20">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="inscEst"/>
               </Properties>
@@ -671,7 +678,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField21">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="endereco"/>
               </Properties>
@@ -679,7 +686,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField22">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="bairro"/>
               </Properties>
@@ -687,7 +694,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField25">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="email"/>
               </Properties>
@@ -695,7 +702,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField26">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="telefone"/>
               </Properties>
@@ -703,7 +710,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField28">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="contato"/>
               </Properties>
@@ -711,7 +718,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField29">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cep"/>
               </Properties>
@@ -722,7 +729,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField30">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cidade"/>
               </Properties>
@@ -849,7 +856,7 @@
                   </StringArray>
                 </Property>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="uf"/>
               </Properties>
@@ -863,7 +870,7 @@
                   </StringArray>
                 </Property>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="pessoa"/>
               </Properties>
@@ -879,9 +886,16 @@
                   </StringArray>
                 </Property>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="situacao"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="###.###.###-##" subtype="-1" type="5"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -1087,7 +1101,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="id_pedido">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="id_pedido"/>
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -1099,7 +1113,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField2">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cod_fornecedor"/>
               </Properties>
@@ -1107,7 +1121,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField3">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="data_ent"/>
               </Properties>
@@ -1118,7 +1132,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField5">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="fieldName" type="java.lang.String" value="data_alt"/>
@@ -1127,7 +1141,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField6">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="valor_ipi_total"/>
               </Properties>
@@ -1135,7 +1149,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField7">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="valor_frete"/>
               </Properties>
@@ -1143,7 +1157,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField8">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="valor_icms_total"/>
               </Properties>
@@ -1151,7 +1165,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField9">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="valor_total"/>
               </Properties>
@@ -1159,7 +1173,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField10">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryBuscaForn"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="razao"/>
               </Properties>
@@ -1212,7 +1226,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="situacao">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="situacao"/>
               </Properties>
@@ -1230,7 +1244,7 @@
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField12">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryBuscaForn"/>
+                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cnpj"/>
               </Properties>
@@ -1332,7 +1346,7 @@
                               </Table>
                             </Property>
                             <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                              <ComponentRef name="QueryPedidoItem"/>
+                              <ComponentRef name="default"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -1341,7 +1355,7 @@
                     <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="jDBButtonNew1">
                       <Properties>
                         <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="QueryPedidoItem"/>
+                          <ComponentRef name="default"/>
                         </Property>
                         <Property name="label" type="java.lang.String" value=""/>
                       </Properties>
