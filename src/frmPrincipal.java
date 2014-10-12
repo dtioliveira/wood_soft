@@ -552,21 +552,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBImageBlob1.setLayout(jDBImageBlob1Layout);
         jDBImageBlob1Layout.setHorizontalGroup(
             jDBImageBlob1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnProducao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jDBImageBlob1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDBImageBlob1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(iduser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jDBImageBlob1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jDBImageBlob1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iduser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnProducao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCompras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEstoque, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDBImageBlob1Layout.setVerticalGroup(
             jDBImageBlob1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,20 +576,21 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(26, 26, 26)
                 .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addComponent(btnEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addComponent(btnProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iduser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7)
-                .addGap(30, 30, 30)
-                .addComponent(jButton6))
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addGap(23, 23, 23))
         );
 
         jDBButtonCancel3.setJDBQuery(QueryFornecedor);
@@ -3399,31 +3401,39 @@ public class frmPrincipal extends javax.swing.JFrame {
                        PaneProducao.setVisible(false);
                        PaneVendas.setVisible(false);
                        PaneAdm.setVisible(false);
-                       iduser.setText(usuario);
+                       
+                       btnCompras.setEnabled(false);
+                       btnEstoque.setEnabled(false);
+                       btnProducao.setEnabled(false);
+                       btnVendas.setEnabled(false);
+                       btnAdmin.setEnabled(false);
+                       
                        
                        QueryUserAt.setSQL(" select * from USUARIO where id_usuario = '" + iduser.getText() + "'");
                        QueryUserAt.execQuery();
         
-                       String pcompras = QueryUserAt.getCurrentFieldValue("compras");
-                       String pestoque = QueryUserAt.getCurrentFieldValue("estoque");
-                       String pproducao = QueryUserAt.getCurrentFieldValue("producao");
-                       String pvendas = QueryUserAt.getCurrentFieldValue("vendas");
-                       String padmin = QueryUserAt.getCurrentFieldValue("administracao");
-
-                      if (pcompras == "false"){
-                           btnCompras.setVisible(false);
+                       Boolean pcompras = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("compras"));
+                       Boolean pestoque = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("estoque"));
+                       Boolean pproducao = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("producao"));
+                       Boolean pvendas = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("vendas"));
+                       Boolean padmin = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("administracao"));
+                       
+                       iduser.setText(usuario);
+                       
+                      if (pcompras == true){
+                        btnCompras.setEnabled(true);
                        };
-                       if (pestoque == "false"){
-                           btnEstoque.setVisible(false);
+                      if (pestoque == true){
+                        btnEstoque.setEnabled(true);
+                      };
+                      if (pproducao == true){
+                        btnProducao.setEnabled(true);
                        };
-                       if (pproducao == "false"){
-                           btnProducao.setVisible(false);
+                      if (pvendas == true){
+                        btnVendas.setEnabled(true);
                        };
-                       if (pvendas == "false"){
-                           btnVendas.setVisible(false);
-                       };
-                       if (padmin == "false"){
-                           btnAdmin.setVisible(false);
+                      if (padmin == true){
+                        btnAdmin.setEnabled(true);
                        };
 
     }//GEN-LAST:event_esconderpainel
