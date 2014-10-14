@@ -17,3 +17,5 @@ TXT/NFE.txt
 nbproject/private/private.xml
 nbproject/private/private.properties
 *.properties
+*.properties
+*.xml
