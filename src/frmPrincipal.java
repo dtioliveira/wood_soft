@@ -46,6 +46,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryTransp = new lib.jdb.jdbquery.JDBQuery();
         QueryUsuario = new lib.jdb.jdbquery.JDBQuery();
         QueryUserAt = new lib.jdb.jdbquery.JDBQuery();
+        QueryVendas = new lib.jdb.jdbquery.JDBQuery();
+        QueryVendasItem = new lib.jdb.jdbquery.JDBQuery();
         jToolBar1 = new javax.swing.JToolBar();
         jDBImageBlob1 = new lib.jdb.control.jdbimageblob.JDBImageBlob();
         btnCompras = new javax.swing.JButton();
@@ -393,11 +395,74 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBLabelCount86 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
         jDBButtonSave12 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         jLabel36 = new javax.swing.JLabel();
-        Vendas = new javax.swing.JPanel();
-        jLabel37 = new javax.swing.JLabel();
         NFE = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        Vendas = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jDBTextField101 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField102 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField103 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField104 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField105 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField106 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField107 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField108 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField109 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField110 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField111 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField112 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField113 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField114 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField115 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField116 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField117 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField118 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField119 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField120 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField121 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField122 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField123 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField124 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField125 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jDBTextField126 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jLabel76 = new javax.swing.JLabel();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jDBTable4 = new lib.jdb.control.jdbtable.JDBTable();
+        jDBButtonCancel15 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
+        jDBButtonDelete15 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
+        jDBButtonNew15 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
+        jDBButtonSave14 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
+        jDBButtonNew16 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
+        jDBButtonCancel16 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
+        jDBButtonSave15 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         PaneAdm = new javax.swing.JTabbedPane();
         frmUsuario = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
@@ -480,6 +545,10 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryUserAt.setJDBConnection(DBCon);
         QueryUserAt.setSQL("select * from USUARIO");
+
+        QueryVendas.setSQL("select * from vecadped");
+
+        QueryVendasItem.setSQL("select * from veiteped");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOOD SOFT");
@@ -2559,7 +2628,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                         .addGroup(ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(ClientesLayout.createSequentialGroup()
                                                 .addComponent(jDBTextField78, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                                                 .addComponent(jDBTextField82, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(ClientesLayout.createSequentialGroup()
                                                 .addComponent(jDBLabelCount64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2843,7 +2912,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addGroup(TransportadoraLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jDBLabelCount70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(905, Short.MAX_VALUE))
+                .addContainerGap(922, Short.MAX_VALUE))
             .addGroup(TransportadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(TransportadoraLayout.createSequentialGroup()
                     .addGap(19, 19, 19)
@@ -2862,7 +2931,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addGroup(TransportadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(TransportadoraLayout.createSequentialGroup()
                                             .addComponent(jDBTextField90, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                                             .addComponent(jDBTextField96, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(TransportadoraLayout.createSequentialGroup()
                                             .addComponent(jDBLabelCount79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3017,28 +3086,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         PaneVendas.addTab("Cadastro de Transportadoras", Transportadora);
 
-        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel37.setText("Vendas de Produtos");
-
-        javax.swing.GroupLayout VendasLayout = new javax.swing.GroupLayout(Vendas);
-        Vendas.setLayout(VendasLayout);
-        VendasLayout.setHorizontalGroup(
-            VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VendasLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel37)
-                .addContainerGap(954, Short.MAX_VALUE))
-        );
-        VendasLayout.setVerticalGroup(
-            VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VendasLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel37)
-                .addContainerGap(601, Short.MAX_VALUE))
-        );
-
-        PaneVendas.addTab("Vendas", Vendas);
-
         jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel50.setText("Exportação TXT para emissão da NF-e");
 
@@ -3058,7 +3105,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel50)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(846, Short.MAX_VALUE))
+                .addContainerGap(863, Short.MAX_VALUE))
         );
         NFELayout.setVerticalGroup(
             NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3071,6 +3118,483 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
 
         PaneVendas.addTab("NF-e", NFE);
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel37.setText("Vendas de Produtos");
+
+        jDBTextField101.setJDBQuery(QueryVendas);
+        jDBTextField101.setFieldName("id_pedido");
+
+        jDBTextField102.setJDBQuery(QueryVendas);
+        jDBTextField102.setFieldName("data");
+
+        jDBTextField103.setText("jDBTextField103");
+
+        jDBTextField104.setJDBQuery(QueryVendas);
+        jDBTextField104.setFieldName("vlr_mercadoria");
+
+        jDBTextField105.setJDBQuery(QueryVendas);
+        jDBTextField105.setFieldName("vlr_iss");
+
+        jDBTextField106.setJDBQuery(QueryVendas);
+        jDBTextField106.setFieldName("total");
+
+        jDBTextField107.setJDBQuery(QueryVendas);
+        jDBTextField107.setFieldName("data_entrega");
+
+        jDBTextField108.setJDBQuery(QueryVendas);
+        jDBTextField108.setFieldName("nota_fiscal");
+
+        jDBTextField109.setJDBQuery(QueryVendas);
+        jDBTextField109.setFieldName("serie");
+
+        jDBTextField110.setJDBQuery(QueryVendas);
+        jDBTextField110.setFieldName("data_emissao");
+
+        jDBTextField111.setJDBQuery(QueryVendas);
+        jDBTextField111.setFieldName("data_saida");
+
+        jDBTextField112.setJDBQuery(QueryVendas);
+        jDBTextField112.setFieldName("hora_saida");
+
+        jDBTextField113.setJDBQuery(QueryVendas);
+        jDBTextField113.setFieldName("base_icms");
+
+        jDBTextField114.setJDBQuery(QueryVendas);
+        jDBTextField114.setFieldName("vlr_icms");
+
+        jDBTextField115.setJDBQuery(QueryVendas);
+        jDBTextField115.setFieldName("base_icms_subs");
+
+        jDBTextField116.setJDBQuery(QueryVendas);
+        jDBTextField116.setFieldName("vlr_icms_subs");
+
+        jDBTextField117.setJDBQuery(QueryVendas);
+        jDBTextField117.setFieldName("vlr_frete");
+
+        jDBTextField118.setJDBQuery(QueryVendas);
+        jDBTextField118.setFieldName("vlr_seguro");
+
+        jDBTextField119.setJDBQuery(QueryVendas);
+        jDBTextField119.setFieldName("desconto");
+
+        jDBTextField120.setJDBQuery(QueryVendas);
+        jDBTextField120.setFieldName("desp_acessorias");
+
+        jDBTextField121.setJDBQuery(QueryVendas);
+        jDBTextField121.setFieldName("vlr_ipi");
+
+        jDBTextField122.setJDBQuery(QueryVendas);
+        jDBTextField122.setFieldName("id_transportador");
+
+        jDBTextField123.setJDBQuery(QueryVendas);
+        jDBTextField123.setFieldName("id_usuario");
+
+        jDBTextField124.setJDBQuery(QueryVendas);
+        jDBTextField124.setFieldName("id_cliente");
+
+        jDBTextField125.setJDBQuery(QueryVendas);
+        jDBTextField125.setFieldName("id_estab");
+        jDBTextField125.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBTextField125ActionPerformed(evt);
+            }
+        });
+
+        jLabel51.setText("ID Pedido");
+
+        jLabel52.setText("Data Pedido");
+
+        jLabel53.setText("Transportadora");
+
+        jLabel54.setText("Valor Merc.");
+
+        jLabel55.setText("Valor ISS");
+
+        jLabel56.setText("Total");
+
+        jLabel57.setText("Data Entrega");
+
+        jLabel58.setText("Nota Fiscal");
+
+        jLabel59.setText("Série");
+
+        jLabel60.setText("Data Emissão");
+
+        jLabel61.setText("Data Saída");
+
+        jLabel62.setText("Hora Saída");
+
+        jLabel63.setText("Base ICMS");
+
+        jLabel64.setText("Valor ICMS");
+
+        jLabel65.setText("Base ICMS Subs.");
+
+        jLabel66.setText("Valor ICMS Subs.");
+
+        jLabel67.setText("Valor Frete");
+
+        jLabel68.setText("Valor Seguro");
+
+        jLabel69.setText("Desconto");
+
+        jLabel70.setText("Desp. Acessórias");
+
+        jLabel71.setText("Valor IPI");
+
+        jLabel72.setText("Id Transportadora");
+
+        jLabel73.setText("ID Usuário");
+
+        jLabel74.setText("ID Cliente");
+
+        jLabel75.setText("ID Estab");
+
+        jDBTextField126.setText("jDBTextField126");
+
+        jLabel76.setText("Cliente");
+
+        jDBTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jDBTable4.setJDBQuery(QueryVendasItem);
+        jScrollPane4.setViewportView(jDBTable4);
+
+        jDBButtonCancel15.setJDBQuery(QueryVendasItem);
+        jDBButtonCancel15.setLabel("");
+
+        jDBButtonDelete15.setJDBQuery(QueryVendasItem);
+        jDBButtonDelete15.setLabel("");
+
+        jDBButtonNew15.setJDBQuery(QueryVendasItem);
+        jDBButtonNew15.setText("");
+        jDBButtonNew15.setToolTipText("");
+
+        jDBButtonSave14.setJDBQuery(QueryVendasItem);
+        jDBButtonSave14.setText("");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jDBButtonNew15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDBButtonCancel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDBButtonSave14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDBButtonDelete15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1017, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDBButtonCancel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDBButtonNew15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDBButtonSave14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDBButtonDelete15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+
+        jTabbedPane4.addTab("Itens da Venda", jPanel1);
+
+        javax.swing.GroupLayout VendasLayout = new javax.swing.GroupLayout(Vendas);
+        Vendas.setLayout(VendasLayout);
+        VendasLayout.setHorizontalGroup(
+            VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VendasLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addComponent(jTabbedPane4)
+                        .addContainerGap())
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(VendasLayout.createSequentialGroup()
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel51)
+                                            .addComponent(jDBTextField101, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel52)
+                                            .addComponent(jDBTextField102, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel74)
+                                            .addComponent(jDBTextField124, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel76)
+                                    .addComponent(jDBTextField126, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(VendasLayout.createSequentialGroup()
+                                        .addComponent(jDBTextField103, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(VendasLayout.createSequentialGroup()
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel72, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel53)
+                                            .addComponent(jDBTextField122, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBTextField111, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel61))
+                                        .addGap(53, 53, 53)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBTextField112, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel62))
+                                        .addGap(51, 51, 51)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel60)
+                                            .addComponent(jDBTextField110, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel57)
+                                            .addComponent(jDBTextField107, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel58)
+                                    .addComponent(jDBTextField108, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel59)
+                                    .addComponent(jDBTextField109, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel63)
+                                    .addGroup(VendasLayout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addComponent(jDBTextField114, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(5, 5, 5)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel65)
+                                    .addComponent(jDBTextField115, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel66)
+                                    .addComponent(jDBTextField116, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(61, 61, 61)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel67)
+                                    .addComponent(jDBTextField117, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel68)
+                                    .addComponent(jDBTextField118, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel71)
+                                    .addComponent(jDBTextField121, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel55)
+                                    .addComponent(jDBTextField105, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(91, 91, 91))
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jDBTextField113, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel70))
+                            .addComponent(jDBTextField120, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel69)
+                            .addComponent(jDBTextField119, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel54)
+                            .addComponent(jDBTextField104, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel56)
+                            .addComponent(jDBTextField106, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDBTextField125, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel75))
+                        .addGap(18, 18, 18)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel73)
+                            .addComponent(jDBTextField123, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(77, 77, 77))))
+            .addGroup(VendasLayout.createSequentialGroup()
+                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel64))
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel37)
+                        .addGap(340, 340, 340)
+                        .addComponent(jDBButtonNew16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDBButtonCancel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDBButtonSave15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        VendasLayout.setVerticalGroup(
+            VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VendasLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(jDBButtonNew16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBButtonCancel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBButtonSave15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VendasLayout.createSequentialGroup()
+                                        .addComponent(jLabel60)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDBTextField110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(VendasLayout.createSequentialGroup()
+                                            .addComponent(jLabel74)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jDBTextField124, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(VendasLayout.createSequentialGroup()
+                                            .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel51)
+                                                .addComponent(jLabel52))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jDBTextField101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jDBTextField102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VendasLayout.createSequentialGroup()
+                                        .addComponent(jLabel72)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDBTextField122, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VendasLayout.createSequentialGroup()
+                                        .addComponent(jLabel62)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDBTextField112, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VendasLayout.createSequentialGroup()
+                                        .addComponent(jLabel57)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDBTextField107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(VendasLayout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jLabel76)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDBTextField126, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(VendasLayout.createSequentialGroup()
+                                                .addComponent(jLabel59)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jDBTextField109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(VendasLayout.createSequentialGroup()
+                                                .addComponent(jLabel58)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jDBTextField108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(VendasLayout.createSequentialGroup()
+                                                        .addComponent(jLabel63)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jDBTextField113, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(VendasLayout.createSequentialGroup()
+                                                        .addComponent(jLabel66)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jDBTextField116, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(VendasLayout.createSequentialGroup()
+                                                    .addComponent(jLabel71)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jDBTextField121, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(VendasLayout.createSequentialGroup()
+                                                    .addComponent(jLabel64)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jDBTextField114, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(VendasLayout.createSequentialGroup()
+                                                    .addComponent(jLabel65)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jDBTextField115, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(VendasLayout.createSequentialGroup()
+                                                    .addComponent(jLabel68)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jDBTextField118, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(VendasLayout.createSequentialGroup()
+                                                .addComponent(jLabel67)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jDBTextField117, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VendasLayout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jLabel55)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDBTextField105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addComponent(jLabel61)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDBTextField111, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel53)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDBTextField103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, VendasLayout.createSequentialGroup()
+                                    .addComponent(jLabel54)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jDBTextField104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, VendasLayout.createSequentialGroup()
+                                    .addComponent(jLabel69)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jDBTextField119, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, VendasLayout.createSequentialGroup()
+                                    .addComponent(jLabel70)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jDBTextField120, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addComponent(jLabel56)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDBTextField106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(VendasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addComponent(jLabel73)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDBTextField123, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(VendasLayout.createSequentialGroup()
+                                .addComponent(jLabel75)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDBTextField125, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        PaneVendas.addTab("Vendas", Vendas);
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel38.setText("Cadastro de Usuários");
@@ -3246,7 +3770,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addGap(63, 63, 63)
                                     .addComponent(jDBButtonDelete14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(25, 25, 25))))))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         frmUsuarioLayout.setVerticalGroup(
             frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3320,8 +3844,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 1151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PaneAdm)
                 .addContainerGap())
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3575,7 +4099,7 @@ public class frmPrincipal extends javax.swing.JFrame {
   
             arquivo = new File("TXT/NFE.txt");  
             FileOutputStream fos = new FileOutputStream(arquivo);  
-            String texto = "NOTA FISCAL TESTE 123"
+            String texto = "NOTA FISCAL TESTE 123"+" | "+"teste"
                          + System.getProperty("line.separator")
                          + "LINHA 2 TESTE";  
             fos.write(texto.getBytes());  
@@ -3586,6 +4110,10 @@ public class frmPrincipal extends javax.swing.JFrame {
             ee.printStackTrace();  
         }         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jDBTextField125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBTextField125ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDBTextField125ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3647,6 +4175,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QueryTransp;
     private lib.jdb.jdbquery.JDBQuery QueryUserAt;
     private lib.jdb.jdbquery.JDBQuery QueryUsuario;
+    private lib.jdb.jdbquery.JDBQuery QueryVendas;
+    private lib.jdb.jdbquery.JDBQuery QueryVendasItem;
     private javax.swing.JPanel Transportadora;
     private javax.swing.JPanel Vendas;
     private javax.swing.JButton atualizar;
@@ -3681,6 +4211,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel12;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel13;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel14;
+    private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel15;
+    private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel16;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel2;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel3;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel4;
@@ -3695,6 +4227,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete12;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete13;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete14;
+    private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete15;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete2;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete3;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete4;
@@ -3717,6 +4250,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew12;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew13;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew14;
+    private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew15;
+    private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew16;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew2;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew3;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew4;
@@ -3747,6 +4282,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave11;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave12;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave13;
+    private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave14;
+    private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave15;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave2;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave3;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave4;
@@ -3863,13 +4400,40 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtable.JDBTable jDBTable1;
     private lib.jdb.control.jdbtable.JDBTable jDBTable2;
     private lib.jdb.control.jdbtable.JDBTable jDBTable3;
+    private lib.jdb.control.jdbtable.JDBTable jDBTable4;
     private lib.jdb.control.jdbtextarea.JDBTextArea jDBTextArea1;
     private lib.jdb.control.jdbtextarea.JDBTextArea jDBTextArea2;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField1;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField10;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField100;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField101;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField102;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField103;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField104;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField105;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField106;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField107;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField108;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField109;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField11;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField110;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField111;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField112;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField113;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField114;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField115;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField116;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField117;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField118;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField119;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField12;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField120;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField121;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField122;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField123;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField124;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField125;
+    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField126;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField13;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField14;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField15;
@@ -4011,19 +4575,48 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JToolBar jToolBar1;
     private lib.jdb.control.jdbtextfield.JDBTextField situacao;
     // End of variables declaration//GEN-END:variables

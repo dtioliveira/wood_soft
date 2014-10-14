@@ -168,21 +168,25 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-          QueryLogin.setSQL(" select * from USUARIO where login = '" + textLogin.getText() + "' and senha = '" + textSenha.getText()+ "'");
+       QueryLogin.setSQL(" select * from USUARIO where login = '" + textLogin.getText() + "' and senha = '" + textSenha.getText()+ "'");
         QueryLogin.execQuery();
         
         String loginUser = QueryLogin.getCurrentFieldValue("login");
         String senhaUser = QueryLogin.getCurrentFieldValue("senha");
-
+        User = QueryLogin.getCurrentFieldValue("id_usuario");
+        frmPrincipal.usuario = User;
        //JOptionPane.showMessageDialog(rootPane, loginUser);
         if ( textLogin.getText().equals(loginUser) && textSenha.getText().equals(senhaUser)){ 
               
       
             
                new frmPrincipal().setVisible(true);
-               dispose();}else
+               dispose();
+        }else
         
         JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos");
+        
+        
     }//GEN-LAST:event_jButton1KeyPressed
 
              
