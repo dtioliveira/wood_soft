@@ -97,12 +97,12 @@ public class login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
+                            .addComponent(textLogin)
+                            .addComponent(textSenha)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(textLogin)
-                            .addComponent(textSenha))
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
                 .addContainerGap())
@@ -149,9 +149,9 @@ public class login extends javax.swing.JFrame {
         if ( textLogin.getText().equals(loginUser) && textSenha.getText().equals(senhaUser)){ 
               
       
-            
+               setVisible(false);
                new frmPrincipal().setVisible(true);
-               dispose();
+               
         }else
         
         JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos");
@@ -168,24 +168,9 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-       QueryLogin.setSQL(" select * from USUARIO where login = '" + textLogin.getText() + "' and senha = '" + textSenha.getText()+ "'");
-        QueryLogin.execQuery();
-        
-        String loginUser = QueryLogin.getCurrentFieldValue("login");
-        String senhaUser = QueryLogin.getCurrentFieldValue("senha");
-        User = QueryLogin.getCurrentFieldValue("id_usuario");
-        frmPrincipal.usuario = User;
-       //JOptionPane.showMessageDialog(rootPane, loginUser);
-        if ( textLogin.getText().equals(loginUser) && textSenha.getText().equals(senhaUser)){ 
-              
-      
-            
-               new frmPrincipal().setVisible(true);
-               dispose();
-        }else
-        
-        JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos");
-        
+       if (evt.getKeyCode()==10){
+           jButton1ActionPerformed(null);
+       }
         
     }//GEN-LAST:event_jButton1KeyPressed
 

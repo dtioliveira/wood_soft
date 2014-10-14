@@ -7,6 +7,7 @@ public class frmPrincipal extends javax.swing.JFrame {
  
     public frmPrincipal() {
         initComponents();
+        iduser.setText(usuario);
          DBCon.connectDB();
          QueryFornecedor.execQuery();
          QueryRecebimento.execQuery();
@@ -555,8 +556,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         setAutoRequestFocus(false);
         setExtendedState(6);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                esconderpainel(evt);
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                esconder(evt);
             }
         });
 
@@ -3883,7 +3884,7 @@ public class frmPrincipal extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnComprasMouseClicked
 
-    private void esconderpainel(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_esconderpainel
+    private void esconder(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_esconder
                        PaneCompras.setVisible(false);
                        PaneEstoque.setVisible(false);
                        PaneProducao.setVisible(false);
@@ -3924,7 +3925,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                         btnAdmin.setEnabled(true);
                        };
 
-    }//GEN-LAST:event_esconderpainel
+    }//GEN-LAST:event_esconder
 
     private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
        PaneCompras.setVisible(true);
