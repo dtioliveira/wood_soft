@@ -14,3 +14,6 @@ hs_err_pid*
 nbproject/private/private.properties
 nbproject/private/private.xml
 TXT/NFE.txt
+nbproject/private/private.xml
+nbproject/private/private.properties
+*.properties
