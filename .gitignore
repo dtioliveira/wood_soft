@@ -11,11 +11,11 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /dist/
-nbproject/private/private.properties
-nbproject/private/private.xml
+nbproject\private\private.properties
+nbproject\private\private.xml
 TXT/NFE.txt
-nbproject/private/private.xml
-nbproject/private/private.properties
+nbproject\private\private.xml
+nbproject\private\private.properties
 *.properties
 *.properties
 *.xml
