@@ -1,4 +1,5 @@
 import java.io.*;
+import javax.swing.JOptionPane;
 
 
 public class frmPrincipal extends javax.swing.JFrame {
@@ -7,7 +8,7 @@ public class frmPrincipal extends javax.swing.JFrame {
  
     public frmPrincipal() {
         initComponents();
-        iduser.setText(usuario);
+      //  iduser.setText(usuario);
          DBCon.connectDB();
          QueryFornecedor.execQuery();
          QueryRecebimento.execQuery();
@@ -53,6 +54,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryVendas = new lib.jdb.jdbquery.JDBQuery();
         QueryVendasItem = new lib.jdb.jdbquery.JDBQuery();
         QueryEstabelecimento = new lib.jdb.jdbquery.JDBQuery();
+        QueryVeItem = new lib.jdb.jdbquery.JDBQuery();
         jToolBar1 = new javax.swing.JToolBar();
         jDBImageBlob1 = new lib.jdb.control.jdbimageblob.JDBImageBlob();
         btnCompras = new javax.swing.JButton();
@@ -63,7 +65,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnProducao = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        iduser = new javax.swing.JLabel();
         PaneCompras = new javax.swing.JTabbedPane();
         frmFornecedor = new javax.swing.JPanel();
         jDBButtonCancel3 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
@@ -145,6 +146,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBButtonCancel2 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
         jDBButtonSave5 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         jDBButtonRefresh2 = new lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh();
+        jButton2 = new javax.swing.JButton();
         jDBButtonDelete3 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
         jDBButtonNew2 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
         jDBButtonSave2 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
@@ -605,6 +607,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryEstabelecimento.setJDBConnection(DBCon);
         QueryEstabelecimento.setSQL("select * from estab");
 
+        QueryVeItem.setJDBConnection(DBCon);
+        QueryVeItem.setSQL("");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOOD SOFT");
         setAutoRequestFocus(false);
@@ -670,8 +675,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
-        iduser.setText("iduser");
-
         javax.swing.GroupLayout jDBImageBlob1Layout = new javax.swing.GroupLayout(jDBImageBlob1);
         jDBImageBlob1.setLayout(jDBImageBlob1Layout);
         jDBImageBlob1Layout.setHorizontalGroup(
@@ -683,7 +686,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(jDBImageBlob1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jDBImageBlob1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iduser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -708,8 +710,6 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iduser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addGap(18, 18, 18)
@@ -1147,9 +1147,21 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jDBButtonSave5.setJDBQuery(QueryPedidoItem);
         jDBButtonSave5.setLabel("");
+        jDBButtonSave5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBButtonSave5ActionPerformed(evt);
+            }
+        });
 
         jDBButtonRefresh2.setJDBQuery(QueryPedidoItem);
         jDBButtonRefresh2.setText("");
+
+        jButton2.setText("Buscar Produto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1173,6 +1185,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDBButtonRefresh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1180,18 +1194,18 @@ public class frmPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jDBButtonNew1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDBButtonCancel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDBButtonPrevious1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDBButtonNext1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDBButtonRefresh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonSave5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDBButtonNew1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDBButtonCancel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDBButtonPrevious1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDBButtonNext1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDBButtonRefresh2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDBButtonSave5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Itens do Pedido", jPanel2);
@@ -4350,7 +4364,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                        btnAdmin.setEnabled(false);
                        
                        
-                       QueryUserAt.setSQL(" select * from USUARIO where id_usuario = '" + iduser.getText() + "'");
+                       QueryUserAt.setSQL(" select * from USUARIO where id_usuario = '" + usuario + "'");
                        QueryUserAt.execQuery();
         
                        Boolean pcompras = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("compras"));
@@ -4359,7 +4373,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                        Boolean pvendas = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("vendas"));
                        Boolean padmin = Boolean.parseBoolean(QueryUserAt.getCurrentFieldValue("administracao"));
                        
-                       iduser.setText(usuario);
+                      // iduser.setText(usuario);
                        
                       if (pcompras == true){
                         btnCompras.setEnabled(true);
@@ -4596,6 +4610,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDBButtonDelete16ActionPerformed
 
+    private void jDBButtonSave5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave5ActionPerformed
+        int result;
+        
+        QueryPedidoItem.setNewCurrentFieldValue("id_pedido", id_pedido.getText());
+        
+        QueryVeItem.setSQL("select max(num_item) as uitem from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
+        QueryVeItem.execQuery();
+        result = QueryVeItem.getCurrentFieldValueAsInteger("uitem");
+        result+=1;
+        QueryPedidoItem.setNewCurrentFieldValueAsInteger("num_item", result);
+    }//GEN-LAST:event_jDBButtonSave5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new frmBuscaProduto().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -4657,6 +4687,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QueryTransp;
     private lib.jdb.jdbquery.JDBQuery QueryUserAt;
     private lib.jdb.jdbquery.JDBQuery QueryUsuario;
+    private lib.jdb.jdbquery.JDBQuery QueryVeItem;
     private lib.jdb.jdbquery.JDBQuery QueryVendas;
     private lib.jdb.jdbquery.JDBQuery QueryVendasItem;
     private javax.swing.JPanel Transportadora;
@@ -4678,7 +4709,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel frmTipoPro;
     private javax.swing.JPanel frmUsuario;
     private lib.jdb.control.jdbtextfield.JDBTextField id_pedido;
-    private javax.swing.JLabel iduser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -4688,6 +4718,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

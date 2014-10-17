@@ -155,6 +155,14 @@
         <Property name="SQL" type="java.lang.String" value="select * from estab"/>
       </Properties>
     </Component>
+    <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryVeItem">
+      <Properties>
+        <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="DBCon"/>
+        </Property>
+        <Property name="SQL" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -239,7 +247,6 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="iduser" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jButton7" max="32767" attributes="0"/>
                       <Component id="btnAdmin" max="32767" attributes="0"/>
                       <Component id="btnVendas" max="32767" attributes="0"/>
@@ -267,8 +274,6 @@
                   <Component id="btnVendas" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="btnAdmin" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="iduser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -340,11 +345,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/logo.png"/>
             </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="iduser">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="iduser"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -1336,6 +1336,8 @@
                                       <Component id="jDBButtonDelete1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jDBButtonRefresh2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1347,20 +1349,19 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jDBButtonNew1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDBButtonCancel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDBButtonPrevious1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDBButtonNext1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jDBButtonRefresh2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jDBButtonDelete1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jDBButtonSave5" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jDBButtonNew1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDBButtonCancel2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDBButtonPrevious1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDBButtonNext1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDBButtonRefresh2" max="32767" attributes="0"/>
+                                  <Component id="jDBButtonDelete1" max="32767" attributes="0"/>
+                                  <Component id="jDBButtonSave5" max="32767" attributes="0"/>
+                                  <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="209" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="112" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1447,6 +1448,9 @@
                         </Property>
                         <Property name="label" type="java.lang.String" value=""/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonSave5ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh" name="jDBButtonRefresh2">
                       <Properties>
@@ -1455,6 +1459,14 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value=""/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButton2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar Produto"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
