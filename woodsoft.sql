@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Out-2014 às 09:19
+-- Generation Time: 21-Out-2014 às 03:57
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `clifortr` (
 `idclifor` int(11) NOT NULL,
   `pessoa` varchar(8) DEFAULT NULL,
-  `tipo` varchar(10) DEFAULT NULL,
+  `tipo` varchar(15) DEFAULT NULL,
   `razao` varchar(45) DEFAULT NULL,
   `fantasia` varchar(45) DEFAULT NULL,
   `cnpj` varchar(18) DEFAULT NULL,
@@ -38,24 +38,27 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
   `endereco` varchar(45) DEFAULT NULL,
   `bairro` varchar(45) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `situacao` varchar(10) DEFAULT NULL,
   `contato` varchar(45) DEFAULT NULL,
   `cep` varchar(10) DEFAULT NULL,
   `cidade` varchar(45) DEFAULT NULL,
   `uf` varchar(2) DEFAULT NULL,
-  `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `id_usuario` int(11) NOT NULL,
+  `pais` varchar(25) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `clifortr`
 --
 
-INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`) VALUES
-(1, 'Jurídica', 'Fornecedor', 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'BA', 1),
-(2, '', '', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 1),
-(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1),
-(7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2);
+INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`, `pais`) VALUES
+(1, 'Jurídica', 'Fornecedor', 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ativo', NULL, NULL, NULL, 'BA', 1, ''),
+(2, '', 'Fornecedor', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 1, ''),
+(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, ''),
+(7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2, ''),
+(8, 'Jurídica', 'Transportadora', 'Transportadora Rapidão', '', '', '', '', 'Rua São João 123', 'Centro', '(11)3453-3456', 'lucas@', 'Ativo', 'lucas', '12734-000', 'SÃƒÆ’Ã‚Â£o Paulo', 'SP', 2, ''),
+(9, 'Jurídica', 'Fornecedor', 'Nestlé', '', '1231245123', '', '', '', '', '', '', 'Ativo', '', '', 'São Paulo', 'SP', 2, 'Brasil');
 
 -- --------------------------------------------------------
 
@@ -141,10 +144,17 @@ CREATE TABLE IF NOT EXISTS `cpiteped` (
 --
 
 INSERT INTO `cpiteped` (`id_pedido`, `num_item`, `idproduto`, `descricao_item`, `qntde`, `unidade`, `fator_conv`, `valor_unit`, `valor_ipi`, `valor_icms`, `valor_total_item`, `per_ipi`, `per_icms`, `perc_iss`, `frete`, `desconto`, `total_item`) VALUES
+(0, 0, 4, 'teste', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (0, 1, 4, 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 1, 4, 'item de teste', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 1, 4, 'item de teste', 78, '0', 0, 987, 987, 987, 87897, 0, 0, 0, 0, 0, 909790),
-(1, 2, 4, 'item de teste', 34, '', 0, 82, 98, 78, 87, 0, 8, 7, 79, 0, 379);
+(3, 1, 4, 'aslkdasd', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(0, 2, 4, 'aasdasd', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(1, 2, 4, 'item de teste', 34, '', 0, 82, 98, 78, 87, 0, 8, 7, 79, 0, 379),
+(2, 2, 4, 'çlasdapsd', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(0, 3, 4, 'aksjhdajhsgd', 1234, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 3, 4, 'sdfsdf', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(0, 4, 5, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -185,17 +195,18 @@ CREATE TABLE IF NOT EXISTS `escadpro` (
   `ncm` varchar(45) DEFAULT NULL,
   `idtipoProduto` int(11) NOT NULL,
   `idsubgrupopro` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `cfop` varchar(5) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `escadpro`
 --
 
-INSERT INTO `escadpro` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`) VALUES
-(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 4, 0, 1),
-(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1),
-(6, 'Produto de teste 3', 234, 12, 123, 234, '12', 12.9, 'teste', '', '123124', 1, 1, 2);
+INSERT INTO `escadpro` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`, `cfop`) VALUES
+(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 4, 0, 1, ''),
+(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1, ''),
+(6, 'Produto de teste 3', 234, 12, 123, 234, '12', 12.9, 'teste', '', '123124', 1, 1, 2, '');
 
 -- --------------------------------------------------------
 
@@ -259,6 +270,13 @@ CREATE TABLE IF NOT EXISTS `estab` (
   `data_alt` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `estab`
+--
+
+INSERT INTO `estab` (`id_estab`, `razao_social`, `cnpj`, `ins_est`, `endereco`, `cidade`, `uf`, `cep`, `telefone`, `email`, `data_cad`, `data_alt`) VALUES
+(0, 'IJDSISJDISJD', 'DJSIJDISJD', 'ISJDISJDS', 'IJSDIJSDIJ', 'ISJDISJDIJ', 'SP', 'ISJDISJDI', 'ISJDIS', 'SIDJSIJD', '2001-01-01', '2011-01-01');
+
 -- --------------------------------------------------------
 
 --
@@ -290,15 +308,22 @@ CREATE TABLE IF NOT EXISTS `procadop` (
   `id_op` int(11) NOT NULL,
   `ano_op` int(11) NOT NULL,
   `pedido_venda` int(11) DEFAULT NULL,
-  `data` datetime DEFAULT NULL,
+  `data` date DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   `situacao` varchar(45) DEFAULT NULL,
-  `hora_inicio` datetime DEFAULT NULL,
-  `hora_termino` datetime DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_termino` time DEFAULT NULL,
   `cod_cliente` int(11) DEFAULT NULL,
   `obs` text,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `procadop`
+--
+
+INSERT INTO `procadop` (`id_op`, `ano_op`, `pedido_venda`, `data`, `tipo`, `situacao`, `hora_inicio`, `hora_termino`, `cod_cliente`, `obs`, `id_usuario`) VALUES
+(0, 2014, 1, NULL, 'Venda Fornecedor', 'Em Aberto', NULL, NULL, 1, '', 1);
 
 -- --------------------------------------------------------
 
@@ -308,12 +333,19 @@ CREATE TABLE IF NOT EXISTS `procadop` (
 
 CREATE TABLE IF NOT EXISTS `proiteop` (
   `ano_op` int(11) NOT NULL,
-  `item` int(10) unsigned NOT NULL,
+  `item` int(10) NOT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   `qntde` int(11) DEFAULT NULL,
   `id_op` int(11) NOT NULL,
   `idproduto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `proiteop`
+--
+
+INSERT INTO `proiteop` (`ano_op`, `item`, `tipo`, `qntde`, `id_op`, `idproduto`) VALUES
+(2014, 1, 'Matéria Prima', 34, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -339,8 +371,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`, `compras`, `estoque`, `producao`, `vendas`, `administracao`) VALUES
-(1, 'teste', NULL, 'teste', 'teste', 1, 1, 1, 1, 1),
-(2, 'lucas Henrique', 'TI', 'lucas', '123', 0, 0, 1, 1, 0);
+(1, 'teste', NULL, 'teste', 'teste', 1, 1, 0, 1, 0),
+(2, 'lucas Henrique', 'TI', 'lucas', '123', 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -496,7 +528,7 @@ ALTER TABLE `veiteped`
 -- AUTO_INCREMENT for table `clifortr`
 --
 ALTER TABLE `clifortr`
-MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `escadpro`
 --

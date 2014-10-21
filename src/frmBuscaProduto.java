@@ -1,6 +1,14 @@
 
 public class frmBuscaProduto extends javax.swing.JFrame {
-
+    public int cod_prod;
+    public String descricao;
+    public String unidade;
+    public float vlrunit;
+    public float ipi;
+    public float icms;
+    
+    
+    
     public frmBuscaProduto() {
         initComponents();
         ConBusca.connectDB();
@@ -20,6 +28,7 @@ public class frmBuscaProduto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jDBTable1 = new lib.jdb.control.jdbtable.JDBTable();
         Fechar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         QueryBusca.setJDBConnection(ConBusca);
         QueryBusca.setSQL("");
@@ -57,12 +66,26 @@ public class frmBuscaProduto extends javax.swing.JFrame {
             }
         ));
         jDBTable1.setJDBQuery(QueryBusca);
+        jDBTable1.setEditable(false);
+        jDBTable1.setInvisibleFields("comprimento\nlargura\nespessura\npeso\nunidMed\nconversao\ndescricao\nobs\nncm\nidtipoProduto\nidsubgrupopro\nid_usuario\ncfop");
+        jDBTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDBTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jDBTable1);
 
         Fechar.setText("Fechar");
         Fechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FecharActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Selecionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -73,14 +96,21 @@ public class frmBuscaProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(29, 29, 29)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Fechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -92,8 +122,10 @@ public class frmBuscaProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Fechar))
-                .addGap(24, 24, 24)
-                .addComponent(jLabel2)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,13 +139,34 @@ public class frmBuscaProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        QueryBusca.setSQL("select idproduto,nome from escadpro where nome like '%"+txtBusca.getText()+"%'");
+        QueryBusca.setSQL("select * from escadpro where nome like '%"+txtBusca.getText()+"%'");
         QueryBusca.execQuery();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
         dispose();
     }//GEN-LAST:event_FecharActionPerformed
+
+    private void jDBTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDBTable1MouseClicked
+       
+    }//GEN-LAST:event_jDBTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cod_prod = QueryBusca.getCurrentFieldValueAsInteger("idproduto");
+        //descricao = QueryBusca.getCurrentFieldValue("descricao_item");
+        //unidade = QueryBusca.getCurrentFieldValue("unidade");
+        //vlrunit = QueryBusca.getCurrentFieldValueAsFloat("valor_unit");
+        //ipi = QueryBusca.getCurrentFieldValueAsFloat("valor_ipi");
+        //icms = QueryBusca.getCurrentFieldValueAsFloat("valor_icms");
+        frmPrincipal.codbuscaproduto = cod_prod;
+        //frmPrincipal.descricao = descricao;
+        //frmPrincipal.unidade = unidade;
+        //frmPrincipal.vlrunit = vlrunit;
+        //frmPrincipal.ipi = ipi;
+        //frmPrincipal.icms = icms;
+        
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,6 +208,7 @@ public class frmBuscaProduto extends javax.swing.JFrame {
     private javax.swing.JButton Fechar;
     private lib.jdb.jdbquery.JDBQuery QueryBusca;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton jButton1;
     private lib.jdb.control.jdbtable.JDBTable jDBTable1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

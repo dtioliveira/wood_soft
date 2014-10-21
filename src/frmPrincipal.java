@@ -4,6 +4,13 @@ import javax.swing.JOptionPane;
 
 public class frmPrincipal extends javax.swing.JFrame {
     static String usuario;
+    //variaveis busca produto
+      static int codbuscaproduto;
+      static String descricao;
+      static String unidade;
+      static float vlrunit;
+      static float ipi;
+      static float icms;
 
  
     public frmPrincipal() {
@@ -114,7 +121,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         frmPedido = new javax.swing.JPanel();
         id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField2 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField3 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField5 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField6 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField7 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -138,13 +144,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jDBTable1 = new lib.jdb.control.jdbtable.JDBTable();
+        tableiteped = new lib.jdb.control.jdbtable.JDBTable();
         jDBButtonNew1 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
         jDBButtonNext1 = new lib.jdb.control.jdbbuttonnext.JDBButtonNext();
         jDBButtonPrevious1 = new lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious();
         jDBButtonDelete1 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
         jDBButtonCancel2 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
-        jDBButtonSave5 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
+        btnsaveitens = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         jDBButtonRefresh2 = new lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh();
         jButton2 = new javax.swing.JButton();
         jDBButtonDelete3 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
@@ -155,6 +161,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBTextField4 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBLabelCount1 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
         atualizar = new javax.swing.JButton();
+        txtdataemi = new com.toedter.calendar.JDateChooser();
         frmRecebimento = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
@@ -1053,14 +1060,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBTextField2.setJDBQuery(QueryPedido);
         jDBTextField2.setFieldName("cod_fornecedor");
 
-        jDBTextField3.setJDBQuery(QueryPedido);
-        jDBTextField3.setFieldName("data_ent");
-        jDBTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBTextField3ActionPerformed(evt);
-            }
-        });
-
         jDBTextField5.setJDBQuery(QueryPedido);
         jDBTextField5.setEnabled(false);
         jDBTextField5.setFieldName("data_alt");
@@ -1111,7 +1110,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
         jLabel12.setText("Pedido de Compras");
 
-        jDBTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableiteped.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -1122,8 +1121,13 @@ public class frmPrincipal extends javax.swing.JFrame {
                 "Item", "Código Produto", "Descrição do Item", "Quantidade", "Unidade", "Valor Unitário", "IPI", "ICMS", "Total do Item", "Valor frete", "Desconto"
             }
         ));
-        jDBTable1.setJDBQuery(QueryPedidoItem);
-        jScrollPane1.setViewportView(jDBTable1);
+        tableiteped.setJDBQuery(QueryPedidoItem);
+        tableiteped.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableitepedMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableiteped);
 
         jDBButtonNew1.setJDBQuery(QueryPedidoItem);
         jDBButtonNew1.setLabel("");
@@ -1145,16 +1149,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBButtonCancel2.setJDBQuery(QueryPedidoItem);
         jDBButtonCancel2.setLabel("");
 
-        jDBButtonSave5.setJDBQuery(QueryPedidoItem);
-        jDBButtonSave5.setLabel("");
-        jDBButtonSave5.addActionListener(new java.awt.event.ActionListener() {
+        btnsaveitens.setJDBQuery(QueryPedidoItem);
+        btnsaveitens.setLabel("");
+        btnsaveitens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBButtonSave5ActionPerformed(evt);
+                btnsaveitensActionPerformed(evt);
             }
         });
 
         jDBButtonRefresh2.setJDBQuery(QueryPedidoItem);
         jDBButtonRefresh2.setText("");
+        jDBButtonRefresh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBButtonRefresh2ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Buscar Produto");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1180,7 +1189,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDBButtonNext1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDBButtonSave5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnsaveitens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1201,11 +1210,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jDBButtonNext1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jDBButtonRefresh2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDBButtonSave5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnsaveitens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Itens do Pedido", jPanel2);
@@ -1220,6 +1229,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
 
         jDBButtonSave2.setJDBQuery(QueryPedido);
+        jDBButtonSave2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBButtonSave2ActionPerformed(evt);
+            }
+        });
 
         jDBButtonCancel1.setJDBQuery(QueryPedido);
 
@@ -1295,77 +1309,74 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addComponent(jDBTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmPedidoLayout.createSequentialGroup()
+                                .addComponent(jDBButtonSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDBButtonDelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(frmPedidoLayout.createSequentialGroup()
-                                .addGap(193, 193, 193)
+                                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jDBTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(situacao, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(frmPedidoLayout.createSequentialGroup()
+                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jDBTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmPedidoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(situacao, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
                                         .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
-                                            .addComponent(jLabel5))
-                                        .addGap(6, 6, 6))
-                                    .addComponent(jDBTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(frmPedidoLayout.createSequentialGroup()
-                                    .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jDBTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(30, 30, 30)
-                                    .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDBTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jDBTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel9)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmPedidoLayout.createSequentialGroup()
-                                    .addComponent(jDBButtonSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jDBButtonDelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(41, 41, 41)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmPedidoLayout.createSequentialGroup()
-                        .addGap(1047, 1047, 1047)
-                        .addComponent(jDBTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(jLabel5)
+                                            .addComponent(txtdataemi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap())
         );
         frmPedidoLayout.setVerticalGroup(
             frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frmPedidoLayout.createSequentialGroup()
-                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(frmPedidoLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel12))
-                    .addGroup(frmPedidoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jDBButtonDelete3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jDBButtonSave2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jDBButtonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jDBButtonNew2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(atualizar))
-                            .addComponent(jButton8))))
-                .addGap(40, 40, 40)
-                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(id_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(situacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frmPedidoLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel12))
+                            .addGroup(frmPedidoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jDBButtonDelete3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDBButtonSave2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDBButtonCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDBButtonNew2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(atualizar))
+                                    .addComponent(jButton8))))
+                        .addGap(43, 43, 43)
+                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(id_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDBTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(situacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDBTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDBTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtdataemi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(9, 9, 9)
@@ -1838,7 +1849,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(frmGrupoProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addComponent(jButton15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDBLabelCount48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDBTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3800,7 +3811,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel53)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDBTextField103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(VendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, VendasLayout.createSequentialGroup()
@@ -4322,7 +4333,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDBImageBlob1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PaneCompras)
+                    .addComponent(PaneCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(PaneEstoque, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(PaneProducao)
@@ -4484,10 +4495,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryBuscaForn.execQuery();
     }//GEN-LAST:event_atualizarActionPerformed
 
-    private void jDBTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDBTextField3ActionPerformed
-
     private void jDBButtonNew3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew3ActionPerformed
            
     }//GEN-LAST:event_jDBButtonNew3ActionPerformed
@@ -4501,6 +4508,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         QueryBuscaForn.setSQL("select * from CLIFORTR where idclifor = '"+ jDBTextField2.getText() + "'");
         QueryBuscaForn.execQuery();
+        
+        txtdataemi.setDate(QueryPedido.getCurrentFieldValueAsSQLDate("data_ent"));
     }//GEN-LAST:event_id_pedidoFocusLost
 
     private void jDBButtonSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave1ActionPerformed
@@ -4610,7 +4619,26 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDBButtonDelete16ActionPerformed
 
-    private void jDBButtonSave5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave5ActionPerformed
+    
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new frmBuscaProduto().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tableitepedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableitepedMouseClicked
+      
+   
+    }//GEN-LAST:event_tableitepedMouseClicked
+
+    private void jDBButtonRefresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonRefresh2ActionPerformed
+        
+    }//GEN-LAST:event_jDBButtonRefresh2ActionPerformed
+
+    private void jDBButtonSave2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave2ActionPerformed
+    //    QueryPedido.setNewCurrentFieldValue("data_ent", txtdataemi.getDate());
+    }//GEN-LAST:event_jDBButtonSave2ActionPerformed
+
+    private void btnsaveitensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveitensActionPerformed
         int result;
         
         QueryPedidoItem.setNewCurrentFieldValue("id_pedido", id_pedido.getText());
@@ -4620,11 +4648,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         result = QueryVeItem.getCurrentFieldValueAsInteger("uitem");
         result+=1;
         QueryPedidoItem.setNewCurrentFieldValueAsInteger("num_item", result);
-    }//GEN-LAST:event_jDBButtonSave5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new frmBuscaProduto().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        QueryPedidoItem.setNewCurrentFieldValueAsInteger("idproduto", codbuscaproduto);
+        //QueryPedidoItem.setNewCurrentFieldValue("descricao_item", descricao);
+        //QueryPedidoItem.setNewCurrentFieldValue("unidade", unidade);
+        //QueryPedidoItem.setNewCurrentFieldValueAsFloat("valor_unit", vlrunit);
+       // QueryPedidoItem.setNewCurrentFieldValueAsFloat("valor_ipi", ipi);
+       // QueryPedidoItem.setNewCurrentFieldValueAsFloat("valor_icms", icms);
+    }//GEN-LAST:event_btnsaveitensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4679,7 +4710,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QueryIteOP;
     private lib.jdb.jdbquery.JDBQuery QueryOP;
     private lib.jdb.jdbquery.JDBQuery QueryPedido;
-    private lib.jdb.jdbquery.JDBQuery QueryPedidoItem;
+    public static lib.jdb.jdbquery.JDBQuery QueryPedidoItem;
     private lib.jdb.jdbquery.JDBQuery QueryProduto;
     private lib.jdb.jdbquery.JDBQuery QueryRecebimento;
     private lib.jdb.jdbquery.JDBQuery QuerySubGru;
@@ -4698,6 +4729,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEstoque;
     private javax.swing.JButton btnProducao;
     private javax.swing.JButton btnVendas;
+    public static lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsaveitens;
     private javax.swing.JPanel frmFornecedor;
     private javax.swing.JPanel frmGrupoPro;
     private javax.swing.JPanel frmPedido;
@@ -4813,7 +4845,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave2;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave3;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave4;
-    private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave5;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave6;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave7;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave8;
@@ -4923,7 +4954,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbradiobutton.JDBRadioButton jDBRadioButton3;
     private lib.jdb.control.jdbradiobutton.JDBRadioButton jDBRadioButton4;
     private lib.jdb.control.jdbradiobutton.JDBRadioButton jDBRadioButton5;
-    private lib.jdb.control.jdbtable.JDBTable jDBTable1;
     private lib.jdb.control.jdbtable.JDBTable jDBTable2;
     private lib.jdb.control.jdbtable.JDBTable jDBTable3;
     private lib.jdb.control.jdbtable.JDBTable jDBTable4;
@@ -4993,7 +5023,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField27;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField28;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField29;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField3;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField30;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField31;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField32;
@@ -5177,5 +5206,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JToolBar jToolBar1;
     private lib.jdb.control.jdbtextfield.JDBTextField situacao;
+    private lib.jdb.control.jdbtable.JDBTable tableiteped;
+    private com.toedter.calendar.JDateChooser txtdataemi;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,6 +34,9 @@
         </Property>
         <Property name="SQL" type="java.lang.String" value="select * from CPITEPED"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryRecebimento">
       <Properties>
@@ -214,7 +217,7 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jDBImageBlob1" max="32767" attributes="0"/>
-                  <Component id="PaneCompras" max="32767" attributes="0"/>
+                  <Component id="PaneCompras" pref="0" max="32767" attributes="0"/>
                   <Component id="PaneEstoque" alignment="1" pref="0" max="32767" attributes="0"/>
                   <Component id="PaneVendas" pref="0" max="32767" attributes="0"/>
                   <Component id="PaneProducao" alignment="0" max="32767" attributes="0"/>
@@ -1018,55 +1021,48 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                          <Component id="situacao" min="-2" pref="95" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jDBButtonSave2" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jDBButtonDelete3" min="-2" pref="126" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="jButton8" min="-2" pref="99" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jDBTextField6" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jLabel8" max="32767" attributes="0"/>
+                                                  <Component id="jDBTextField8" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jDBTextField9" min="-2" pref="79" max="-2" attributes="0"/>
+                                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="situacao" min="-2" pref="95" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtdataemi" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
+                                                  <Component id="jDBTextField5" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jDBTextField3" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jDBTextField6" max="32767" attributes="0"/>
-                                              <Component id="jLabel7" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel8" max="32767" attributes="0"/>
-                                              <Component id="jDBTextField8" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jDBTextField9" min="-2" pref="79" max="-2" attributes="0"/>
-                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jDBButtonSave2" min="-2" pref="121" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jDBButtonDelete3" min="-2" pref="126" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Component id="jButton8" min="-2" pref="99" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="1047" max="-2" attributes="0"/>
-                              <Component id="jDBTextField5" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1076,42 +1072,46 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jDBButtonDelete3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDBButtonSave2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDBButtonCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDBButtonNew2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="atualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jDBButtonDelete3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBButtonSave2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBButtonCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jDBButtonNew2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="atualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="id_pedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="situacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDBTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="id_pedido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="situacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtdataemi" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -1162,17 +1162,6 @@
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="cod_fornecedor"/>
               </Properties>
-            </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField3">
-              <Properties>
-                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
-                </Property>
-                <Property name="fieldName" type="java.lang.String" value="data_ent"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBTextField3ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField5">
               <Properties>
@@ -1331,7 +1320,7 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jDBButtonNext1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jDBButtonSave5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnsaveitens" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jDBButtonDelete1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1356,12 +1345,12 @@
                                   <Component id="jDBButtonNext1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jDBButtonRefresh2" max="32767" attributes="0"/>
                                   <Component id="jDBButtonDelete1" max="32767" attributes="0"/>
-                                  <Component id="jDBButtonSave5" max="32767" attributes="0"/>
-                                  <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnsaveitens" max="32767" attributes="0"/>
+                                  <Component id="jButton2" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="209" max="-2" attributes="0"/>
-                              <EmptySpace pref="112" max="32767" attributes="0"/>
+                              <EmptySpace pref="109" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1374,7 +1363,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="lib.jdb.control.jdbtable.JDBTable" name="jDBTable1">
+                        <Component class="lib.jdb.control.jdbtable.JDBTable" name="tableiteped">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="11" rowCount="4">
@@ -1395,6 +1384,9 @@
                               <ComponentRef name="QueryPedidoItem"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableitepedMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1441,7 +1433,7 @@
                         <Property name="label" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
-                    <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="jDBButtonSave5">
+                    <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="btnsaveitens">
                       <Properties>
                         <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="QueryPedidoItem"/>
@@ -1449,8 +1441,11 @@
                         <Property name="label" type="java.lang.String" value=""/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonSave5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnsaveitensActionPerformed"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                      </AuxValues>
                     </Component>
                     <Component class="lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh" name="jDBButtonRefresh2">
                       <Properties>
@@ -1459,6 +1454,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value=""/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonRefresh2ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton2">
                       <Properties>
@@ -1495,6 +1493,9 @@
                   <ComponentRef name="QueryPedido"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonSave2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel1">
               <Properties>
@@ -1534,6 +1535,8 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="txtdataemi">
             </Component>
           </SubComponents>
         </Container>
@@ -2208,7 +2211,7 @@
                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton15" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jDBLabelCount48" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jDBTextField50" min="-2" max="-2" attributes="0"/>
@@ -5387,7 +5390,7 @@
                                       <Component id="jDBTextField103" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
