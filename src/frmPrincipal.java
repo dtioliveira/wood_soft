@@ -83,9 +83,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         txt_id_user_cad = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField16 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField17 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField18 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField19 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField20 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtCnpjCad = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtCpfCad = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtInsEstCad = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField21 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField22 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField25 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -112,7 +112,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBLabelCount21 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
         jButton11 = new javax.swing.JButton();
         jDBComboBox1 = new lib.jdb.control.jdbcombobox.JDBComboBox();
-        jDBComboBox2 = new lib.jdb.control.jdbcombobox.JDBComboBox();
+        cboxTipoPessoa = new lib.jdb.control.jdbcombobox.JDBComboBox();
         jDBComboBox3 = new lib.jdb.control.jdbcombobox.JDBComboBox();
         jDBTextField127 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel77 = new javax.swing.JLabel();
@@ -769,15 +769,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBTextField17.setJDBQuery(QueryFornecedor);
         jDBTextField17.setFieldName("fantasia");
 
-        jDBTextField18.setJDBQuery(QueryFornecedor);
-        jDBTextField18.setFieldName("cnpj");
-        jDBTextField18.setMaxLength(new java.lang.Integer(14));
+        txtCnpjCad.setJDBQuery(QueryFornecedor);
+        txtCnpjCad.setFieldName("cnpj");
+        txtCnpjCad.setMaxLength(new java.lang.Integer(14));
 
-        jDBTextField19.setJDBQuery(QueryFornecedor);
-        jDBTextField19.setFieldName("cpf");
+        txtCpfCad.setJDBQuery(QueryFornecedor);
+        txtCpfCad.setFieldName("cpf");
 
-        jDBTextField20.setJDBQuery(QueryFornecedor);
-        jDBTextField20.setFieldName("inscEst");
+        txtInsEstCad.setJDBQuery(QueryFornecedor);
+        txtInsEstCad.setFieldName("inscEst");
 
         jDBTextField21.setJDBQuery(QueryFornecedor);
         jDBTextField21.setFieldName("endereco");
@@ -850,9 +850,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBComboBox1.setJDBQuery(QueryFornecedor);
         jDBComboBox1.setFieldName("uf");
 
-        jDBComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
-        jDBComboBox2.setJDBQuery(QueryFornecedor);
-        jDBComboBox2.setFieldName("pessoa");
+        cboxTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
+        cboxTipoPessoa.setJDBQuery(QueryFornecedor);
+        cboxTipoPessoa.setFieldName("pessoa");
+        cboxTipoPessoa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboxTipoPessoaFocusLost(evt);
+            }
+        });
 
         jDBComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo", "Inapto", " " }));
         jDBComboBox3.setJDBQuery(QueryFornecedor);
@@ -955,7 +960,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmFornecedorLayout.createSequentialGroup()
                                         .addGap(129, 129, 129)
-                                        .addComponent(jDBComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jDBLabelCount16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -964,18 +969,18 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addComponent(jDBTextField16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDBTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDBTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(frmFornecedorLayout.createSequentialGroup()
                                         .addComponent(jDBLabelCount9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jDBTextField20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(txtInsEstCad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap())
                     .addGroup(frmFornecedorLayout.createSequentialGroup()
                         .addComponent(jLabel15)
@@ -998,7 +1003,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1009,9 +1014,9 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInsEstCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBLabelCount6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4684,6 +4689,24 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnProxCad1.setEnabled(true);
     }//GEN-LAST:event_btnCancelCad1ActionPerformed
 
+    private void cboxTipoPessoaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboxTipoPessoaFocusLost
+      if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
+          txtCnpjCad.setEnabled(false);
+          txtInsEstCad.setEnabled(false);
+          txtCpfCad.setEnabled(true);
+      }
+      else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica")){
+          txtCpfCad.setEnabled(false);
+          txtCnpjCad.setEnabled(true);
+          txtInsEstCad.setEnabled(true);
+      }
+      else{
+          txtCnpjCad.setEnabled(false);
+          txtInsEstCad.setEnabled(false);
+          txtCpfCad.setEnabled(false);
+      }
+    }//GEN-LAST:event_cboxTipoPessoaFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -4762,6 +4785,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext btnProxCad1;
     private javax.swing.JButton btnVendas;
     public static lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsaveitens;
+    private lib.jdb.control.jdbcombobox.JDBComboBox cboxTipoPessoa;
     private javax.swing.JPanel frmFornecedor;
     private javax.swing.JPanel frmGrupoPro;
     private javax.swing.JPanel frmPedido;
@@ -4877,7 +4901,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave8;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave9;
     private lib.jdb.control.jdbcombobox.JDBComboBox jDBComboBox1;
-    private lib.jdb.control.jdbcombobox.JDBComboBox jDBComboBox2;
     private lib.jdb.control.jdbcombobox.JDBComboBox jDBComboBox3;
     private lib.jdb.control.jdbcombobox.JDBComboBox jDBComboBox4;
     private lib.jdb.control.jdbcombobox.JDBComboBox jDBComboBox5;
@@ -5036,10 +5059,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField15;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField16;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField17;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField18;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField19;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField2;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField20;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField21;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField22;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField23;
@@ -5233,6 +5253,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private lib.jdb.control.jdbtextfield.JDBTextField situacao;
     private lib.jdb.control.jdbtable.JDBTable tableiteped;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtCnpjCad;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtCpfCad;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtInsEstCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txt_id_user_cad;
     private com.toedter.calendar.JDateChooser txtdataemi;
     // End of variables declaration//GEN-END:variables
