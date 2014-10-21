@@ -380,7 +380,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jDBLabelCount14" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jDBTextField26" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
-                                                  <Component id="jDBButtonNew3" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <Component id="btnNewCad1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -392,7 +392,7 @@
                                                   <Group type="102" attributes="0">
                                                       <Component id="jDBTextField25" min="-2" pref="325" max="-2" attributes="0"/>
                                                       <EmptySpace pref="188" max="32767" attributes="0"/>
-                                                      <Component id="jDBTextField14" min="-2" pref="57" max="-2" attributes="0"/>
+                                                      <Component id="txt_id_user_cad" min="-2" pref="57" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
                                                       <Component id="jDBLabelCount15" min="-2" max="-2" attributes="0"/>
@@ -457,15 +457,15 @@
                                                   <Component id="jDBLabelCount2" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
-                                                      <Component id="jDBButtonCancel3" min="-2" pref="147" max="-2" attributes="0"/>
+                                                      <Component id="btnCancelCad1" min="-2" pref="147" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                                                       <Component id="jDBButtonSave1" min="-2" pref="112" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                                      <Component id="jDBButtonDelete2" min="-2" pref="109" max="-2" attributes="0"/>
+                                                      <Component id="btnDeleteCad1" min="-2" pref="109" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                                      <Component id="jDBButtonPrevious7" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnAntCad1" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                                      <Component id="jDBButtonNext7" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnProxCad1" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -591,16 +591,16 @@
                           <Component id="jDBTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBTextField25" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_id_user_cad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="167" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jDBButtonCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelCad1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBButtonSave1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBButtonDelete2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBButtonNew3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBButtonNext7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBButtonPrevious7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeleteCad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNewCad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnProxCad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAntCad1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
@@ -608,28 +608,34 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="jDBButtonCancel3">
-              <Properties>
-                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="lib.jdb.control.jdbbuttondelete.JDBButtonDelete" name="jDBButtonDelete2">
-              <Properties>
-                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="jDBButtonNew3">
+            <Component class="lib.jdb.control.jdbbuttoncancel.JDBButtonCancel" name="btnCancelCad1">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryFornecedor"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDBButtonNew3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelCad1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttondelete.JDBButtonDelete" name="btnDeleteCad1">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryFornecedor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteCad1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="lib.jdb.control.jdbbuttonnew.JDBButtonNew" name="btnNewCad1">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryFornecedor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewCad1ActionPerformed"/>
               </Events>
             </Component>
             <Component class="lib.jdb.control.jdbbuttonsave.JDBButtonSave" name="jDBButtonSave1">
@@ -659,11 +665,12 @@
                 <Property name="fieldName" type="java.lang.String" value="idclifor"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField14">
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txt_id_user_cad">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryFornecedor"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="fieldName" type="java.lang.String" value="id_usuario"/>
               </Properties>
             </Component>
@@ -937,14 +944,14 @@
                 <Property name="text" type="java.lang.String" value="Pa&#xed;s"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbbuttonnext.JDBButtonNext" name="jDBButtonNext7">
+            <Component class="lib.jdb.control.jdbbuttonnext.JDBButtonNext" name="btnProxCad1">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryFornecedor"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious" name="jDBButtonPrevious7">
+            <Component class="lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious" name="btnAntCad1">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryFornecedor"/>
