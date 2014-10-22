@@ -3,9 +3,7 @@ public class frmBuscaProduto extends javax.swing.JFrame {
     public int cod_prod;
     public String descricao;
     public String unidade;
-    public float vlrunit;
-    public float ipi;
-    public float icms;
+ 
     
     
     
@@ -37,7 +35,7 @@ public class frmBuscaProduto extends javax.swing.JFrame {
         ConBusca.setDriver("com.mysql.jdbc.Driver");
         ConBusca.setUserName("root");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Busca de Produtos");
         setBounds(new java.awt.Rectangle(500, 200, 0, 0));
         setResizable(false);
@@ -99,14 +97,10 @@ public class frmBuscaProduto extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(29, 29, 29)))
+                            .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -153,17 +147,12 @@ public class frmBuscaProduto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cod_prod = QueryBusca.getCurrentFieldValueAsInteger("idproduto");
-        //descricao = QueryBusca.getCurrentFieldValue("descricao_item");
-        //unidade = QueryBusca.getCurrentFieldValue("unidade");
-        //vlrunit = QueryBusca.getCurrentFieldValueAsFloat("valor_unit");
-        //ipi = QueryBusca.getCurrentFieldValueAsFloat("valor_ipi");
-        //icms = QueryBusca.getCurrentFieldValueAsFloat("valor_icms");
+        descricao = QueryBusca.getCurrentFieldValue("nome");
+        unidade = QueryBusca.getCurrentFieldValue("unidMed");
         frmPrincipal.codbuscaproduto = cod_prod;
-        //frmPrincipal.descricao = descricao;
-        //frmPrincipal.unidade = unidade;
-        //frmPrincipal.vlrunit = vlrunit;
-        //frmPrincipal.ipi = ipi;
-        //frmPrincipal.icms = icms;
+        frmPrincipal.descricao = descricao;
+        frmPrincipal.unidade = unidade;
+
         
        
     }//GEN-LAST:event_jButton1ActionPerformed

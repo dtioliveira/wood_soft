@@ -8,9 +8,7 @@ public class frmPrincipal extends javax.swing.JFrame {
       static int codbuscaproduto;
       static String descricao;
       static String unidade;
-      static float vlrunit;
-      static float ipi;
-      static float icms;
+
 
  
     public frmPrincipal() {
@@ -152,7 +150,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBButtonCancel2 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
         btnsaveitens = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         jDBButtonRefresh2 = new lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh();
-        jButton2 = new javax.swing.JButton();
+        btnbuscapro = new javax.swing.JButton();
+        jLabel93 = new javax.swing.JLabel();
+        btnTeste = new javax.swing.JButton();
         jDBButtonDelete3 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
         jDBButtonNew2 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
         jDBButtonSave2 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
@@ -1138,6 +1138,13 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         ));
         tableiteped.setJDBQuery(QueryPedidoItem);
+        tableiteped.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                tableitepedInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
         tableiteped.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableitepedMouseClicked(evt);
@@ -1164,6 +1171,11 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jDBButtonCancel2.setJDBQuery(QueryPedidoItem);
         jDBButtonCancel2.setLabel("");
+        jDBButtonCancel2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBButtonCancel2ActionPerformed(evt);
+            }
+        });
 
         btnsaveitens.setJDBQuery(QueryPedidoItem);
         btnsaveitens.setLabel("");
@@ -1181,10 +1193,20 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Buscar Produto");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnbuscapro.setText("Buscar Produto");
+        btnbuscapro.setEnabled(false);
+        btnbuscapro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnbuscaproActionPerformed(evt);
+            }
+        });
+
+        jLabel93.setText("jLabel93");
+
+        btnTeste.setText("jButton2");
+        btnTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTesteActionPerformed(evt);
             }
         });
 
@@ -1210,10 +1232,16 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDBButtonRefresh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnbuscapro)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTeste)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(jLabel93)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1227,10 +1255,14 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jDBButtonRefresh2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jDBButtonDelete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnsaveitens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnbuscapro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTeste)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel93)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Itens do Pedido", jPanel2);
@@ -1338,10 +1370,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(frmPedidoLayout.createSequentialGroup()
-                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jDBTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jDBTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(21, 21, 21)
                                         .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jDBTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel9)))
@@ -4430,6 +4463,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         PaneCompras.setVisible(false);
+        btnbuscapro.setEnabled(false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -4445,6 +4479,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
     private void jDBButtonNew2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew2ActionPerformed
+        situacao.setText("Em Aberto");
         QueryPedido.setSQL("select * from CPCADPED");
         QueryPedido.execQuery();
 
@@ -4465,6 +4500,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void jDBButtonNew1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew1ActionPerformed
         QueryPedidoItem.setSQL(" select * from CPITEPED where id_pedido = '" + id_pedido.getText() + "'" );
         QueryPedidoItem.execQuery();
+        btnbuscapro.setEnabled(true);
     }//GEN-LAST:event_jDBButtonNew1ActionPerformed
 
     private void jDBButtonNew4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew4ActionPerformed
@@ -4643,9 +4679,9 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnbuscaproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscaproActionPerformed
         new frmBuscaProduto().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnbuscaproActionPerformed
 
     private void tableitepedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableitepedMouseClicked
       
@@ -4667,16 +4703,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         QueryVeItem.setSQL("select max(num_item) as uitem from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
         QueryVeItem.execQuery();
+        //puxa dados do produto para os itens do pedido
         result = QueryVeItem.getCurrentFieldValueAsInteger("uitem");
         result+=1;
         QueryPedidoItem.setNewCurrentFieldValueAsInteger("num_item", result);
-        
         QueryPedidoItem.setNewCurrentFieldValueAsInteger("idproduto", codbuscaproduto);
-        //QueryPedidoItem.setNewCurrentFieldValue("descricao_item", descricao);
-        //QueryPedidoItem.setNewCurrentFieldValue("unidade", unidade);
-        //QueryPedidoItem.setNewCurrentFieldValueAsFloat("valor_unit", vlrunit);
-       // QueryPedidoItem.setNewCurrentFieldValueAsFloat("valor_ipi", ipi);
-       // QueryPedidoItem.setNewCurrentFieldValueAsFloat("valor_icms", icms);
+        QueryPedidoItem.setNewCurrentFieldValue("descricao_item", descricao);
+        QueryPedidoItem.setNewCurrentFieldValue("unidade", unidade);
+        
+
     }//GEN-LAST:event_btnsaveitensActionPerformed
 
     private void btnDeleteCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCad1ActionPerformed
@@ -4706,6 +4741,25 @@ public class frmPrincipal extends javax.swing.JFrame {
           txtCpfCad.setEnabled(false);
       }
     }//GEN-LAST:event_cboxTipoPessoaFocusLost
+
+    private void jDBButtonCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonCancel2ActionPerformed
+        btnbuscapro.setEnabled(false);
+    }//GEN-LAST:event_jDBButtonCancel2ActionPerformed
+
+    private void tableitepedInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tableitepedInputMethodTextChanged
+      
+    }//GEN-LAST:event_tableitepedInputMethodTextChanged
+
+    private void btnTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTesteActionPerformed
+        double vlunit=0, vlipi=0, total=0, qtd=0;  
+//soma dos totais
+      vlunit = QueryPedidoItem.getCurrentFieldValueAsDouble("valor_unit");
+      vlipi = QueryPedidoItem.getCurrentFieldValueAsDouble("valor_ipi");
+      qtd = QueryPedidoItem.getCurrentFieldValueAsDouble("qntde");
+      total = vlunit * qtd;
+      jLabel93.setText(String.valueOf(total));
+      QueryPedidoItem.setNewCurrentFieldValueAsDouble("valor_total_item", total);      
+    }//GEN-LAST:event_btnTesteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4783,7 +4837,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew btnNewCad1;
     private javax.swing.JButton btnProducao;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext btnProxCad1;
+    private javax.swing.JButton btnTeste;
     private javax.swing.JButton btnVendas;
+    private javax.swing.JButton btnbuscapro;
     public static lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsaveitens;
     private lib.jdb.control.jdbcombobox.JDBComboBox cboxTipoPessoa;
     private javax.swing.JPanel frmFornecedor;
@@ -4806,7 +4862,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -5237,6 +5292,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
