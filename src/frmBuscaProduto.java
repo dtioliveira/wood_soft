@@ -152,6 +152,7 @@ public class frmBuscaProduto extends javax.swing.JFrame {
         frmPrincipal.codbuscaproduto = cod_prod;
         frmPrincipal.descricao = descricao;
         frmPrincipal.unidade = unidade;
+        dispose();
 
         
        
