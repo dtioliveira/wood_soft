@@ -21,6 +21,7 @@ public class frmPrincipal extends javax.swing.JFrame {
          DBCon.connectDB();
          QueryFornecedor.execQuery();
          QueryRecebimento.execQuery();
+ 
          QueryProduto.execQuery();
          QueryGruPro.execQuery();
          QuerySubGru.execQuery();
@@ -68,6 +69,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         QuerySomaItensPed = new lib.jdb.jdbquery.JDBQuery();
         QueryRecebimentoItem = new lib.jdb.jdbquery.JDBQuery();
         QueryPedRec = new lib.jdb.jdbquery.JDBQuery();
+        QueryItePedRec = new lib.jdb.jdbquery.JDBQuery();
+        QueryQtdItem = new lib.jdb.jdbquery.JDBQuery();
         jToolBar1 = new javax.swing.JToolBar();
         jDBImageBlob1 = new lib.jdb.control.jdbimageblob.JDBImageBlob();
         btnCompras = new javax.swing.JButton();
@@ -175,7 +178,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         idforrec = new lib.jdb.control.jdbtextfield.JDBTextField();
         idpedrec = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField24 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtVlrMerc = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField31 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField32 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField33 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -203,15 +206,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jDBTable2 = new lib.jdb.control.jdbtable.JDBTable();
-        jDBButtonNew5 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
-        jDBButtonCancel5 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
-        jDBButtonPrevious2 = new lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious();
-        jDBButtonNext2 = new lib.jdb.control.jdbbuttonnext.JDBButtonNext();
-        jDBButtonDelete5 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
-        jDBButtonNew4 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
-        jDBButtonCancel4 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
-        jDBButtonSave3 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
-        jDBButtonDelete4 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
+        btnsalvaitem = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
+        btnverificaitem = new javax.swing.JButton();
+        btnnovorec = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
+        btncancelrec = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
+        btnsalvarrec = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
+        btnexcluirrec = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
         frmRelComp = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
         PaneEstoque = new javax.swing.JTabbedPane();
@@ -432,9 +432,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBButtonSave12 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         jLabel36 = new javax.swing.JLabel();
         jButton18 = new javax.swing.JButton();
-        NFE = new javax.swing.JPanel();
-        jLabel50 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         Vendas = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jDBTextField101 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -500,6 +497,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBButtonNew16 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
         jDBButtonCancel16 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
         jDBButtonSave15 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
+        NFE = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PaneAdm = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
@@ -578,7 +578,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryPedidoItem.setSQL("select * from CPITEPED");
 
         QueryRecebimento.setJDBConnection(DBCon);
-        QueryRecebimento.setSQL("select * from CPCADREC");
+        QueryRecebimento.setSQL("select * from cpcadrec where id_pedido = -1");
 
         QueryProduto.setJDBConnection(DBCon);
         QueryProduto.setSQL("select * from ESCADPRO");
@@ -633,6 +633,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryPedRec.setJDBConnection(DBCon);
         QueryPedRec.setSQL("");
+
+        QueryItePedRec.setJDBConnection(DBCon);
+        QueryItePedRec.setSQL("");
+
+        QueryQtdItem.setJDBConnection(DBCon);
+        QueryQtdItem.setSQL("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOOD SOFT");
@@ -1535,34 +1541,53 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
 
         idforrec.setJDBQuery(QueryRecebimento);
+        idforrec.setFieldName("id_fornecedor");
 
         idpedrec.setJDBQuery(QueryRecebimento);
+        idpedrec.setFieldName("id_pedido");
         idpedrec.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 idpedrecFocusLost(evt);
             }
         });
 
-        jDBTextField24.setJDBQuery(QueryRecebimento);
+        txtVlrMerc.setJDBQuery(QueryRecebimento);
+        txtVlrMerc.setEnabled(false);
+        txtVlrMerc.setFieldName("vlr_merc");
 
         jDBTextField31.setJDBQuery(QueryRecebimento);
+        jDBTextField31.setEnabled(false);
+        jDBTextField31.setFieldName("vlr_iss");
 
         jDBTextField32.setJDBQuery(QueryRecebimento);
+        jDBTextField32.setFieldName("serie");
 
         jDBTextField33.setJDBQuery(QueryRecebimento);
+        jDBTextField33.setEnabled(false);
+        jDBTextField33.setFieldName("vlr_frete");
 
         jDBTextField34.setJDBQuery(QueryRecebimento);
+        jDBTextField34.setEnabled(false);
+        jDBTextField34.setFieldName("vlr_icms");
 
         jDBTextField35.setJDBQuery(QueryRecebimento);
+        jDBTextField35.setEnabled(false);
+        jDBTextField35.setFieldName("vlr_total");
 
         txtdatarec.setJDBQuery(QueryRecebimento);
+        txtdatarec.setFieldName("data_rec");
 
         txtdatacad.setJDBQuery(QueryRecebimento);
         txtdatacad.setEnabled(false);
+        txtdatacad.setFieldName("data_cad");
 
         jDBTextField38.setJDBQuery(QueryRecebimento);
+        jDBTextField38.setEnabled(false);
+        jDBTextField38.setFieldName("id_usuario");
 
         jDBTextField40.setJDBQuery(QueryRecebimento);
+        jDBTextField40.setEnabled(false);
+        jDBTextField40.setFieldName("vlr_ipi");
 
         jDBLabelCount13.setText("ID Fornecedor");
 
@@ -1589,6 +1614,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBLabelCount32.setText("ID usuário");
 
         jDBTextField39.setJDBQuery(QueryRecebimento);
+        jDBTextField39.setFieldName("nota_fiscal");
 
         jDBLabelCount33.setText("Nota Fiscal");
 
@@ -1606,22 +1632,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBTable2.setJDBQuery(QueryRecebimentoItem);
         jScrollPane2.setViewportView(jDBTable2);
 
-        jDBButtonNew5.setJDBQuery(null);
-        jDBButtonNew5.setAutomaticAction(false);
-        jDBButtonNew5.setLabel("");
-        jDBButtonNew5.addActionListener(new java.awt.event.ActionListener() {
+        btnsalvaitem.setJDBQuery(QueryRecebimentoItem);
+        btnsalvaitem.setEnabled(false);
+        btnsalvaitem.setText("Confirmar Recebimento");
+        btnsalvaitem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBButtonNew5ActionPerformed(evt);
+                btnsalvaitemActionPerformed(evt);
             }
         });
 
-        jDBButtonCancel5.setLabel("");
-
-        jDBButtonPrevious2.setLabel("");
-
-        jDBButtonNext2.setLabel("");
-
-        jDBButtonDelete5.setLabel("");
+        btnverificaitem.setText("Verifica Itens");
+        btnverificaitem.setEnabled(false);
+        btnverificaitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnverificaitemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1629,58 +1655,54 @@ public class frmPrincipal extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1108, Short.MAX_VALUE)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jDBButtonNew5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jDBButtonCancel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jDBButtonPrevious2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDBButtonNext2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jDBButtonDelete5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1108, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(303, 303, 303)
+                .addComponent(btnverificaitem, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnsalvaitem, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDBButtonNew5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonCancel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonPrevious2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonNext2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonDelete5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnsalvaitem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnverificaitem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
         jTabbedPane2.addTab("Itens do Recebimento", jPanel9);
 
-        jDBButtonNew4.setJDBQuery(QueryRecebimento);
-        jDBButtonNew4.addActionListener(new java.awt.event.ActionListener() {
+        btnnovorec.setJDBQuery(QueryRecebimento);
+        btnnovorec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBButtonNew4ActionPerformed(evt);
+                btnnovorecActionPerformed(evt);
             }
         });
 
-        jDBButtonCancel4.setJDBQuery(QueryRecebimento);
-
-        jDBButtonSave3.setJDBQuery(QueryRecebimento);
-        jDBButtonSave3.addActionListener(new java.awt.event.ActionListener() {
+        btncancelrec.setJDBQuery(QueryRecebimento);
+        btncancelrec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBButtonSave3ActionPerformed(evt);
+                btncancelrecActionPerformed(evt);
             }
         });
 
-        jDBButtonDelete4.setJDBQuery(QueryRecebimento);
-        jDBButtonDelete4.addActionListener(new java.awt.event.ActionListener() {
+        btnsalvarrec.setJDBQuery(QueryRecebimento);
+        btnsalvarrec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBButtonDelete4ActionPerformed(evt);
+                btnsalvarrecActionPerformed(evt);
+            }
+        });
+
+        btnexcluirrec.setJDBQuery(QueryRecebimento);
+        btnexcluirrec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexcluirrecActionPerformed(evt);
             }
         });
 
@@ -1695,78 +1717,78 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRecebimentoLayout.createSequentialGroup()
                 .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(frmRecebimentoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(frmRecebimentoLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(frmRecebimentoLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jDBButtonNew4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnnovorec, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jDBButtonCancel4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btncancelrec, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
-                                .addComponent(jDBButtonSave3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnsalvarrec, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDBButtonDelete4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmRecebimentoLayout.createSequentialGroup()
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDBLabelCount13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(idforrec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(30, 30, 30)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDBLabelCount22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(idpedrec, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(109, 109, 109)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDBLabelCount33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDBLabelCount26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDBLabelCount32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jDBTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnexcluirrec, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmRecebimentoLayout.createSequentialGroup()
                                 .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmRecebimentoLayout.createSequentialGroup()
-                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jDBTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jDBLabelCount13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(idforrec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBLabelCount22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(idpedrec, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(109, 109, 109)
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBLabelCount33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBLabelCount26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmRecebimentoLayout.createSequentialGroup()
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtVlrMerc, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jDBLabelCount23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(39, 39, 39)
                                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jDBLabelCount27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDBTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmRecebimentoLayout.createSequentialGroup()
-                                        .addGap(257, 257, 257)
+                                            .addComponent(jDBTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(frmRecebimentoLayout.createSequentialGroup()
+                                                .addGap(177, 177, 177)
+                                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jDBLabelCount24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jDBTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(53, 53, 53)
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jDBLabelCount28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField34, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(49, 49, 49)
                                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDBLabelCount24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDBTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(53, 53, 53)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jDBLabelCount28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBTextField34, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDBLabelCount25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(58, 58, 58)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDBLabelCount29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jDBLabelCount25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(58, 58, 58)
+                                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jDBLabelCount29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(45, 45, 45)
                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtdatarec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jDBLabelCount30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37)
-                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDBLabelCount31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtdatacad, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(frmRecebimentoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jDBLabelCount32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jDBTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jDBLabelCount31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtdatacad, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(27, 27, 27))
         );
         frmRecebimentoLayout.setVerticalGroup(
@@ -1779,35 +1801,32 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addGroup(frmRecebimentoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jDBButtonDelete4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDBButtonSave3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDBButtonCancel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDBButtonNew4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnexcluirrec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnsalvarrec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btncancelrec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnnovorec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRecebimentoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frmRecebimentoLayout.createSequentialGroup()
-                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(frmRecebimentoLayout.createSequentialGroup()
-                                .addComponent(jDBLabelCount32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDBTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(frmRecebimentoLayout.createSequentialGroup()
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jDBLabelCount30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBLabelCount31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtdatarec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtdatacad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jDBLabelCount30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDBLabelCount31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtdatarec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtdatacad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jDBLabelCount32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDBTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jDBLabelCount29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(jDBTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(frmRecebimentoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(frmRecebimentoLayout.createSequentialGroup()
                                 .addComponent(jDBLabelCount25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1841,15 +1860,15 @@ public class frmPrincipal extends javax.swing.JFrame {
                                         .addGap(6, 6, 6)
                                         .addGroup(frmRecebimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jDBTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDBTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtVlrMerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jDBTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(frmRecebimentoLayout.createSequentialGroup()
                                         .addComponent(jDBLabelCount28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(6, 6, 6)
                                         .addComponent(jDBTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         PaneCompras.addTab("Recebimento de Compras", frmRecebimento);
@@ -3470,39 +3489,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         PaneVendas.addTab("Cadastro de Transportadoras", Transportadora);
 
-        jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel50.setText("Exportação TXT para emissão da NF-e");
-
-        jButton1.setText("Gerar TXT de Teste");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout NFELayout = new javax.swing.GroupLayout(NFE);
-        NFE.setLayout(NFELayout);
-        NFELayout.setHorizontalGroup(
-            NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NFELayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel50)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(863, Short.MAX_VALUE))
-        );
-        NFELayout.setVerticalGroup(
-            NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(NFELayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel50)
-                .addGap(54, 54, 54)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(475, Short.MAX_VALUE))
-        );
-
-        PaneVendas.addTab("NF-e", NFE);
-
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel37.setText("Vendas de Produtos");
 
@@ -3979,6 +3965,39 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
 
         PaneVendas.addTab("Vendas", Vendas);
+
+        jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel50.setText("Exportação TXT para emissão da NF-e");
+
+        jButton1.setText("Gerar TXT de Teste");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout NFELayout = new javax.swing.GroupLayout(NFE);
+        NFE.setLayout(NFELayout);
+        NFELayout.setHorizontalGroup(
+            NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NFELayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel50)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(863, Short.MAX_VALUE))
+        );
+        NFELayout.setVerticalGroup(
+            NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NFELayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel50)
+                .addGap(54, 54, 54)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(475, Short.MAX_VALUE))
+        );
+
+        PaneVendas.addTab("NF-e", NFE);
 
         jLabel80.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel80.setText("Cadastro do Estabelecimento");
@@ -4559,6 +4578,10 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         PaneCompras.setVisible(false);
+        QueryRecebimentoItem.setSQL("select * from cpiterec where id_pedido = -1");
+        QueryRecebimentoItem.execQuery();
+        QueryRecebimento.setSQL("select * from cpcadrec where id_pedido = -1");
+        QueryRecebimento.execQuery();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
@@ -4617,17 +4640,19 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnatualizaitem.setEnabled(false);
     }//GEN-LAST:event_btnnovoitemActionPerformed
 
-    private void jDBButtonNew4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDBButtonNew4ActionPerformed
+    private void btnnovorecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnovorecActionPerformed
+        btnexcluirrec.setEnabled(false);
+        btnsalvarrec.setEnabled(true);
+        btncancelrec.setEnabled(true);
+        btnnovorec.setEnabled(false);
+    }//GEN-LAST:event_btnnovorecActionPerformed
 
-    private void jDBButtonDelete4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonDelete4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDBButtonDelete4ActionPerformed
-
-    private void jDBButtonNew5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDBButtonNew5ActionPerformed
+    private void btnexcluirrecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirrecActionPerformed
+        btnexcluirrec.setEnabled(false);
+        btnsalvarrec.setEnabled(false);
+        btncancelrec.setEnabled(false);
+        btnnovorec.setEnabled(true);
+    }//GEN-LAST:event_btnexcluirrecActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         PaneEstoque.setVisible(false);
@@ -4972,14 +4997,18 @@ public class frmPrincipal extends javax.swing.JFrame {
         String dataatu=null,datasistema=null;
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
+        //busca dados do pedido
         QueryPedRec.setSQL("select * from CPCADPED where id_pedido ='"+idpedrec.getText()+"' and cod_fornecedor='"+idforrec.getText()+"'" );
         QueryPedRec.execQuery();
         
         datasistema = String.valueOf(dateFormat.format(new Date())); 
         txtdatacad.setText(datasistema);
         
-       // QueryRecebimentoItem.setSQL(" select * from CPITEREC where id_pedido = '" + idpedrec.getText() + "' and id_fornecedor = '"+idforrec.getText()+ "'order by item" );
-        //QueryRecebimentoItem.execQuery();       
+        QueryItePedRec.setSQL(" select * from CPITEPED where id_pedido = '" + idpedrec.getText() + "' order by num_item" );
+        QueryItePedRec.execQuery();       
+        
+        QueryRecebimentoItem.setSQL("select * from CPITEREC where id_pedido ='"+idpedrec.getText()+"'and id_fornecedor='"+idforrec.getText()+"'");
+        QueryRecebimentoItem.execQuery();
         
        
       //  txtsituacao.setText(QueryPedido.getCurrentFieldValue("situacao"));
@@ -5000,9 +5029,69 @@ public class frmPrincipal extends javax.swing.JFrame {
         id_pedido.setEnabled(false);
     }//GEN-LAST:event_idpedrecFocusLost
 
-    private void jDBButtonSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDBButtonSave3ActionPerformed
+    private void btnsalvarrecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarrecActionPerformed
+      
+        QueryRecebimento.setNewCurrentFieldValue("id_usuario", usuario);
+        
+        //salva Dados do Pedido no recebimento
+        QueryRecebimento.setNewCurrentFieldValueAsDouble("vlr_total", QueryPedRec.getCurrentFieldValueAsDouble("valor_total"));
+        QueryRecebimento.setNewCurrentFieldValueAsDouble("vlr_ipi", QueryPedRec.getCurrentFieldValueAsDouble("valor_ipi_total"));
+        QueryRecebimento.setNewCurrentFieldValueAsDouble("vlr_icms", QueryPedRec.getCurrentFieldValueAsDouble("valor_icms_total"));
+        QueryRecebimento.setNewCurrentFieldValueAsDouble("vlr_iss", QueryPedRec.getCurrentFieldValueAsDouble("valor_iss_total"));
+        QueryRecebimento.setNewCurrentFieldValueAsDouble("vlr_merc",QueryPedRec.getCurrentFieldValueAsDouble("valor_merc_total"));
+        QueryRecebimento.setNewCurrentFieldValueAsDouble("vlr_frete",QueryPedRec.getCurrentFieldValueAsDouble("valor_frete"));
+       
+        btnverificaitem.setEnabled(true);
+        btnexcluirrec.setEnabled(true);
+        btnsalvarrec.setEnabled(false);
+        btncancelrec.setEnabled(false);
+        btnnovorec.setEnabled(true);
+        
+        
+        
+    }//GEN-LAST:event_btnsalvarrecActionPerformed
+
+    private void btnsalvaitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvaitemActionPerformed
+         btnsalvaitem.setEnabled(false);
+        btnverificaitem.setEnabled(true);
+        
+    }//GEN-LAST:event_btnsalvaitemActionPerformed
+
+    private void btnverificaitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverificaitemActionPerformed
+ int qtditem=0,aux;        
+        qtditem = 0;
+//salva Dados dos Itens no recebimento
+        QueryQtdItem.setSQL("select max(num_item) as nitem from cpiteped where id_pedido='"+idpedrec.getText()+"'");
+        QueryQtdItem.execQuery();
+        qtditem = QueryQtdItem.getCurrentFieldValueAsInteger("nitem");
+        
+        for(aux =1;aux<= qtditem;aux++){
+        QueryRecebimentoItem.insert();
+        QueryRecebimentoItem.setNewCurrentFieldValueAsInteger("id_fornecedor", Integer.valueOf(idforrec.getText()));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsInteger("idproduto", QueryItePedRec.getCurrentFieldValueAsInteger("idproduto"));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsInteger("id_pedido", QueryItePedRec.getCurrentFieldValueAsInteger("id_pedido"));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsInteger("idproduto", QueryItePedRec.getCurrentFieldValueAsInteger("idproduto"));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsInteger("item",QueryItePedRec.getCurrentFieldValueAsInteger("num_item"));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsInteger("qtde",QueryItePedRec.getCurrentFieldValueAsInteger("qntde"));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsDouble("vlr_unit",QueryItePedRec.getCurrentFieldValueAsDouble("valor_unit"));
+        QueryRecebimentoItem.setNewCurrentFieldValueAsDouble("vlr_total",QueryItePedRec.getCurrentFieldValueAsDouble("valor_total_item"));
+        QueryRecebimentoItem.save();
+       
+        QueryItePedRec.next(); 
+
+        }
+        
+        btnsalvaitem.setEnabled(true);
+        btnverificaitem.setEnabled(false);
+        
+    }//GEN-LAST:event_btnverificaitemActionPerformed
+
+    private void btncancelrecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelrecActionPerformed
+        btnexcluirrec.setEnabled(false);
+        btnsalvarrec.setEnabled(false);
+        btncancelrec.setEnabled(false);
+        btnnovorec.setEnabled(true);
+    }//GEN-LAST:event_btncancelrecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -5055,11 +5144,13 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QueryFornecedor;
     private lib.jdb.jdbquery.JDBQuery QueryGruPro;
     private lib.jdb.jdbquery.JDBQuery QueryIteOP;
+    private lib.jdb.jdbquery.JDBQuery QueryItePedRec;
     private lib.jdb.jdbquery.JDBQuery QueryOP;
     private lib.jdb.jdbquery.JDBQuery QueryPedRec;
     private lib.jdb.jdbquery.JDBQuery QueryPedido;
     public static lib.jdb.jdbquery.JDBQuery QueryPedidoItem;
     private lib.jdb.jdbquery.JDBQuery QueryProduto;
+    private lib.jdb.jdbquery.JDBQuery QueryQtdItem;
     private lib.jdb.jdbquery.JDBQuery QueryRecebimento;
     private lib.jdb.jdbquery.JDBQuery QueryRecebimentoItem;
     private lib.jdb.jdbquery.JDBQuery QuerySomaItensPed;
@@ -5090,13 +5181,19 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnbuscapro;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel btncancelaped;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel btncancelitem;
+    private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel btncancelrec;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete btnexcluiitem;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete btnexcluirped;
+    private lib.jdb.control.jdbbuttondelete.JDBButtonDelete btnexcluirrec;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew btnnovoitem;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew btnnovoped;
+    private lib.jdb.control.jdbbuttonnew.JDBButtonNew btnnovorec;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext btnproximoitem;
+    private lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsalvaitem;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsalvaped;
+    private lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsalvarrec;
     public static lib.jdb.control.jdbbuttonsave.JDBButtonSave btnsaveitens;
+    private javax.swing.JButton btnverificaitem;
     private lib.jdb.control.jdbcombobox.JDBComboBox cboxTipoPessoa;
     private javax.swing.JPanel frmFornecedor;
     private javax.swing.JPanel frmGrupoPro;
@@ -5132,8 +5229,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel15;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel16;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel17;
-    private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel4;
-    private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel5;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel6;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel7;
     private lib.jdb.control.jdbbuttoncancel.JDBButtonCancel jDBButtonCancel8;
@@ -5145,8 +5240,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete14;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete15;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete16;
-    private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete4;
-    private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete5;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete6;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete7;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete jDBButtonDelete8;
@@ -5167,19 +5260,15 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew15;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew16;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew17;
-    private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew4;
-    private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew5;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew6;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew7;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew8;
     private lib.jdb.control.jdbbuttonnew.JDBButtonNew jDBButtonNew9;
-    private lib.jdb.control.jdbbuttonnext.JDBButtonNext jDBButtonNext2;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext jDBButtonNext3;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext jDBButtonNext4;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext jDBButtonNext5;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext jDBButtonNext6;
     private lib.jdb.control.jdbbuttonnext.JDBButtonNext jDBButtonNext8;
-    private lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious jDBButtonPrevious2;
     private lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious jDBButtonPrevious3;
     private lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious jDBButtonPrevious4;
     private lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious jDBButtonPrevious5;
@@ -5197,7 +5286,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave14;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave15;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave16;
-    private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave3;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave4;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave6;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave jDBButtonSave7;
@@ -5361,7 +5449,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField17;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField21;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField22;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField24;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField25;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField26;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField27;
@@ -5548,6 +5635,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField txtCnpjCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtCpfCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtInsEstCad;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtVlrMerc;
     private lib.jdb.control.jdbtextfield.JDBTextField txt_id_user_cad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtcnpjfor;
     private lib.jdb.control.jdbtextfield.JDBTextField txtdatacad;
