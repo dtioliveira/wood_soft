@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Out-2014 às 03:57
+-- Generation Time: 29-Out-2014 às 00:56
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -67,7 +67,7 @@ INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj
 --
 
 CREATE TABLE IF NOT EXISTS `cpcadped` (
-  `id_pedido` int(11) NOT NULL,
+`id_pedido` int(11) NOT NULL,
   `cod_fornecedor` int(11) NOT NULL,
   `data_cad` date DEFAULT NULL,
   `situacao` varchar(45) DEFAULT NULL,
@@ -77,19 +77,22 @@ CREATE TABLE IF NOT EXISTS `cpcadped` (
   `valor_ipi_total` double DEFAULT NULL,
   `valor_icms_total` double DEFAULT NULL,
   `valor_total` double DEFAULT NULL,
-  `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_usuario` int(11) NOT NULL,
+  `valor_iss_total` double NOT NULL,
+  `valor_merc_total` double NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `cpcadped`
 --
 
-INSERT INTO `cpcadped` (`id_pedido`, `cod_fornecedor`, `data_cad`, `situacao`, `data_alt`, `data_ent`, `valor_frete`, `valor_ipi_total`, `valor_icms_total`, `valor_total`, `id_usuario`) VALUES
-(0, 2, NULL, '', NULL, '2014-10-01', 45, 897, 768, 876, 1),
-(1, 2, NULL, '', NULL, '2014-09-03', 1, 1, 1, 1, 1),
-(2, 1, NULL, '', NULL, NULL, 87, 87, 7678, 8767, 2),
-(3, 2, NULL, '', NULL, NULL, 8, 7, 6, 56, 1),
-(4, 2, NULL, '', NULL, '2014-08-08', 7, 7, 7, 7, 1);
+INSERT INTO `cpcadped` (`id_pedido`, `cod_fornecedor`, `data_cad`, `situacao`, `data_alt`, `data_ent`, `valor_frete`, `valor_ipi_total`, `valor_icms_total`, `valor_total`, `id_usuario`, `valor_iss_total`, `valor_merc_total`) VALUES
+(3, 2, '2014-10-22', '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
+(4, 2, NULL, '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
+(5, 2, NULL, '', '0014-10-24', NULL, 0, 0, 0, 0, 2, 0, 0),
+(6, 2, '2014-10-25', '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
+(7, 2, '2014-10-15', '', '2014-10-23', NULL, 0, 0, 0, 0, 2, 0, 0),
+(9, 2, '2014-10-08', '', '2014-10-23', NULL, 100, 200, 250, 300, 2, 50, 60);
 
 -- --------------------------------------------------------
 
@@ -112,6 +115,15 @@ CREATE TABLE IF NOT EXISTS `cpcadrec` (
   `data_cad` date DEFAULT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `cpcadrec`
+--
+
+INSERT INTO `cpcadrec` (`id_fornecedor`, `id_pedido`, `nota_fiscal`, `serie`, `vlr_merc`, `vlr_frete`, `vlr_iss`, `vlr_ipi`, `vlr_icms`, `vlr_total`, `data_rec`, `data_cad`, `id_usuario`) VALUES
+(2, 4, '123', '3', 0, 0, 0, 0, 0, 0, NULL, '2014-10-28', 2),
+(2, 5, '123', '2', 0, 0, 0, 0, 0, 0, NULL, '2014-10-28', 2),
+(2, 7, '123''', '1', 0, 0, 0, 0, 0, 0, NULL, '2014-10-28', 2);
 
 -- --------------------------------------------------------
 
@@ -144,17 +156,11 @@ CREATE TABLE IF NOT EXISTS `cpiteped` (
 --
 
 INSERT INTO `cpiteped` (`id_pedido`, `num_item`, `idproduto`, `descricao_item`, `qntde`, `unidade`, `fator_conv`, `valor_unit`, `valor_ipi`, `valor_icms`, `valor_total_item`, `per_ipi`, `per_icms`, `perc_iss`, `frete`, `desconto`, `total_item`) VALUES
-(0, 0, 4, 'teste', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(0, 1, 4, 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 1, 4, 'item de teste', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 1, 4, 'item de teste', 78, '0', 0, 987, 987, 987, 87897, 0, 0, 0, 0, 0, 909790),
-(3, 1, 4, 'aslkdasd', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(0, 2, 4, 'aasdasd', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(1, 2, 4, 'item de teste', 34, '', 0, 82, 98, 78, 87, 0, 8, 7, 79, 0, 379),
-(2, 2, 4, 'çlasdapsd', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(0, 3, 4, 'aksjhdajhsgd', 1234, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 3, 4, 'sdfsdf', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(0, 4, 5, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(4, 1, 6, 'Produto de teste 3', 10, '12', 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 1, 4, 'Produto de teste', 0, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0),
+(7, 1, 4, 'Produto de teste', 0, 'kg', 0, 89, 78, 789, 12345, 0, 0, 0, 0, 0, 0),
+(7, 2, 5, 'teste', 0, 'pç', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, 3, 6, 'Produto de teste 3', 0, '12', 0, 56, 67, 67, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -172,8 +178,20 @@ CREATE TABLE IF NOT EXISTS `cpiterec` (
   `vlr_total` double DEFAULT NULL,
   `idproduto` int(11) NOT NULL,
   `id_fornecedor` int(11) NOT NULL,
-  `id_pedido` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_pedido` int(11) NOT NULL,
+`cod_rec_item` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- Extraindo dados da tabela `cpiterec`
+--
+
+INSERT INTO `cpiterec` (`item`, `qtde`, `vlr_unit`, `perc_icms`, `perc_ipi`, `perc_iss`, `vlr_total`, `idproduto`, `id_fornecedor`, `id_pedido`, `cod_rec_item`) VALUES
+(1, NULL, 0, 0, 0, 0, 0, 4, 2, 5, 25),
+(1, NULL, 89, 0, 0, 0, 12345, 4, 2, 7, 26),
+(2, NULL, 0, 0, 0, 0, 0, 5, 2, 7, 27),
+(3, NULL, 56, 0, 0, 0, 0, 6, 2, 7, 28),
+(1, NULL, 12, 0, 0, 0, 0, 6, 2, 4, 29);
 
 -- --------------------------------------------------------
 
@@ -458,7 +476,7 @@ ALTER TABLE `cpiteped`
 -- Indexes for table `cpiterec`
 --
 ALTER TABLE `cpiterec`
- ADD PRIMARY KEY (`item`), ADD KEY `fk_CPITEREC_ESCADPRO1_idx` (`idproduto`), ADD KEY `fk_CPITEREC_CPCADREC1_idx` (`id_fornecedor`,`id_pedido`);
+ ADD PRIMARY KEY (`cod_rec_item`), ADD KEY `fk_CPITEREC_ESCADPRO1_idx` (`idproduto`), ADD KEY `fk_CPITEREC_CPCADREC1_idx` (`id_fornecedor`,`id_pedido`);
 
 --
 -- Indexes for table `escadpro`
@@ -529,6 +547,16 @@ ALTER TABLE `veiteped`
 --
 ALTER TABLE `clifortr`
 MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `cpcadped`
+--
+ALTER TABLE `cpcadped`
+MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `cpiterec`
+--
+ALTER TABLE `cpiterec`
+MODIFY `cod_rec_item` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `escadpro`
 --
