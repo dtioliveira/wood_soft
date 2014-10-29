@@ -1351,6 +1351,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnBuscaPedido.setText("Buscar Pedido");
 
         txtValorFrete.setEnabled(false);
+        txtValorFrete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorFreteActionPerformed(evt);
+            }
+        });
 
         txtValorIpi.setEnabled(false);
 
@@ -4841,10 +4846,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         // Salvar Valores Totais no Banco
         
-        QueryPedido.setNewCurrentFieldValueAsDouble("valor_frete", Double.parseDouble(txtValorFrete.getText()));
-        QueryPedido.setNewCurrentFieldValueAsDouble("valor_ipi_total", Double.parseDouble(txtValorIpi.getText()));
-        QueryPedido.setNewCurrentFieldValueAsDouble("valor_icms_total", Double.parseDouble(txtValorIcms.getText()));
-        QueryPedido.setNewCurrentFieldValueAsDouble("valor_total", Double.parseDouble(txtValorTotal.getText()));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_frete", Double.parseDouble(txtValorFrete.getText().replaceAll(",", ".")));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_ipi_total", Double.parseDouble(txtValorIpi.getText().replaceAll(",", ".")));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_icms_total", Double.parseDouble(txtValorIcms.getText().replaceAll(",", ".")));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_total", Double.parseDouble(txtValorTotal.getText().replaceAll(",", ".")));
  
     }//GEN-LAST:event_btnsalvapedActionPerformed
 
@@ -5085,26 +5090,33 @@ public class frmPrincipal extends javax.swing.JFrame {
         atualizaElementos();
     }//GEN-LAST:event_id_pedidoKeyPressed
 
+    private void txtValorFreteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorFreteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorFreteActionPerformed
+
     public void atualizaElementos(){
-      double valor_total =0, ipi_total = 0, icms_total = 0;
+      double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
       int rows = tableiteped.getRowCount();
         
       for(int i = 0; i < rows; i++){
-        double total_item = 0, valor_unit = 0, qtd = 0, ipi = 0, icms = 0;
+        double total_item = 0, valor_unit = 0, qtd = 0, ipi = 0, icms = 0, frete = 0;
         qtd = Double.parseDouble(tableiteped.getValueAt(i, 4).toString().replaceAll(",", "."));
         valor_unit = Double.parseDouble(tableiteped.getValueAt(i, 7).toString().replaceAll(",", "."));
         ipi = Double.parseDouble(tableiteped.getValueAt(i, 8).toString().replaceAll(",", "."));
         icms = Double.parseDouble(tableiteped.getValueAt(i, 9).toString().replaceAll(",", "."));
+        frete = Double.parseDouble(tableiteped.getValueAt(i, 11).toString().replaceAll(",", "."));
         
         total_item = qtd * valor_unit;
         ipi_total += ipi;
         icms_total += icms;              
         tableiteped.setValueAt(total_item, i, 10);
         valor_total += total_item;
+        frete_total += frete_total;
       }  
         txtValorTotal.setText(String.valueOf(valor_total));
         txtValorIcms.setText(String.valueOf(icms_total));
         txtValorIpi.setText(String.valueOf(ipi_total));
+        txtValorFrete.setText(String.valueOf(frete_total));
         
     }
     
