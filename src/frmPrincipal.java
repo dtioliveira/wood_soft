@@ -5170,7 +5170,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         icms_total += icms;              
         tableiteped.setValueAt(total_item, i, 10);
         valor_total += total_item;
-        frete_total += frete_total;
+        frete_total += frete;
       }  
         txtValorTotal.setText(String.valueOf(valor_total));
         txtValorIcms.setText(String.valueOf(icms_total));
