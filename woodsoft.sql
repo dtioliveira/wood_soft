@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Nov-2014 às 17:23
+-- Generation Time: 01-Nov-2014 às 22:27
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -53,8 +53,7 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
 --
 
 INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`, `pais`) VALUES
-(1, 'Jurídica', 'Fornecedor', 'teste teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ativo', NULL, NULL, NULL, 'BA', 1, ''),
-(2, '', 'Fornecedor', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 1, ''),
+(2, 'Jurídica', 'Fornecedor', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'ItararÃ©', '', 2, ''),
 (4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, ''),
 (7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2, ''),
 (8, 'Jurídica', 'Transportadora', 'Transportadora Rapidão', '', '', '', '', 'Rua São João 123', 'Centro', '(11)3453-3456', 'lucas@', 'Ativo', 'lucas', '12734-000', 'SÃƒÆ’Ã‚Â£o Paulo', 'SP', 2, ''),
@@ -293,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `estab` (
 --
 
 INSERT INTO `estab` (`id_estab`, `razao_social`, `cnpj`, `ins_est`, `endereco`, `cidade`, `uf`, `cep`, `telefone`, `email`, `data_cad`, `data_alt`) VALUES
-(0, 'IJDSISJDISJD', 'DJSIJDISJD', 'ISJDISJDS', 'IJSDIJSDIJ', 'ISJDISJDIJ', 'SP', 'ISJDISJDI', 'ISJDIS', 'SIDJSIJD', '2001-01-01', '2011-01-01');
+(0, 'WoodSoft Corporate', '23.123.123/0001-01', '123.123.1234', 'Rua São Pedro 1123', 'Itararé', 'SP', '18460-000', '15-1234-1234', 'woodsoft@woodsoft.com.br', '2001-01-01', '2014-11-01');
 
 -- --------------------------------------------------------
 
@@ -334,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `procadop` (
   `cod_cliente` int(11) DEFAULT NULL,
   `obs` text,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `procadop`
@@ -342,7 +341,8 @@ CREATE TABLE IF NOT EXISTS `procadop` (
 
 INSERT INTO `procadop` (`id_op`, `ano_op`, `pedido_venda`, `data`, `tipo`, `situacao`, `hora_inicio`, `hora_termino`, `cod_cliente`, `obs`, `id_usuario`) VALUES
 (2, 2014, 0, NULL, 'Estoque', 'Em Aberto', '10:10:10', '10:15:10', 0, '', 2),
-(3, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2);
+(3, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2),
+(5, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2);
 
 -- --------------------------------------------------------
 
@@ -367,7 +367,8 @@ CREATE TABLE IF NOT EXISTS `proiteop` (
 
 INSERT INTO `proiteop` (`ano_op`, `item`, `tipo`, `qntde`, `id_op`, `idproduto`, `desc_pro`, `unidade`) VALUES
 (2014, 1, 0, 10, 2, 4, '', ''),
-(2014, 1, 1, 0, 3, 6, 'Produto de teste 3', '12');
+(2014, 1, 1, 0, 3, 6, 'Produto de teste 3', '12'),
+(2014, 1, 1, 0, 5, 6, 'Produto de teste 3', '12');
 
 -- --------------------------------------------------------
 
@@ -403,7 +404,7 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`, `compras
 --
 
 CREATE TABLE IF NOT EXISTS `vecadped` (
-  `id_pedido` int(11) NOT NULL,
+`id_pedido` int(11) NOT NULL,
   `data` date DEFAULT NULL,
   `transportador` varchar(45) DEFAULT NULL,
   `vlr_mercadoria` double DEFAULT NULL,
@@ -428,7 +429,14 @@ CREATE TABLE IF NOT EXISTS `vecadped` (
   `id_usuario` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_estab` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `vecadped`
+--
+
+INSERT INTO `vecadped` (`id_pedido`, `data`, `transportador`, `vlr_mercadoria`, `vlr_iss`, `total`, `data_entrega`, `nota_fiscal`, `serie`, `data_emissao`, `data_saida`, `hora_saida`, `base_icms`, `vlr_icms`, `base_icms_subs`, `vlr_icms_subs`, `vlr_frete`, `vlr_seguro`, `desconto`, `desp_acessorias`, `vlr_ipi`, `id_transportador`, `id_usuario`, `id_cliente`, `id_estab`) VALUES
+(1, '2014-11-01', '', 50, 15, 550, '2014-11-02', '123', '1', '2014-11-01', '2014-11-01', NULL, 18, 13, 1, 1, 12, 13, 4, 3, 14, 8, 2, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -447,6 +455,13 @@ CREATE TABLE IF NOT EXISTS `veiteped` (
   `id_pedido` int(11) NOT NULL,
   `ESCADPRO_idproduto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `veiteped`
+--
+
+INSERT INTO `veiteped` (`item`, `qtde`, `vlr_unit`, `perc_icms`, `perc_ipi`, `perc_iss`, `vlr_total`, `id_pedido`, `ESCADPRO_idproduto`) VALUES
+(1, 5, 10, 18, 10, 10, 550, 1, 4);
 
 --
 -- Indexes for dumped tables
@@ -580,12 +595,17 @@ MODIFY `idtipoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `procadop`
 --
 ALTER TABLE `procadop`
-MODIFY `id_op` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id_op` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
 MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `vecadped`
+--
+ALTER TABLE `vecadped`
+MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
