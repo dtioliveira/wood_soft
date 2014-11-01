@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Out-2014 às 00:56
+-- Generation Time: 01-Nov-2014 às 17:23
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `cpcadped` (
   `id_usuario` int(11) NOT NULL,
   `valor_iss_total` double NOT NULL,
   `valor_merc_total` double NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `cpcadped`
@@ -91,8 +91,7 @@ INSERT INTO `cpcadped` (`id_pedido`, `cod_fornecedor`, `data_cad`, `situacao`, `
 (4, 2, NULL, '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
 (5, 2, NULL, '', '0014-10-24', NULL, 0, 0, 0, 0, 2, 0, 0),
 (6, 2, '2014-10-25', '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
-(7, 2, '2014-10-15', '', '2014-10-23', NULL, 0, 0, 0, 0, 2, 0, 0),
-(9, 2, '2014-10-08', '', '2014-10-23', NULL, 100, 200, 250, 300, 2, 50, 60);
+(7, 2, '2014-10-15', '', '2014-10-23', NULL, 0, 0, 0, 0, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -121,9 +120,9 @@ CREATE TABLE IF NOT EXISTS `cpcadrec` (
 --
 
 INSERT INTO `cpcadrec` (`id_fornecedor`, `id_pedido`, `nota_fiscal`, `serie`, `vlr_merc`, `vlr_frete`, `vlr_iss`, `vlr_ipi`, `vlr_icms`, `vlr_total`, `data_rec`, `data_cad`, `id_usuario`) VALUES
-(2, 4, '123', '3', 0, 0, 0, 0, 0, 0, NULL, '2014-10-28', 2),
-(2, 5, '123', '2', 0, 0, 0, 0, 0, 0, NULL, '2014-10-28', 2),
-(2, 7, '123''', '1', 0, 0, 0, 0, 0, 0, NULL, '2014-10-28', 2);
+(2, 4, '123', '23', 0, 0, 0, 0, 0, 0, NULL, '2014-10-31', 2),
+(2, 5, '123', '123', 0, 0, 0, 0, 0, 0, NULL, '2014-10-31', 2),
+(2, 7, '234', '12', 0, 0, 0, 0, 0, 0, NULL, '2014-10-30', 2);
 
 -- --------------------------------------------------------
 
@@ -156,11 +155,11 @@ CREATE TABLE IF NOT EXISTS `cpiteped` (
 --
 
 INSERT INTO `cpiteped` (`id_pedido`, `num_item`, `idproduto`, `descricao_item`, `qntde`, `unidade`, `fator_conv`, `valor_unit`, `valor_ipi`, `valor_icms`, `valor_total_item`, `per_ipi`, `per_icms`, `perc_iss`, `frete`, `desconto`, `total_item`) VALUES
-(4, 1, 6, 'Produto de teste 3', 10, '12', 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 1, 4, 'Produto de teste', 0, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0),
-(7, 1, 4, 'Produto de teste', 0, 'kg', 0, 89, 78, 789, 12345, 0, 0, 0, 0, 0, 0),
-(7, 2, 5, 'teste', 0, 'pç', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, 3, 6, 'Produto de teste 3', 0, '12', 0, 56, 67, 67, 0, 0, 0, 0, 0, 0, 0);
+(4, 1, 6, 'Produto de teste 3', 10, '12', 0, 12, 0, 0, 120, 0, 0, 0, 0, 0, 0),
+(5, 1, 4, 'Produto de teste', 15, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0),
+(7, 1, 4, 'Produto de teste', 10, 'kg', 0, 89, 78, 789, 6, 0, 0, 0, 0, 0, 0),
+(7, 2, 6, 'Produto de teste 3', 5, '12', 0, 56, 67, 67, 0, 0, 0, 0, 0, 0, 0),
+(7, 3, 6, NULL, 6, NULL, 0, 1, 0, 0, 0, 0, 0, 0, 10, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -170,7 +169,7 @@ INSERT INTO `cpiteped` (`id_pedido`, `num_item`, `idproduto`, `descricao_item`, 
 
 CREATE TABLE IF NOT EXISTS `cpiterec` (
   `item` int(11) NOT NULL,
-  `qtde` int(11) DEFAULT NULL,
+  `qtde` double DEFAULT NULL,
   `vlr_unit` double DEFAULT NULL,
   `perc_icms` int(11) DEFAULT NULL,
   `perc_ipi` int(11) DEFAULT NULL,
@@ -180,18 +179,18 @@ CREATE TABLE IF NOT EXISTS `cpiterec` (
   `id_fornecedor` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
 `cod_rec_item` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
 
 --
 -- Extraindo dados da tabela `cpiterec`
 --
 
 INSERT INTO `cpiterec` (`item`, `qtde`, `vlr_unit`, `perc_icms`, `perc_ipi`, `perc_iss`, `vlr_total`, `idproduto`, `id_fornecedor`, `id_pedido`, `cod_rec_item`) VALUES
-(1, NULL, 0, 0, 0, 0, 0, 4, 2, 5, 25),
-(1, NULL, 89, 0, 0, 0, 12345, 4, 2, 7, 26),
-(2, NULL, 0, 0, 0, 0, 0, 5, 2, 7, 27),
-(3, NULL, 56, 0, 0, 0, 0, 6, 2, 7, 28),
-(1, NULL, 12, 0, 0, 0, 0, 6, 2, 4, 29);
+(1, 10, 89, 0, 0, 0, 6, 4, 2, 7, 55),
+(2, 5, 56, 0, 0, 0, 0, 6, 2, 7, 56),
+(3, 6, 1, 0, 0, 0, 0, 6, 2, 7, 57),
+(1, 10, 12, 0, 0, 0, 120, 6, 2, 4, 60),
+(1, 15, 0, 0, 0, 0, 0, 4, 2, 5, 61);
 
 -- --------------------------------------------------------
 
@@ -214,17 +213,18 @@ CREATE TABLE IF NOT EXISTS `escadpro` (
   `idtipoProduto` int(11) NOT NULL,
   `idsubgrupopro` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `cfop` varchar(5) NOT NULL
+  `cfop` varchar(5) NOT NULL,
+  `quantidade` double NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `escadpro`
 --
 
-INSERT INTO `escadpro` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`, `cfop`) VALUES
-(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 4, 0, 1, ''),
-(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1, ''),
-(6, 'Produto de teste 3', 234, 12, 123, 234, '12', 12.9, 'teste', '', '123124', 1, 1, 2, '');
+INSERT INTO `escadpro` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`, `cfop`, `quantidade`) VALUES
+(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 4, 0, 1, '', 60),
+(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1, '', 0),
+(6, 'Produto de teste 3', 234, 12, 123, 234, '12', 12.9, 'teste', '', '123124', 1, 1, 2, '', 44);
 
 -- --------------------------------------------------------
 
@@ -323,7 +323,7 @@ INSERT INTO `estippro` (`idtipoProduto`, `tipo`, `abrev`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `procadop` (
-  `id_op` int(11) NOT NULL,
+`id_op` int(11) NOT NULL,
   `ano_op` int(11) NOT NULL,
   `pedido_venda` int(11) DEFAULT NULL,
   `data` date DEFAULT NULL,
@@ -334,14 +334,15 @@ CREATE TABLE IF NOT EXISTS `procadop` (
   `cod_cliente` int(11) DEFAULT NULL,
   `obs` text,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `procadop`
 --
 
 INSERT INTO `procadop` (`id_op`, `ano_op`, `pedido_venda`, `data`, `tipo`, `situacao`, `hora_inicio`, `hora_termino`, `cod_cliente`, `obs`, `id_usuario`) VALUES
-(0, 2014, 1, NULL, 'Venda Fornecedor', 'Em Aberto', NULL, NULL, 1, '', 1);
+(2, 2014, 0, NULL, 'Estoque', 'Em Aberto', '10:10:10', '10:15:10', 0, '', 2),
+(3, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2);
 
 -- --------------------------------------------------------
 
@@ -352,18 +353,21 @@ INSERT INTO `procadop` (`id_op`, `ano_op`, `pedido_venda`, `data`, `tipo`, `situ
 CREATE TABLE IF NOT EXISTS `proiteop` (
   `ano_op` int(11) NOT NULL,
   `item` int(10) NOT NULL,
-  `tipo` varchar(45) DEFAULT NULL,
+  `tipo` int(11) DEFAULT NULL,
   `qntde` int(11) DEFAULT NULL,
   `id_op` int(11) NOT NULL,
-  `idproduto` int(11) NOT NULL
+  `idproduto` int(11) NOT NULL,
+  `desc_pro` varchar(50) NOT NULL,
+  `unidade` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `proiteop`
 --
 
-INSERT INTO `proiteop` (`ano_op`, `item`, `tipo`, `qntde`, `id_op`, `idproduto`) VALUES
-(2014, 1, 'Matéria Prima', 34, 0, 4);
+INSERT INTO `proiteop` (`ano_op`, `item`, `tipo`, `qntde`, `id_op`, `idproduto`, `desc_pro`, `unidade`) VALUES
+(2014, 1, 0, 10, 2, 4, '', ''),
+(2014, 1, 1, 0, 3, 6, 'Produto de teste 3', '12');
 
 -- --------------------------------------------------------
 
@@ -551,12 +555,12 @@ MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT for table `cpcadped`
 --
 ALTER TABLE `cpcadped`
-MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `cpiterec`
 --
 ALTER TABLE `cpiterec`
-MODIFY `cod_rec_item` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `cod_rec_item` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `escadpro`
 --
@@ -572,6 +576,11 @@ MODIFY `idgrupoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 ALTER TABLE `estippro`
 MODIFY `idtipoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `procadop`
+--
+ALTER TABLE `procadop`
+MODIFY `id_op` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `usuario`
 --

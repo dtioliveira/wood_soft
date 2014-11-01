@@ -1,6 +1,6 @@
 
 public class frmBuscaProduto extends javax.swing.JFrame {
-    public int cod_prod;
+    public int cod_prod,idtippro;
     public String descricao;
     public String unidade;
  
@@ -149,9 +149,11 @@ public class frmBuscaProduto extends javax.swing.JFrame {
         cod_prod = QueryBusca.getCurrentFieldValueAsInteger("idproduto");
         descricao = QueryBusca.getCurrentFieldValue("nome");
         unidade = QueryBusca.getCurrentFieldValue("unidMed");
+        idtippro = QueryBusca.getCurrentFieldValueAsInteger("idtipoProduto");
         frmPrincipal.codbuscaproduto = cod_prod;
         frmPrincipal.descricao = descricao;
         frmPrincipal.unidade = unidade;
+        frmPrincipal.idtipopro = idtippro;
         dispose();
 
         
