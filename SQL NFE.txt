@@ -1,0 +1,6 @@
+Select * from estab E,vecadped V,veiteped I,clifortr C,escadpro P where
+V.id_pedido = 1 and
+V.id_pedido = I.id_pedido and
+C.idclifor = V.id_cliente and
+C.idclifor = V.id_transportador and
+P.idproduto = I.ESCADPRO_idproduto

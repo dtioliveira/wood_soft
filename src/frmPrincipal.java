@@ -12,6 +12,16 @@ public class frmPrincipal extends javax.swing.JFrame {
       static String descricao;
       static String unidade;
       
+      //Variaveis NF-e
+      static String  txtSerie,txtNf,txtDataemissao,txtDatasaida,txtHoraSaida,XNome,XFantasia,IE,IEST,IM,CNAE,CRT,CNPJ,
+              XLgr,Nro,Cpl,Bairro,CMun,XMun,UF,CEP,fone,
+              razaoCliente,IECliente,emailCliente,
+              CNPJCli,LogrCli,NroCli,BairroCli,codMunCli,MunCli,UFCli,CEPCli,foneCli,
+              nItem,codProd,descPro,NCM,CFOP,UnidMed,Qtde,vlrUnit,vlrProd,UnidTrib,QtdeTrib,vlrUnitTrib,
+              RazaoTransp,IETransp,LogrTransp,UFTransp,CidadeTransp,CNPJTransp,Placa,UFPlaca,
+              NFat,VlrOrig,VlrLiq,
+              nDup,dataVenc,VlrDup;
+      
       
 
 
@@ -74,6 +84,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryQtdItem = new lib.jdb.jdbquery.JDBQuery();
         QueryInsereEst = new lib.jdb.jdbquery.JDBQuery();
         QueryBuscaCli = new lib.jdb.jdbquery.JDBQuery();
+        QueryNFE = new lib.jdb.jdbquery.JDBQuery();
         jToolBar1 = new javax.swing.JToolBar();
         jDBImageBlob1 = new lib.jdb.control.jdbimageblob.JDBImageBlob();
         btnCompras = new javax.swing.JButton();
@@ -511,7 +522,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnsairve = new javax.swing.JButton();
         NFE = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         txtPedidoNfe = new javax.swing.JTextField();
         jLabel94 = new javax.swing.JLabel();
@@ -660,6 +670,9 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryBuscaCli.setJDBConnection(DBCon);
         QueryBuscaCli.setSQL("");
+
+        QueryNFE.setJDBConnection(DBCon);
+        QueryNFE.setSQL("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOOD SOFT");
@@ -4209,13 +4222,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel50.setText("Exportação TXT para emissão da NF-e");
 
-        jButton1.setText("Gerar TXT de Teste");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButton3.setText("Gerar TXT do Pedido de Venda");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -4239,11 +4245,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addGroup(NFELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPedidoNfe, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel94)
-                            .addComponent(jButton3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NFELayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)))
+                            .addComponent(jButton3))))
                 .addContainerGap(863, Short.MAX_VALUE))
         );
         NFELayout.setVerticalGroup(
@@ -4257,9 +4259,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(txtPedidoNfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(403, Short.MAX_VALUE))
         );
 
         PaneVendas.addTab("NF-e", NFE);
@@ -5067,25 +5067,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDBRadioButton1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- try {  
-            // Gravando no arquivo TXT  
-            File arquivo;  
-  
-            arquivo = new File("TXT/NFE.txt");  
-            FileOutputStream fos = new FileOutputStream(arquivo);  
-            String texto = "NOTA FISCAL TESTE 123"+" | "+"teste"
-                         + System.getProperty("line.separator")
-                         + "LINHA 2 TESTE";  
-            fos.write(texto.getBytes());  
-            fos.close();  
-  
-        }  
-        catch (Exception ee) {  
-            ee.printStackTrace();  
-        }         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jDBTextField125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBTextField125ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jDBTextField125ActionPerformed
@@ -5764,7 +5745,92 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnfinalizaitensActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+            
+        
+        QueryNFE.setSQL("Select * from estab E,vecadped V,veiteped I,clifortr C,escadpro P where\n" +
+                        "V.id_pedido = 1 and\n" +
+                        "V.id_pedido = I.id_pedido and\n" +
+                        "C.idclifor = V.id_cliente and\n" +
+                        "C.idclifor = V.id_transportador and\n" +
+                        "P.idproduto = I.ESCADPRO_idproduto");
+        
+        
+        try {  
+            // Gravando no arquivo TXT  
+            File arquivo;  
+  
+            arquivo = new File("TXT/NFE.txt");  
+            FileOutputStream fos = new FileOutputStream(arquivo);  
+            String texto = "NOTA FISCAL|1|"
+                         + System.getProperty("line.separator")
+                         + "A|2.00|NFe|"
+                         + System.getProperty("line.separator")+
+                         "B|41||VENDAS PRODUCAO ESTABELECIMENTO                            |0|55|"+txtSerie+"|"+txtNf+"|"+txtDataemissao+"|"+txtDatasaida+"|"+txtHoraSaida+"|1|4126306|1|1||1|1|3|2.2.14|"
+                         + System.getProperty("line.separator")+
+                         "C|"+XNome+"|"+XFantasia+"|"+IE+"|"+IEST+"|"+IM+"|"+CNAE+"|"+CRT+"|2014-10-31|"
+                         + System.getProperty("line.separator")+
+                         "C02|"+CNPJ+"|"
+                         + System.getProperty("line.separator")+
+                         "C05|"+XLgr+"|"+Nro+"|"+Cpl+"|"+Bairro+"|"+CMun+"|"+XMun+"|"+UF+"|"+CEP+"|1058|BRASIL|"+fone+"|"
+                         + System.getProperty("line.separator")+
+                         "E|"+razaoCliente+"|"+IECliente+"||"+emailCliente+"|"
+                         + System.getProperty("line.separator")+
+                         "E02|"+CNPJCli+"|"
+                         + System.getProperty("line.separator")+
+                         "E05|"+LogrCli+"|"+NroCli+"||"+BairroCli+"|"+codMunCli+"|"+MunCli+"|"+UFCli+"|"+CEPCli+"|1058|BRASIL|"+foneCli+"|"
+                         + System.getProperty("line.separator")+ 
+                         "H|"+nItem+"||"
+                         + System.getProperty("line.separator")+
+                         "I|"+codProd+"||"+descPro+"|"+NCM+"||"+CFOP+"|"+UnidMed+"|"+Qtde+"|"+vlrUnit+"|"+vlrProd+"||"+UnidTrib+"|"+QtdeTrib+"|"+vlrUnitTrib+"|||||1|||"
+                         + System.getProperty("line.separator")+     
+                         "M||"
+                         + System.getProperty("line.separator")+
+                         "N|"
+                         + System.getProperty("line.separator")+
+                         "N07|0|51|3|0.00|0.00|0.00|0.00|"
+                         + System.getProperty("line.separator")+
+                         "O|||||999|"
+                         + System.getProperty("line.separator")+
+                         "O08|53|"
+                         + System.getProperty("line.separator")+
+                         "Q|"
+                         + System.getProperty("line.separator")+
+                         "Q02|01|763.75|1.65|12.60|"
+                         + System.getProperty("line.separator")+
+                         "S|"
+                         + System.getProperty("line.separator")+
+                         "S02|01|763.75|7.60|58.05|"
+                         + System.getProperty("line.separator")+
+                         "W|"
+                         + System.getProperty("line.separator")+
+                         "W02|||||763.75||||||12.60|58.05||763.75||"
+                         + System.getProperty("line.separator")+
+                         "X|1|"
+                         + System.getProperty("line.separator")+
+                         "X03|"+RazaoTransp+"|"+IETransp+"|"+LogrTransp+"|"+UFTransp+"|"+CidadeTransp+"|"
+                         + System.getProperty("line.separator")+
+                         "X04|"+CNPJTransp+"|"
+                         + System.getProperty("line.separator")+
+                         "X18|"+Placa+"|"+UFPlaca+"||"
+                         + System.getProperty("line.separator")+
+                         "X26|0|TON.|||16.250|16.250|"
+                         + System.getProperty("line.separator")+
+                         "Y|"
+                         + System.getProperty("line.separator")+
+                         "Y02|"+NFat+"|"+VlrOrig+"||"+VlrLiq+"|"
+                         + System.getProperty("line.separator")+
+                         "Y07|"+nDup+"|"+dataVenc+"|"+VlrDup+"|"
+                         + System.getProperty("line.separator")+
+                         "Z||Texto Legal:"+"ICMS DIFERIDO CONFORME ARTIGO 107, ITEM 74 DO DECRETO 6.080/2012 DO RICMS/PR." + "N. SRA DE FATIMA  ROMANEIO 4935  CONTROL. PESO 026531-|"
+
+                    ;  
+            fos.write(texto.getBytes());  
+            fos.close();  
+  
+        }  
+        catch (Exception ee) {  
+            ee.printStackTrace();  
+        }   
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void atualizaElementos(){
@@ -5847,6 +5913,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QueryInsereEst;
     private lib.jdb.jdbquery.JDBQuery QueryIteOP;
     private lib.jdb.jdbquery.JDBQuery QueryItePedRec;
+    private lib.jdb.jdbquery.JDBQuery QueryNFE;
     private lib.jdb.jdbquery.JDBQuery QueryOP;
     private lib.jdb.jdbquery.JDBQuery QueryPedRec;
     private lib.jdb.jdbquery.JDBQuery QueryPedido;
@@ -5927,7 +5994,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField idforrecN;
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrec;
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrecN;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
