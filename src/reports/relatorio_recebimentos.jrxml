@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_recebimentos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9b58155-709f-43de-aee4-905af5f438a3">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="8"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#C3CFD9">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FCFF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="recebimentos" uuid="e2f08579-03f9-4a41-a455-c6fbaeed3410">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     *,
+     cpcadrec.`data_cad` AS cpcadrec_data_cad,
+     cpcadrec.`data_rec` AS cpcadrec_data_rec,
+     cpcadrec.`id_fornecedor` AS cpcadrec_id_fornecedor,
+     clifortr.`razao` AS clifortr_razao,
+     cpcadrec.`nota_fiscal` AS cpcadrec_nota_fiscal,
+     cpcadrec.`serie` AS cpcadrec_serie,
+     cpcadrec.`vlr_merc` AS cpcadrec_vlr_merc,
+     cpcadrec.`vlr_frete` AS cpcadrec_vlr_frete,
+     cpcadrec.`vlr_iss` AS cpcadrec_vlr_iss,
+     cpcadrec.`vlr_ipi` AS cpcadrec_vlr_ipi,
+     cpcadrec.`vlr_icms` AS cpcadrec_vlr_icms,
+     cpcadrec.`vlr_total` AS cpcadrec_vlr_total
+FROM
+     `clifortr` clifortr INNER JOIN `cpcadrec` cpcadrec ON clifortr.`idclifor` = cpcadrec.`id_fornecedor`
+     INNER JOIN `usuario` usuario ON clifortr.`id_usuario` = usuario.`id_usuario`
+     AND usuario.`id_usuario` = cpcadrec.`id_usuario`]]>
+		</queryString>
+		<field name="cpcadrec_data_rec" class="java.sql.Date"/>
+		<field name="cpcadrec_data_cad" class="java.sql.Date"/>
+		<field name="idclifor" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="clifortr_razao" class="java.lang.String"/>
+		<field name="cpcadrec_nota_fiscal" class="java.lang.String"/>
+		<field name="cpcadrec_serie" class="java.lang.String"/>
+		<field name="cpcadrec_vlr_merc" class="java.lang.Double"/>
+		<field name="cpcadrec_vlr_frete" class="java.lang.Double"/>
+		<field name="cpcadrec_vlr_iss" class="java.lang.Double"/>
+		<field name="cpcadrec_vlr_ipi" class="java.lang.Double"/>
+		<field name="cpcadrec_vlr_icms" class="java.lang.Double"/>
+		<field name="cpcadrec_vlr_total" class="java.lang.Double"/>
+		<field name="nome" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<group name="cpcadrec_data_cad">
+			<groupExpression><![CDATA[$F{cpcadrec_data_cad}]]></groupExpression>
+		</group>
+		<group name="clifortr_razao">
+			<groupExpression><![CDATA[$F{clifortr_razao}]]></groupExpression>
+		</group>
+		<group name="cpcadrec_nota_fiscal">
+			<groupExpression><![CDATA[$F{cpcadrec_nota_fiscal}]]></groupExpression>
+		</group>
+		<group name="cpcadrec_vlr_total">
+			<groupExpression><![CDATA[$F{cpcadrec_vlr_total}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     cpcadrec.`data_cad` AS cpcadrec_data_cad,
+     cpcadrec.`data_rec` AS cpcadrec_data_rec,
+     cpcadrec.`nota_fiscal` AS cpcadrec_nota_fiscal,
+     cpcadrec.`serie` AS cpcadrec_serie,
+     cpcadrec.`vlr_merc` AS cpcadrec_vlr_merc,
+     cpcadrec.`vlr_icms` AS cpcadrec_vlr_icms,
+     cpcadrec.`vlr_ipi` AS cpcadrec_vlr_ipi,
+     cpcadrec.`vlr_iss` AS cpcadrec_vlr_iss,
+     cpcadrec.`vlr_frete` AS cpcadrec_vlr_frete,
+     cpcadrec.`vlr_total` AS cpcadrec_vlr_total,
+     cpcadrec.`id_pedido` AS cpcadrec_id_pedido,
+     cpcadrec.`id_usuario` AS cpcadrec_id_usuario,
+     cpcadrec.`id_fornecedor` AS cpcadrec_id_fornecedor
+FROM
+     `cpcadrec` cpcadrec]]>
+	</queryString>
+	<field name="id_fornecedor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_pedido" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nota_fiscal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serie" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vlr_merc" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vlr_frete" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vlr_iss" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vlr_ipi" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vlr_icms" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vlr_total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_rec" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_cad" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpcadrec_data_cad" class="java.sql.Date"/>
+	<field name="cpcadrec_data_rec" class="java.sql.Date"/>
+	<field name="cpcadrec_nota_fiscal" class="java.lang.String"/>
+	<field name="cpcadrec_serie" class="java.lang.String"/>
+	<field name="cpcadrec_vlr_merc" class="java.lang.Double"/>
+	<field name="cpcadrec_vlr_icms" class="java.lang.Double"/>
+	<field name="cpcadrec_vlr_ipi" class="java.lang.Double"/>
+	<field name="cpcadrec_vlr_iss" class="java.lang.Double"/>
+	<field name="cpcadrec_vlr_frete" class="java.lang.Double"/>
+	<field name="cpcadrec_vlr_total" class="java.lang.Double"/>
+	<field name="cpcadrec_id_pedido" class="java.lang.Integer"/>
+	<field name="cpcadrec_id_usuario" class="java.lang.Integer"/>
+	<field name="cpcadrec_id_fornecedor" class="java.lang.Integer"/>
+	<group name="data_rec">
+		<groupExpression><![CDATA[$F{data_rec}]]></groupExpression>
+	</group>
+	<group name="nota_fiscal">
+		<groupExpression><![CDATA[$F{nota_fiscal}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="261" y="12" width="273" height="38" uuid="44e64364-b05c-4b94-a98c-3cb05418d142"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Lato" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Recebimentos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="603" y="7" width="199" height="20" uuid="e8f8e8da-b8de-4704-9566-57d5f66011c5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="603" y="7" width="199" height="20" uuid="e8f8e8da-b8de-4704-9566-57d5f66011c5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="802" height="125" uuid="50eb700c-089f-4e54-aa98-f28085c16ea5"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="recebimentos" uuid="ff16f071-b8b1-455a-a281-d613b430b23a">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="79" uuid="ff1cc7b5-afd8-4644-906b-22c031ad66a8">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="6" y="0" width="66" height="30" uuid="5f8f9d84-5401-42c8-871e-2703154f379c"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[Data de Recebimento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="6" y="0" width="66" height="20" uuid="7318ed40-21ad-44b3-87d9-67ee5dc86fa6"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_data_rec}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="67" uuid="994959cd-7ec7-4046-b660-da1825e59e67">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="55" height="30" uuid="a826798d-fd6e-48a6-9a57-18113e20b8c0"/>
+								<textElement textAlignment="Center"/>
+								<text><![CDATA[Data de Entrada]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="55" height="20" uuid="6ca4e363-a7b0-4af6-b856-1c4a61b94e85"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_data_cad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="5159bd7f-5590-4928-8b7d-28aefafc896f">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="756dd6af-3aa6-46b5-939e-4bf22fa1b8e2"/>
+								<text><![CDATA[idclifor]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="e6cef4a3-01e1-49b0-bb6a-217330d49a26"/>
+								<textFieldExpression><![CDATA[$F{idclifor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="582641a5-1bb1-46cb-b771-36d233e349fb">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="a99748f1-0ef6-4452-99cb-4314f7089310"/>
+								<text><![CDATA[clifortr_razao]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="521da7d0-ab61-404b-9478-378fb0810547"/>
+								<textFieldExpression><![CDATA[$F{clifortr_razao}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="61738b0e-3985-408e-bda7-cdfd4620abc9">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="472fb0e2-43fb-4fee-bd91-aa4dd7d858ef"/>
+								<text><![CDATA[cpcadrec_nota_fiscal]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="43e1f03b-98d2-4900-aa29-cbee57222b96"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_nota_fiscal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="98a887fb-6848-4680-ba66-52b328ebcd22">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="42ab15c9-078b-4b70-9173-ca0c1919ed75"/>
+								<text><![CDATA[cpcadrec_serie]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="43781217-a152-426b-bfec-9823c2d026e8"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_serie}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="eb3da8bb-b9c2-4ebd-9122-dc9b0ddcae71">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="a260f0dd-5ec0-4fa2-969e-ff3710157306"/>
+								<text><![CDATA[cpcadrec_vlr_merc]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a5d59dc4-f1e3-46aa-81d4-f75adec04fab"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_vlr_merc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="1d4daae1-8a38-44a5-abd3-cc38438f6ecf">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="a35ad0e6-9c34-416d-a348-225de4741f2d"/>
+								<text><![CDATA[cpcadrec_vlr_frete]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="f3d8039b-3c9c-4984-8693-59dba0fc0b71"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_vlr_frete}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b154ba99-a4f1-47fe-9360-34366097f839">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="236193fc-c6de-419d-ba3d-79aeec903a1f"/>
+								<text><![CDATA[cpcadrec_vlr_iss]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="afd6d7ee-f330-412d-8c1f-70db279fc905"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_vlr_iss}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a4d3d034-d9ba-48dd-8179-15ee264a6edb">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="f440d33b-5e63-4c0a-a115-a77fe100a7c5"/>
+								<text><![CDATA[cpcadrec_vlr_ipi]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="9eec7c70-e30d-45fc-b6ed-1f0b506dd4b2"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_vlr_ipi}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="597f93a8-4791-455f-a12c-596ba192bd5c">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0c492372-5c13-4e37-8497-855f29f5c40e"/>
+								<text><![CDATA[cpcadrec_vlr_icms]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="b7624509-3e02-4671-9526-b552d3130247"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_vlr_icms}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="67d72221-75c0-42b5-8bde-95eb506d364f">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5a3fd7b2-a972-4ddf-af6e-1cbefb1ddc92"/>
+								<text><![CDATA[cpcadrec_vlr_total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="38f73412-5760-492b-902b-88f750650112"/>
+								<textFieldExpression><![CDATA[$F{cpcadrec_vlr_total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="c2c804e0-7201-4299-830b-9045ef1a9994">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d49efa65-f8cc-489e-b2da-d1b417970758"/>
+								<text><![CDATA[nome]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="ae75805a-30b3-4781-ab3e-2c2ba34721ed"/>
+								<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
