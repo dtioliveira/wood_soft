@@ -97,51 +97,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         PaneCompras = new javax.swing.JTabbedPane();
-        frmFornecedor = new javax.swing.JPanel();
-        btnCancelCad1 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
-        btnDeleteCad1 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
-        btnNewCad1 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
-        jDBButtonSave1 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
-        jLabel15 = new javax.swing.JLabel();
-        jDBTextField13 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        txt_id_user_cad = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField16 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField17 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        txtCnpjCad = new lib.jdb.control.jdbtextfield.JDBTextField();
-        txtCpfCad = new lib.jdb.control.jdbtextfield.JDBTextField();
-        txtInsEstCad = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField21 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField22 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField25 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField26 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField28 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField29 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField30 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBLabelCount2 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount3 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount5 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount6 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount7 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount8 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount9 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount10 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount11 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount14 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount15 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount16 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount17 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount18 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount19 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount20 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jDBLabelCount21 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        jButton11 = new javax.swing.JButton();
-        jDBComboBox1 = new lib.jdb.control.jdbcombobox.JDBComboBox();
-        cboxTipoPessoa = new lib.jdb.control.jdbcombobox.JDBComboBox();
-        jDBComboBox3 = new lib.jdb.control.jdbcombobox.JDBComboBox();
-        jDBTextField127 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jLabel77 = new javax.swing.JLabel();
-        btnProxCad1 = new lib.jdb.control.jdbbuttonnext.JDBButtonNext();
-        btnAntCad1 = new lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious();
         frmPedido = new javax.swing.JPanel();
         id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         txtidforn = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -229,6 +184,49 @@ public class frmPrincipal extends javax.swing.JFrame {
         idpedrecN = new lib.jdb.control.jdbtextfield.JDBTextField();
         frmRelComp = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
+        frmFornecedor = new javax.swing.JPanel();
+        btnCancelCad1 = new lib.jdb.control.jdbbuttoncancel.JDBButtonCancel();
+        btnDeleteCad1 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
+        btnNewCad1 = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
+        jDBButtonSave1 = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
+        jLabel15 = new javax.swing.JLabel();
+        txtIdFornecedor = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txt_id_user_cad = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtRazaoCad = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField17 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtCpfCad = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtInsEstCad = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField21 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField22 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField25 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField26 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField28 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField29 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBTextField30 = new lib.jdb.control.jdbtextfield.JDBTextField();
+        jDBLabelCount2 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount3 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount5 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount6 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount7 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount8 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount9 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount10 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount11 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount14 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount15 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount16 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount17 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount18 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount19 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount20 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jDBLabelCount21 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
+        jButton11 = new javax.swing.JButton();
+        jDBComboBox1 = new lib.jdb.control.jdbcombobox.JDBComboBox();
+        cboxTipoPessoa = new lib.jdb.control.jdbcombobox.JDBComboBox();
+        jDBComboBox3 = new lib.jdb.control.jdbcombobox.JDBComboBox();
+        btnProxCad1 = new lib.jdb.control.jdbbuttonnext.JDBButtonNext();
+        btnAntCad1 = new lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious();
+        txtCnpjCad = new javax.swing.JFormattedTextField();
         PaneEstoque = new javax.swing.JTabbedPane();
         frmGrupoPro = new javax.swing.JPanel();
         jDBTextField50 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -599,6 +597,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryFornecedor.setJDBConnection(DBCon);
         QueryFornecedor.setSQL("Select * from CLIFORTR where tipo = 'Fornecedor'");
+        QueryFornecedor.setSaveManually(true);
+        QueryFornecedor.addSaveManuallyEventListener(new lib.jdb.jdbquery.event.SaveManuallyEventListener() {
+            public void onSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {
+                QueryFornecedorOnSaveManually(evt);
+            }
+        });
 
         QueryPedidoItem.setJDBConnection(DBCon);
         QueryPedidoItem.setSQL("select * from CPITEPED");
@@ -781,346 +785,6 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton6)
                 .addGap(23, 23, 23))
         );
-
-        btnCancelCad1.setJDBQuery(QueryFornecedor);
-        btnCancelCad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelCad1ActionPerformed(evt);
-            }
-        });
-
-        btnDeleteCad1.setJDBQuery(QueryFornecedor);
-        btnDeleteCad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteCad1ActionPerformed(evt);
-            }
-        });
-
-        btnNewCad1.setJDBQuery(QueryFornecedor);
-        btnNewCad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewCad1ActionPerformed(evt);
-            }
-        });
-
-        jDBButtonSave1.setJDBQuery(QueryFornecedor);
-        jDBButtonSave1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBButtonSave1ActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
-        jLabel15.setText("Cadastro de Fornecedores");
-
-        jDBTextField13.setJDBQuery(QueryFornecedor);
-        jDBTextField13.setEnabled(false);
-        jDBTextField13.setFieldName("idclifor");
-
-        txt_id_user_cad.setJDBQuery(QueryFornecedor);
-        txt_id_user_cad.setEnabled(false);
-        txt_id_user_cad.setFieldName("id_usuario");
-
-        jDBTextField16.setJDBQuery(QueryFornecedor);
-        jDBTextField16.setFieldName("razao");
-
-        jDBTextField17.setJDBQuery(QueryFornecedor);
-        jDBTextField17.setFieldName("fantasia");
-
-        txtCnpjCad.setJDBQuery(QueryFornecedor);
-        txtCnpjCad.setFieldName("cnpj");
-        txtCnpjCad.setMaxLength(new java.lang.Integer(14));
-
-        txtCpfCad.setJDBQuery(QueryFornecedor);
-        txtCpfCad.setFieldName("cpf");
-
-        txtInsEstCad.setJDBQuery(QueryFornecedor);
-        txtInsEstCad.setFieldName("inscEst");
-
-        jDBTextField21.setJDBQuery(QueryFornecedor);
-        jDBTextField21.setFieldName("endereco");
-
-        jDBTextField22.setJDBQuery(QueryFornecedor);
-        jDBTextField22.setFieldName("bairro");
-
-        jDBTextField25.setJDBQuery(QueryFornecedor);
-        jDBTextField25.setFieldName("email");
-
-        jDBTextField26.setJDBQuery(QueryFornecedor);
-        jDBTextField26.setFieldName("telefone");
-
-        jDBTextField28.setJDBQuery(QueryFornecedor);
-        jDBTextField28.setFieldName("contato");
-
-        jDBTextField29.setJDBQuery(QueryFornecedor);
-        jDBTextField29.setFieldName("cep");
-        jDBTextField29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDBTextField29ActionPerformed(evt);
-            }
-        });
-
-        jDBTextField30.setJDBQuery(QueryFornecedor);
-        jDBTextField30.setFieldName("cidade");
-
-        jDBLabelCount2.setText("ID Fornecedor");
-
-        jDBLabelCount3.setText("Pessoa");
-
-        jDBLabelCount5.setText("Razão");
-
-        jDBLabelCount6.setText("Fantasia");
-
-        jDBLabelCount7.setText("CNPJ");
-
-        jDBLabelCount8.setText("CPF");
-
-        jDBLabelCount9.setText("Inscrição Estadual");
-
-        jDBLabelCount10.setText("Endereço");
-
-        jDBLabelCount11.setText("Bairro");
-
-        jDBLabelCount14.setText("Telefone");
-
-        jDBLabelCount15.setText("E-mail");
-
-        jDBLabelCount16.setText("Situação");
-
-        jDBLabelCount17.setText("Nome Contato");
-
-        jDBLabelCount18.setText("CEP");
-
-        jDBLabelCount19.setText("Cidade");
-
-        jDBLabelCount20.setText("UF");
-
-        jDBLabelCount21.setText("ID Usuário");
-
-        jButton11.setText("Sair");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        jDBComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MG", "MS", "MT", "PE", "PR", "RJ", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
-        jDBComboBox1.setJDBQuery(QueryFornecedor);
-        jDBComboBox1.setFieldName("uf");
-
-        cboxTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
-        cboxTipoPessoa.setJDBQuery(QueryFornecedor);
-        cboxTipoPessoa.setFieldName("pessoa");
-        cboxTipoPessoa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cboxTipoPessoaFocusLost(evt);
-            }
-        });
-
-        jDBComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo", "Inapto", " " }));
-        jDBComboBox3.setJDBQuery(QueryFornecedor);
-        jDBComboBox3.setFieldName("situacao");
-
-        jDBTextField127.setJDBQuery(QueryFornecedor);
-        jDBTextField127.setFieldName("pais");
-
-        jLabel77.setText("País");
-
-        btnProxCad1.setJDBQuery(QueryFornecedor);
-
-        btnAntCad1.setJDBQuery(QueryFornecedor);
-
-        javax.swing.GroupLayout frmFornecedorLayout = new javax.swing.GroupLayout(frmFornecedor);
-        frmFornecedor.setLayout(frmFornecedorLayout);
-        frmFornecedorLayout.setHorizontalGroup(
-            frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDBLabelCount14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDBTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnNewCad1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(79, 79, 79)
-                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDBLabelCount17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDBTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                .addComponent(jDBTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                                                .addComponent(txt_id_user_cad, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                .addComponent(jDBLabelCount15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jDBLabelCount21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jDBLabelCount10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jDBTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jDBLabelCount6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jDBLabelCount5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                        .addGap(246, 246, 246)
-                                                        .addComponent(jDBLabelCount11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                        .addGap(52, 52, 52)
-                                                        .addComponent(jDBLabelCount3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                                .addGap(349, 349, 349)
-                                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                    .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jDBTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jDBLabelCount19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                    .addComponent(jDBLabelCount18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(56, 56, 56)
-                                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                    .addComponent(jDBLabelCount20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                    .addComponent(jDBComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmFornecedorLayout.createSequentialGroup()
-                                                                .addGap(604, 604, 604)
-                                                                .addComponent(jDBTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGap(36, 36, 36)
-                                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel77)
-                                                            .addComponent(jDBTextField127, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(33, 33, 33)
-                                                .addComponent(jDBTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jDBLabelCount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                                .addGap(177, 177, 177)
-                                                .addComponent(btnCancelCad1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(74, 74, 74)
-                                                .addComponent(jDBButtonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(74, 74, 74)
-                                                .addComponent(btnDeleteCad1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(35, 35, 35)
-                                                .addComponent(btnAntCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(39, 39, 39)
-                                                .addComponent(btnProxCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(109, 109, 109))
-                            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmFornecedorLayout.createSequentialGroup()
-                                        .addGap(129, 129, 129)
-                                        .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDBLabelCount16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jDBTextField17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-                                    .addComponent(jDBTextField16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                                        .addComponent(jDBLabelCount9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtInsEstCad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap())
-                    .addGroup(frmFornecedorLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
-        );
-        frmFornecedorLayout.setVerticalGroup(
-            frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmFornecedorLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jButton11))
-                .addGap(76, 76, 76)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBLabelCount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBLabelCount5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtInsEstCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBLabelCount6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField127, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBLabelCount10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBLabelCount14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBLabelCount21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDBTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_id_user_cad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBButtonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeleteCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNewCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProxCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAntCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72))
-        );
-
-        PaneCompras.addTab("Fornecedores", frmFornecedor);
 
         frmPedido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1944,6 +1608,356 @@ public class frmPrincipal extends javax.swing.JFrame {
         );
 
         PaneCompras.addTab("Relatórios", frmRelComp);
+
+        btnCancelCad1.setJDBQuery(QueryFornecedor);
+        btnCancelCad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelCad1ActionPerformed(evt);
+            }
+        });
+
+        btnDeleteCad1.setJDBQuery(QueryFornecedor);
+        btnDeleteCad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteCad1ActionPerformed(evt);
+            }
+        });
+
+        btnNewCad1.setJDBQuery(QueryFornecedor);
+        btnNewCad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewCad1ActionPerformed(evt);
+            }
+        });
+
+        jDBButtonSave1.setJDBQuery(QueryFornecedor);
+        jDBButtonSave1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBButtonSave1ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
+        jLabel15.setText("Cadastro de Fornecedores");
+
+        txtIdFornecedor.setJDBQuery(QueryFornecedor);
+        txtIdFornecedor.setFieldName("idclifor");
+        txtIdFornecedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdFornecedorFocusLost(evt);
+            }
+        });
+
+        txt_id_user_cad.setJDBQuery(QueryFornecedor);
+        txt_id_user_cad.setEnabled(false);
+        txt_id_user_cad.setFieldName("id_usuario");
+
+        txtRazaoCad.setJDBQuery(QueryFornecedor);
+        txtRazaoCad.setFieldName("razao");
+        txtRazaoCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRazaoCadActionPerformed(evt);
+            }
+        });
+
+        jDBTextField17.setJDBQuery(QueryFornecedor);
+        jDBTextField17.setFieldName("fantasia");
+
+        txtCpfCad.setJDBQuery(QueryFornecedor);
+        txtCpfCad.setFieldName("cpf");
+
+        txtInsEstCad.setJDBQuery(QueryFornecedor);
+        txtInsEstCad.setFieldName("inscEst");
+
+        jDBTextField21.setJDBQuery(QueryFornecedor);
+        jDBTextField21.setFieldName("endereco");
+
+        jDBTextField22.setJDBQuery(QueryFornecedor);
+        jDBTextField22.setFieldName("bairro");
+
+        jDBTextField25.setJDBQuery(QueryFornecedor);
+        jDBTextField25.setFieldName("email");
+
+        jDBTextField26.setJDBQuery(QueryFornecedor);
+        jDBTextField26.setFieldName("telefone");
+
+        jDBTextField28.setJDBQuery(QueryFornecedor);
+        jDBTextField28.setFieldName("contato");
+
+        jDBTextField29.setJDBQuery(QueryFornecedor);
+        jDBTextField29.setFieldName("cep");
+        jDBTextField29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDBTextField29ActionPerformed(evt);
+            }
+        });
+
+        jDBTextField30.setJDBQuery(QueryFornecedor);
+        jDBTextField30.setFieldName("cidade");
+
+        jDBLabelCount2.setText("ID Fornecedor");
+
+        jDBLabelCount3.setText("Pessoa");
+
+        jDBLabelCount5.setText("Razão");
+
+        jDBLabelCount6.setText("Fantasia");
+
+        jDBLabelCount7.setText("CNPJ");
+
+        jDBLabelCount8.setText("CPF");
+
+        jDBLabelCount9.setText("Inscrição Estadual");
+
+        jDBLabelCount10.setText("Endereço");
+
+        jDBLabelCount11.setText("Bairro");
+
+        jDBLabelCount14.setText("Telefone");
+
+        jDBLabelCount15.setText("E-mail");
+
+        jDBLabelCount16.setText("Situação");
+
+        jDBLabelCount17.setText("Nome Contato");
+
+        jDBLabelCount18.setText("CEP");
+
+        jDBLabelCount19.setText("Cidade");
+
+        jDBLabelCount20.setText("UF");
+
+        jDBLabelCount21.setText("ID Usuário");
+
+        jButton11.setText("Sair");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jDBComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MG", "MS", "MT", "PE", "PR", "RJ", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
+        jDBComboBox1.setJDBQuery(QueryFornecedor);
+        jDBComboBox1.setFieldName("uf");
+
+        cboxTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
+        cboxTipoPessoa.setJDBQuery(QueryFornecedor);
+        cboxTipoPessoa.setFieldName("pessoa");
+        cboxTipoPessoa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboxTipoPessoaFocusLost(evt);
+            }
+        });
+
+        jDBComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo", "Inapto", " " }));
+        jDBComboBox3.setJDBQuery(QueryFornecedor);
+        jDBComboBox3.setFieldName("situacao");
+
+        btnProxCad1.setJDBQuery(QueryFornecedor);
+        btnProxCad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProxCad1ActionPerformed(evt);
+            }
+        });
+
+        btnAntCad1.setJDBQuery(QueryFornecedor);
+        btnAntCad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAntCad1ActionPerformed(evt);
+            }
+        });
+
+        try {
+            txtCnpjCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        javax.swing.GroupLayout frmFornecedorLayout = new javax.swing.GroupLayout(frmFornecedor);
+        frmFornecedor.setLayout(frmFornecedorLayout);
+        frmFornecedorLayout.setHorizontalGroup(
+            frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBLabelCount14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnNewCad1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(79, 79, 79)
+                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBLabelCount17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(32, 32, 32)
+                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                .addComponent(jDBTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                                                .addComponent(txt_id_user_cad, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                .addComponent(jDBLabelCount15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jDBLabelCount21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jDBLabelCount10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jDBLabelCount6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jDBLabelCount5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                        .addGap(246, 246, 246)
+                                                        .addComponent(jDBLabelCount11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                        .addGap(52, 52, 52)
+                                                        .addComponent(jDBLabelCount3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                            .addGap(349, 349, 349)
+                                                            .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(jDBTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(jDBLabelCount19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(jDBLabelCount18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addGap(56, 56, 56)
+                                                            .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jDBLabelCount20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jDBComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmFornecedorLayout.createSequentialGroup()
+                                                            .addGap(604, 604, 604)
+                                                            .addComponent(jDBTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGap(144, 144, 144))
+                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(33, 33, 33)
+                                                .addComponent(jDBTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jDBLabelCount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                                .addGap(177, 177, 177)
+                                                .addComponent(btnCancelCad1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(74, 74, 74)
+                                                .addComponent(jDBButtonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(74, 74, 74)
+                                                .addComponent(btnDeleteCad1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(35, 35, 35)
+                                                .addComponent(btnAntCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(39, 39, 39)
+                                                .addComponent(btnProxCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(109, 109, 109))
+                            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmFornecedorLayout.createSequentialGroup()
+                                        .addGap(129, 129, 129)
+                                        .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDBLabelCount16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jDBTextField17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                                    .addComponent(txtRazaoCad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                                        .addComponent(jDBLabelCount9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtInsEstCad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())
+                    .addGroup(frmFornecedorLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
+        );
+        frmFornecedorLayout.setVerticalGroup(
+            frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmFornecedorLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jButton11))
+                .addGap(76, 76, 76)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBLabelCount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBLabelCount5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRazaoCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInsEstCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBLabelCount6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBLabelCount10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBLabelCount14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBLabelCount21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDBTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id_user_cad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDBButtonSave1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNewCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProxCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAntCad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72))
+        );
+
+        PaneCompras.addTab("Fornecedores", frmFornecedor);
 
         PaneEstoque.setRequestFocusEnabled(false);
         PaneEstoque.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -4980,6 +4994,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnDeleteCad1.setEnabled(false);
         btnAntCad1.setEnabled(false);
         btnProxCad1.setEnabled(false);
+        txtIdFornecedor.setEnabled(false);
+        txtCnpjCad.setText("");
     }//GEN-LAST:event_btnNewCad1ActionPerformed
 
     private void id_pedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_pedidoFocusLost
@@ -5199,11 +5215,14 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void cboxTipoPessoaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboxTipoPessoaFocusLost
       if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
           txtCnpjCad.setEnabled(false);
+          txtCnpjCad.setText("");
           txtInsEstCad.setEnabled(false);
+          txtInsEstCad.setText("");
           txtCpfCad.setEnabled(true);
       }
       else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica")){
           txtCpfCad.setEnabled(false);
+          txtCpfCad.setText("");
           txtCnpjCad.setEnabled(true);
           txtInsEstCad.setEnabled(true);
       }
@@ -5911,6 +5930,94 @@ public class frmPrincipal extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void QueryFornecedorOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryFornecedorOnSaveManually
+      String msg = "";
+      
+      if(evt.isInserting()){
+        QueryFornecedor.setNewCurrentFieldValue("pais", "Brasil");
+        // Verifica de Razão Social foi preenchida
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("razao")){
+          msg += "O campo \"Razão Social\" não pode estar vazio!\n";
+        }
+        // Verifica de Nome fantasia foi preenchida
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("fantasia")){
+          msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n";
+        }
+        
+        //Verifica se é pessoa Fisica ou Jurídica
+        if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
+          if(QueryFornecedor.checkNewCurrentFieldEmpty("cpf")){
+            msg += "O campo \"CPF\" não pode estar vazio!\n";
+          }
+        }
+        else{
+          if(QueryFornecedor.checkNewCurrentFieldEmpty("cnpj")){
+            msg += "O campo \"CNPJ\" não pode estar vazio!\n";
+          }
+          if(QueryFornecedor.checkNewCurrentFieldEmpty("inscEst")){
+            msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n";
+          }
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("cidade")){
+          msg += "O campo \"Cidade\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("uf")){
+          msg += "O campo \"UF\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("endereco")){
+          msg += "O campo \"Endereco\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("bairro")){
+          msg += "O campo \"Bairro\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("cep")){
+          msg += "O campo \"CEP\" não pode estar vazio!\n";
+        }
+        
+        
+        
+        
+        
+      }
+      
+      if(evt.isEditing()){
+        
+      }
+      
+      if(msg.equals("")){
+        QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
+        QueryFornecedor.save();
+      }
+      else{
+          JOptionPane.showMessageDialog(this, msg);
+      }
+    }//GEN-LAST:event_QueryFornecedorOnSaveManually
+
+    private void txtRazaoCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazaoCadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRazaoCadActionPerformed
+
+    private void txtIdFornecedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFornecedorFocusLost
+      atualizaCnpjFornecedor();
+    }//GEN-LAST:event_txtIdFornecedorFocusLost
+
+    private void btnAntCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCad1ActionPerformed
+        atualizaCnpjFornecedor();
+    }//GEN-LAST:event_btnAntCad1ActionPerformed
+
+    private void btnProxCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCad1ActionPerformed
+        atualizaCnpjFornecedor();
+    }//GEN-LAST:event_btnProxCad1ActionPerformed
+
+    public void atualizaCnpjFornecedor(){
+        txtCnpjCad.setText("");
+        txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
+    }
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
       int rows = tableiteped.getRowCount();
@@ -6274,10 +6381,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField123;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField125;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField126;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField127;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField128;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField129;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField13;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField130;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField131;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField132;
@@ -6291,7 +6396,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField140;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField141;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField15;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField16;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField17;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField21;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField22;
@@ -6440,7 +6544,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
@@ -6480,10 +6583,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave salvaiteop;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave salvaop;
     private lib.jdb.control.jdbtable.JDBTable tableiteped;
-    private lib.jdb.control.jdbtextfield.JDBTextField txtCnpjCad;
+    private javax.swing.JFormattedTextField txtCnpjCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtCpfCad;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtIdFornecedor;
     private lib.jdb.control.jdbtextfield.JDBTextField txtInsEstCad;
     private javax.swing.JTextField txtPedidoNfe;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtRazaoCad;
     private javax.swing.JTextField txtValorFrete;
     private javax.swing.JTextField txtValorIcms;
     private javax.swing.JTextField txtValorIpi;
