@@ -1749,7 +1749,7 @@
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jDBLabelCount10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jDBTextField13" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                                          <Component id="txtIdFornecedor" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
                                                           <Component id="jDBLabelCount6" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jDBLabelCount5" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
@@ -1826,8 +1826,8 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtCnpjCad" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
-                                          <Component id="jDBLabelCount7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jDBLabelCount7" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCnpjCad" min="-2" pref="239" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1872,7 +1872,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jDBTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cboxTipoPessoa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1886,9 +1886,9 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtRazaoCad" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCnpjCad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCpfCad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtInsEstCad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCnpjCad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1991,14 +1991,16 @@
                 <Property name="text" type="java.lang.String" value="Cadastro de Fornecedores"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField13">
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtIdFornecedor">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryFornecedor"/>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="fieldName" type="java.lang.String" value="idclifor"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtIdFornecedorFocusLost"/>
+              </Events>
             </Component>
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txt_id_user_cad">
               <Properties>
@@ -2026,15 +2028,6 @@
                   <ComponentRef name="QueryFornecedor"/>
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="fantasia"/>
-              </Properties>
-            </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCnpjCad">
-              <Properties>
-                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryFornecedor"/>
-                </Property>
-                <Property name="fieldName" type="java.lang.String" value="cnpj"/>
-                <Property name="maxLength" type="java.lang.Integer" value="14"/>
               </Properties>
             </Component>
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCpfCad">
@@ -2278,11 +2271,24 @@
                   <ComponentRef name="QueryFornecedor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProxCad1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious" name="btnAntCad1">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryFornecedor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAntCad1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txtCnpjCad">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##.###.###/####-##" subtype="-1" type="5"/>
                 </Property>
               </Properties>
             </Component>
