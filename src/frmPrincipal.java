@@ -20,7 +20,8 @@ public class frmPrincipal extends javax.swing.JFrame {
               nItem,codProd,descPro,NCM,CFOP,UnidMed,Qtde,vlrUnit,vlrProd,UnidTrib,QtdeTrib,vlrUnitTrib,
               RazaoTransp,IETransp,LogrTransp,UFTransp,CidadeTransp,CNPJTransp,Placa,UFPlaca,
               NFat,VlrOrig,VlrLiq,
-              nDup,dataVenc,VlrDup;
+              nDup,dataVenc,VlrDup,textolegal;
+              
       
       
 
@@ -5745,21 +5746,96 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnfinalizaitensActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            
+        int cod_cliente=0,cod_produto=0,cod_transp=0;    
+        //Buscas da NFE
+        QueryVendas.setSQL("Select * from vecadped  where id_pedido ='"+txtPedidoNfe.getText()+"'");
+        QueryVendas.execQuery();
+        QueryVendasItem.setSQL("Select * from veiteped  where id_pedido ='"+txtPedidoNfe.getText()+"'");
+        QueryVendasItem.execQuery();
+        cod_cliente = QueryVendas.getCurrentFieldValueAsInteger("id_cliente");
+        QueryCliente.setSQL("select * from clifortr where tipo = 'Cliente' and idclifor='"+cod_cliente+"'");
+        QueryCliente.execQuery();
+        cod_produto = QueryVendasItem.getCurrentFieldValueAsInteger("ESCADPRO_idproduto");
+        QueryProduto.setSQL("Select * from escadpro where idproduto ='"+cod_produto+"'");
+        QueryProduto.execQuery();
+        cod_transp=QueryVendas.getCurrentFieldValueAsInteger("id_transportador");
+        QueryTransp.setSQL("select * from clifortr where tipo = 'Transportadora' and idclifor='"+cod_transp+"'");
+        QueryTransp.execQuery();
         
-        QueryNFE.setSQL("Select * from estab E,vecadped V,veiteped I,clifortr C,escadpro P where\n" +
-                        "V.id_pedido = 1 and\n" +
-                        "V.id_pedido = I.id_pedido and\n" +
-                        "C.idclifor = V.id_cliente and\n" +
-                        "C.idclifor = V.id_transportador and\n" +
-                        "P.idproduto = I.ESCADPRO_idproduto");
-        
+        //variaveis da nfe
+        //Dados da nota
+        txtSerie = QueryVendas.getCurrentFieldValue("serie");
+        txtNf = QueryVendas.getCurrentFieldValue("nota_fiscal");
+        txtDataemissao = QueryVendas.getCurrentFieldValue("data_emissao");
+        txtDatasaida = QueryVendas.getCurrentFieldValue("data_saida");
+        txtHoraSaida = QueryVendas.getCurrentFieldValue("hora_saida");
+        //Dados Estabelecimento
+        XNome = QueryEstabelecimento.getCurrentFieldValue("razao_social");
+        XFantasia = QueryEstabelecimento.getCurrentFieldValue("razao_social");
+        IE = QueryEstabelecimento.getCurrentFieldValue("ins_est");
+        IEST = "ALT";
+        IM = "ALT";
+        CNAE = "ALT";
+        CRT="ALT";
+        CNPJ= QueryEstabelecimento.getCurrentFieldValue("cnpj");
+        XLgr= QueryEstabelecimento.getCurrentFieldValue("endereco");
+        Nro = "ALT";
+        Cpl= "ALT";
+        Bairro= "ALT";
+        CMun = "ALT";
+        XMun= QueryEstabelecimento.getCurrentFieldValue("cidade");
+        UF = QueryEstabelecimento.getCurrentFieldValue("uf");
+        CEP = QueryEstabelecimento.getCurrentFieldValue("cep");
+        fone = QueryEstabelecimento.getCurrentFieldValue("telefone");
+        //Dados Cliente
+        razaoCliente = QueryCliente.getCurrentFieldValue("razao");
+        IECliente= QueryCliente.getCurrentFieldValue("inscEst");
+        emailCliente= QueryCliente.getCurrentFieldValue("e-mail");
+        CNPJCli= QueryCliente.getCurrentFieldValue("cnpj");
+        LogrCli = QueryCliente.getCurrentFieldValue("endereco");
+        NroCli = "ALT";
+        BairroCli=QueryCliente.getCurrentFieldValue("bairro");
+        codMunCli = "ALT";
+        MunCli = QueryCliente.getCurrentFieldValue("cidade");
+        UFCli = QueryCliente.getCurrentFieldValue("uf");
+        CEPCli= QueryCliente.getCurrentFieldValue("cep");
+        foneCli=QueryCliente.getCurrentFieldValue("telefone");
+        //Dados Item
+        nItem= String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("item"));
+        codProd=String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("ESCADPRO_idproduto"));
+        descPro=QueryProduto.getCurrentFieldValue("nome");
+        NCM=QueryProduto.getCurrentFieldValue("ncm");
+        CFOP=QueryProduto.getCurrentFieldValue("cfop");
+        UnidMed=QueryProduto.getCurrentFieldValue("unidMed");
+        Qtde=String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("qtde"));
+        vlrUnit=String.valueOf(QueryVendasItem.getCurrentFieldValueAsDouble("vlr_unit"));
+        vlrProd=String.valueOf(QueryVendasItem.getCurrentFieldValueAsDouble("vlr_total"));
+        UnidTrib="ALT";
+        QtdeTrib=String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("qtde"));
+        vlrUnitTrib=String.valueOf(QueryVendasItem.getCurrentFieldValueAsDouble("vlr_unit"));
+        //Dados de Transportadora
+        RazaoTransp=QueryTransp.getCurrentFieldValue("razao");
+        IETransp=QueryTransp.getCurrentFieldValue("inscEst");
+        LogrTransp=QueryTransp.getCurrentFieldValue("endereco");
+        UFTransp=QueryTransp.getCurrentFieldValue("uf");
+        CidadeTransp=QueryTransp.getCurrentFieldValue("cidade");
+        CNPJTransp=QueryTransp.getCurrentFieldValue("cnpj");
+        Placa= "ALT";
+        UFPlaca= "ALT";
+        NFat = QueryVendas.getCurrentFieldValue("nota_fiscal"); 
+        VlrOrig = "ALT";
+        VlrLiq = "ALT";
+        //Dados da duplicata
+        nDup="ALT";
+        dataVenc="ALT";
+        VlrDup="ALT";
+       // textolegal=QueryVendas.getCurrentFieldValue();
         
         try {  
             // Gravando no arquivo TXT  
             File arquivo;  
   
-            arquivo = new File("TXT/NFE.txt");  
+            arquivo = new File("TXT/NFE"+txtNf+".txt");  
             FileOutputStream fos = new FileOutputStream(arquivo);  
             String texto = "NOTA FISCAL|1|"
                          + System.getProperty("line.separator")
@@ -5821,16 +5897,18 @@ public class frmPrincipal extends javax.swing.JFrame {
                          + System.getProperty("line.separator")+
                          "Y07|"+nDup+"|"+dataVenc+"|"+VlrDup+"|"
                          + System.getProperty("line.separator")+
-                         "Z||Texto Legal:"+"ICMS DIFERIDO CONFORME ARTIGO 107, ITEM 74 DO DECRETO 6.080/2012 DO RICMS/PR." + "N. SRA DE FATIMA  ROMANEIO 4935  CONTROL. PESO 026531-|"
+                         "Z||Texto Legal:"+textolegal;
 
                     ;  
             fos.write(texto.getBytes());  
             fos.close();  
-  
+              JOptionPane.showMessageDialog(null,"Arquivo de TXT gerado!!");
         }  
         catch (Exception ee) {  
             ee.printStackTrace();  
         }   
+        
+      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void atualizaElementos(){
