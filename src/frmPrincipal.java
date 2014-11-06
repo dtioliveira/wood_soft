@@ -1743,6 +1743,17 @@ public class frmPrincipal extends javax.swing.JFrame {
         cboxTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
         cboxTipoPessoa.setJDBQuery(QueryFornecedor);
         cboxTipoPessoa.setFieldName("pessoa");
+        cboxTipoPessoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxTipoPessoaMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cboxTipoPessoaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                cboxTipoPessoaMouseReleased(evt);
+            }
+        });
         cboxTipoPessoa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cboxTipoPessoaFocusLost(evt);
@@ -1833,8 +1844,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                                                 .addComponent(jDBComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmFornecedorLayout.createSequentialGroup()
                                                             .addGap(604, 604, 604)
-                                                            .addComponent(jDBTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(144, 144, 144))
+                                                            .addComponent(jDBTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                             .addGroup(frmFornecedorLayout.createSequentialGroup()
                                                 .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(33, 33, 33)
@@ -4991,11 +5001,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProducaoActionPerformed
 
     private void btnNewCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCad1ActionPerformed
+        txtCnpjCad.setText("");
         btnDeleteCad1.setEnabled(false);
         btnAntCad1.setEnabled(false);
         btnProxCad1.setEnabled(false);
         txtIdFornecedor.setEnabled(false);
-        txtCnpjCad.setText("");
+        atualizaCnpjFornecedor();
     }//GEN-LAST:event_btnNewCad1ActionPerformed
 
     private void id_pedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_pedidoFocusLost
@@ -5213,6 +5224,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelCad1ActionPerformed
 
     private void cboxTipoPessoaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboxTipoPessoaFocusLost
+        bloqueiaCamposTipoPessoa();
+    }//GEN-LAST:event_cboxTipoPessoaFocusLost
+
+    public void bloqueiaCamposTipoPessoa(){
       if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
           txtCnpjCad.setEnabled(false);
           txtCnpjCad.setText("");
@@ -5231,8 +5246,7 @@ public class frmPrincipal extends javax.swing.JFrame {
           txtInsEstCad.setEnabled(false);
           txtCpfCad.setEnabled(false);
       }
-    }//GEN-LAST:event_cboxTipoPessoaFocusLost
-
+    }
     private void btncancelitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelitemActionPerformed
         btnbuscapro.setEnabled(false);
         //libera botoes itens
@@ -6013,6 +6027,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnProxCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCad1ActionPerformed
         atualizaCnpjFornecedor();
     }//GEN-LAST:event_btnProxCad1ActionPerformed
+
+    private void cboxTipoPessoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoaMouseClicked
+      bloqueiaCamposTipoPessoa();
+    }//GEN-LAST:event_cboxTipoPessoaMouseClicked
+
+    private void cboxTipoPessoaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoaMousePressed
+      bloqueiaCamposTipoPessoa();
+    }//GEN-LAST:event_cboxTipoPessoaMousePressed
+
+    private void cboxTipoPessoaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoaMouseReleased
+      bloqueiaCamposTipoPessoa();
+    }//GEN-LAST:event_cboxTipoPessoaMouseReleased
 
     public void atualizaCnpjFornecedor(){
         txtCnpjCad.setText("");

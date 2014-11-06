@@ -1784,7 +1784,6 @@
                                                               </Group>
                                                           </Group>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jDBTextField21" min="-2" pref="290" max="-2" attributes="0"/>
@@ -2246,6 +2245,9 @@
                 <Property name="fieldName" type="java.lang.String" value="pessoa"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMouseClicked"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMousePressed"/>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMouseReleased"/>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cboxTipoPessoaFocusLost"/>
               </Events>
             </Component>
