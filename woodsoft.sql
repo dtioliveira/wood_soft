@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Nov-2014 às 22:27
+-- Generation Time: 07-Nov-2014 às 01:41
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
   `cpf` varchar(14) DEFAULT NULL,
   `inscEst` varchar(9) DEFAULT NULL,
   `endereco` varchar(45) DEFAULT NULL,
+  `numero` varchar(11) NOT NULL,
   `bairro` varchar(45) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -45,19 +46,20 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
   `cidade` varchar(45) DEFAULT NULL,
   `uf` varchar(2) DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
-  `pais` varchar(25) NOT NULL
+  `pais` varchar(25) NOT NULL,
+  `cod_mun` varchar(7) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `clifortr`
 --
 
-INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`, `pais`) VALUES
-(2, 'Jurídica', 'Fornecedor', 'Empresa Teste', 'Empresa TESTE', '12.123.123/0009-12', '234.234.234-11', '', 'Rua Principal', 'Centro', '', '', '', '', '12.123-123', 'ItararÃ©', '', 2, ''),
-(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, ''),
-(7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2, ''),
-(8, 'Jurídica', 'Transportadora', 'Transportadora Rapidão', '', '', '', '', 'Rua São João 123', 'Centro', '(11)3453-3456', 'lucas@', 'Ativo', 'lucas', '12734-000', 'SÃƒÆ’Ã‚Â£o Paulo', 'SP', 2, ''),
-(9, 'Jurídica', 'Fornecedor', 'Nestlé', '', '1231245123', '', '', '', '', '', '', 'Ativo', '', '', 'São Paulo', 'SP', 2, 'Brasil');
+INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `numero`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`, `pais`, `cod_mun`) VALUES
+(2, 'Jurídica', 'Fornecedor', 'Empresa Teste', 'Empresa TESTE', '  .   .   /    -  ', '234.234.234-11', '', 'Rua Principal', '', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 2, '', ''),
+(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '', ''),
+(7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', '', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2, '', ''),
+(8, 'Jurídica', 'Transportadora', 'Transportadora Rapidão', '', '', '', '', 'Rua São João 123', '', 'Centro', '(11)3453-3456', 'lucas@', 'Ativo', 'lucas', '12734-000', 'SÃ£o Paulo', 'SP', 2, '', ''),
+(9, 'Jurídica', 'Fornecedor', 'Nestlé', '', '1231245123', '', '', '', '', '', '', '', 'Ativo', '', '', 'São Paulo', 'SP', 2, 'Brasil', '');
 
 -- --------------------------------------------------------
 
@@ -278,21 +280,28 @@ CREATE TABLE IF NOT EXISTS `estab` (
   `cnpj` varchar(45) DEFAULT NULL,
   `ins_est` varchar(45) DEFAULT NULL,
   `endereco` varchar(45) DEFAULT NULL,
+  `numero` varchar(11) NOT NULL,
+  `complemento` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
   `cidade` varchar(45) DEFAULT NULL,
+  `cod_Mun` int(11) NOT NULL,
   `uf` varchar(2) DEFAULT NULL,
   `cep` varchar(9) DEFAULT NULL,
   `telefone` varchar(13) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `data_cad` date DEFAULT NULL,
-  `data_alt` date DEFAULT NULL
+  `data_alt` date DEFAULT NULL,
+  `ins_Mun` varchar(15) NOT NULL,
+  `CNAE` varchar(7) NOT NULL,
+  `crt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `estab`
 --
 
-INSERT INTO `estab` (`id_estab`, `razao_social`, `cnpj`, `ins_est`, `endereco`, `cidade`, `uf`, `cep`, `telefone`, `email`, `data_cad`, `data_alt`) VALUES
-(0, 'WoodSoft Corporate', '23.123.123/0001-01', '123.123.1234', 'Rua São Pedro 1123', 'Itararé', 'SP', '18460-000', '15-1234-1234', 'woodsoft@woodsoft.com.br', '2001-01-01', '2014-11-01');
+INSERT INTO `estab` (`id_estab`, `razao_social`, `cnpj`, `ins_est`, `endereco`, `numero`, `complemento`, `bairro`, `cidade`, `cod_Mun`, `uf`, `cep`, `telefone`, `email`, `data_cad`, `data_alt`, `ins_Mun`, `CNAE`, `crt`) VALUES
+(0, 'WoodSoft Corporate', '23.123.123/0001-01', '123.123.1234', 'Rua São Pedro 1123', '0', '', '', 'Itararé', 0, 'SP', '18460-000', '15-1234-1234', 'woodsoft@woodsoft.com.br', '2001-01-01', '2014-11-01', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -394,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`, `compras`, `estoque`, `producao`, `vendas`, `administracao`) VALUES
-(1, 'teste', NULL, 'teste', 'teste', 1, 1, 0, 1, 0),
+(1, 'teste', NULL, 'teste', 'teste', 1, 0, 0, 1, 0),
 (2, 'lucas Henrique', 'TI', 'lucas', '123', 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -428,15 +437,17 @@ CREATE TABLE IF NOT EXISTS `vecadped` (
   `id_transportador` int(11) DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
-  `id_estab` int(11) NOT NULL
+  `id_estab` int(11) NOT NULL,
+  `placa_vei` varchar(10) NOT NULL,
+  `uf_vei` varchar(2) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `vecadped`
 --
 
-INSERT INTO `vecadped` (`id_pedido`, `data`, `transportador`, `vlr_mercadoria`, `vlr_iss`, `total`, `data_entrega`, `nota_fiscal`, `serie`, `data_emissao`, `data_saida`, `hora_saida`, `base_icms`, `vlr_icms`, `base_icms_subs`, `vlr_icms_subs`, `vlr_frete`, `vlr_seguro`, `desconto`, `desp_acessorias`, `vlr_ipi`, `id_transportador`, `id_usuario`, `id_cliente`, `id_estab`) VALUES
-(1, '2014-11-01', '', 50, 15, 550, '2014-11-02', '123', '1', '2014-11-01', '2014-11-01', NULL, 18, 13, 1, 1, 12, 13, 4, 3, 14, 8, 2, 7, 0);
+INSERT INTO `vecadped` (`id_pedido`, `data`, `transportador`, `vlr_mercadoria`, `vlr_iss`, `total`, `data_entrega`, `nota_fiscal`, `serie`, `data_emissao`, `data_saida`, `hora_saida`, `base_icms`, `vlr_icms`, `base_icms_subs`, `vlr_icms_subs`, `vlr_frete`, `vlr_seguro`, `desconto`, `desp_acessorias`, `vlr_ipi`, `id_transportador`, `id_usuario`, `id_cliente`, `id_estab`, `placa_vei`, `uf_vei`) VALUES
+(1, '2014-11-01', '', 50, 15, 550, '2014-11-02', '123', '1', '2014-11-01', '2014-11-01', NULL, 18, 13, 1, 1, 12, 13, 4, 3, 14, 8, 2, 7, 0, '', '');
 
 -- --------------------------------------------------------
 
