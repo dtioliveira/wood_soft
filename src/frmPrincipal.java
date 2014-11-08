@@ -1466,6 +1466,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtdataemi.setMaxSelectableDate(new java.util.Date(253370775684000L));
 
         btnBuscaPedido.setText("Buscar Pedido");
+        btnBuscaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaPedidoActionPerformed(evt);
+            }
+        });
 
         txtValorFrete.setEnabled(false);
         txtValorFrete.addActionListener(new java.awt.event.ActionListener() {
@@ -6502,6 +6507,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void id_pedidoNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pedidoNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_id_pedidoNActionPerformed
+
+    private void btnBuscaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaPedidoActionPerformed
+        new frmBuscaPedido().setVisible(true);
+    }//GEN-LAST:event_btnBuscaPedidoActionPerformed
 
     public void atualizaCnpjFornecedor(){
         txtCnpjCad.setText("");
