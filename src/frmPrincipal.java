@@ -50,6 +50,8 @@ public class frmPrincipal extends javax.swing.JFrame {
          
          //QueryPedidoItem.execQuery();
         // System.out.println(QueryPedido.getParameters().toString());
+        instrucaoTipoPessoa.setVisible(false);
+        txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
     }
 
 
@@ -144,6 +146,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel103 = new javax.swing.JLabel();
         jDBTextField16 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel104 = new javax.swing.JLabel();
+        instrucaoTipoPessoa = new javax.swing.JLabel();
         frmPedido = new javax.swing.JPanel();
         id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         txtidforn = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -1007,6 +1010,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jLabel104.setText("Numero");
 
+        instrucaoTipoPessoa.setText("Selecione Pessoa Física/Jurídica para habilitar os campos abaixo");
+
         javax.swing.GroupLayout frmFornecedorLayout = new javax.swing.GroupLayout(frmFornecedor);
         frmFornecedor.setLayout(frmFornecedorLayout);
         frmFornecedorLayout.setHorizontalGroup(
@@ -1102,7 +1107,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                                                 .addGap(50, 50, 50)
                                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jDBTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel103)))))
+                                                    .addComponent(jLabel103)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmFornecedorLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(instrucaoTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(50, 50, 50))))
                                     .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDBLabelCount2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(frmFornecedorLayout.createSequentialGroup()
@@ -1140,7 +1149,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboxTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDBComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instrucaoTipoPessoa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBLabelCount5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -5085,7 +5095,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 1165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PaneProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 1151, Short.MAX_VALUE)
+                .addComponent(PaneProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 1151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -5332,12 +5342,15 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProducaoActionPerformed
 
     private void btnNewCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCad1ActionPerformed
+        instrucaoTipoPessoa.setVisible(true);
         txtCnpjCad.setText("");
+        txtCnpjCad.setEnabled(false);
+        txtCpfCad.setEnabled(false);
+        txtInsEstCad.setEnabled(false);
         btnDeleteCad1.setEnabled(false);
         btnAntCad1.setEnabled(false);
         btnProxCad1.setEnabled(false);
         txtIdFornecedor.setEnabled(false);
-        atualizaCnpjFornecedor();
     }//GEN-LAST:event_btnNewCad1ActionPerformed
 
     private void id_pedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_pedidoFocusLost
@@ -5570,17 +5583,20 @@ public class frmPrincipal extends javax.swing.JFrame {
           txtInsEstCad.setEnabled(false);
           txtInsEstCad.setText("");
           txtCpfCad.setEnabled(true);
+          instrucaoTipoPessoa.setVisible(false);
       }
       else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica")){
           txtCpfCad.setEnabled(false);
           txtCpfCad.setText("");
           txtCnpjCad.setEnabled(true);
           txtInsEstCad.setEnabled(true);
+          instrucaoTipoPessoa.setVisible(false);
       }
       else{
           txtCnpjCad.setEnabled(false);
           txtInsEstCad.setEnabled(false);
           txtCpfCad.setEnabled(false);
+          instrucaoTipoPessoa.setVisible(true);
       }
     }
     private void btncancelitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelitemActionPerformed
@@ -6325,6 +6341,7 @@ public class frmPrincipal extends javax.swing.JFrame {
       
       if(evt.isInserting()){
         QueryFornecedor.setNewCurrentFieldValue("pais", "Brasil");
+        QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
         // Verifica de Razão Social foi preenchida
         if(QueryFornecedor.checkNewCurrentFieldEmpty("razao")){
           msg += "O campo \"Razão Social\" não pode estar vazio!\n";
@@ -6361,12 +6378,32 @@ public class frmPrincipal extends javax.swing.JFrame {
           msg += "O campo \"Endereco\" não pode estar vazio!\n";
         }
         
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("numero")){
+          msg += "O campo \"Número\" não pode estar vazio!\n";
+        }
+        
         if(QueryFornecedor.checkNewCurrentFieldEmpty("bairro")){
           msg += "O campo \"Bairro\" não pode estar vazio!\n";
         }
         
         if(QueryFornecedor.checkNewCurrentFieldEmpty("cep")){
           msg += "O campo \"CEP\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("cod_mun")){
+          msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("telefone")){
+          msg += "O campo \"Telefone\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("contato")){
+          msg += "O campo \"Nome Contato\" não pode estar vazio!\n";
+        }
+        
+        if(QueryFornecedor.checkNewCurrentFieldEmpty("email")){
+          msg += "O campo \"Email\" não pode estar vazio!\n";
         }
         
         
@@ -6452,7 +6489,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_id_pedidoNActionPerformed
 
     public void atualizaCnpjFornecedor(){
-        txtCnpjCad.setText("");
         txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
     }
     public void atualizaElementos(){
@@ -6617,6 +6653,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField idforrecN;
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrec;
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrecN;
+    private javax.swing.JLabel instrucaoTipoPessoa;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;

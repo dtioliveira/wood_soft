@@ -555,6 +555,11 @@
                                                           <Component id="jLabel103" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="instrucaoTipoPessoa" min="-2" pref="381" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <Component id="jDBTextField21" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
@@ -606,6 +611,7 @@
                           <Component id="txtIdFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cboxTipoPessoa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="instrucaoTipoPessoa" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1070,6 +1076,11 @@
             <Component class="javax.swing.JLabel" name="jLabel104">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Numero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="instrucaoTipoPessoa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Selecione Pessoa F&#xed;sica/Jur&#xed;dica para habilitar os campos abaixo"/>
               </Properties>
             </Component>
           </SubComponents>
