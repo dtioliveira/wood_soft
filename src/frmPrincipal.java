@@ -5674,6 +5674,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnnovorecActionPerformed
 
     private void btnexcluirrecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirrecActionPerformed
+       int nitem,aux,idprod;
+       double estoqueatu,qtdatu;
+        
         btnexcluirrec.setEnabled(false);
         btnsalvarrec.setEnabled(false);
         btncancelrec.setEnabled(false);
@@ -5684,6 +5687,28 @@ public class frmPrincipal extends javax.swing.JFrame {
         idpedrecN.setVisible(false);
         idforrec.setVisible(true);
         idpedrec.setVisible(true);
+        
+        //exclui itens
+        QueryVeItem.setSQL("select max(item) as uitem from cpiterec where id_pedido = '"+ idpedrec.getText()+"'");
+        QueryVeItem.execQuery();
+        nitem=QueryVeItem.getCurrentFieldValueAsInteger("uitem");
+   
+        for(aux=1;aux<=nitem;aux++){
+            QueryVeItem.setSQL("select * from cpiterec where id_pedido = '"+ idpedrec.getText()+"' and item='"+aux+"'");
+            QueryVeItem.execQuery();
+            //volta pro estoque
+            idprod=QueryVeItem.getCurrentFieldValueAsInteger("idproduto");
+            QueryAltEst.setSQL("select * from escadpro where idproduto ='"+idprod+"'");
+            QueryAltEst.execQuery();
+            estoqueatu = QueryAltEst.getCurrentFieldValueAsDouble("quantidade");
+            qtdatu = estoqueatu+QueryVeItem.getCurrentFieldValueAsDouble("qntde");
+            
+             QueryAltEst.edit();
+             QueryAltEst.setNewCurrentFieldValueAsDouble("quantidade", qtdatu);
+             QueryAltEst.save();
+             //deleta item
+            QueryVeItem.delete();
+        }
     }//GEN-LAST:event_btnexcluirrecActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -6031,7 +6056,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btncancelapedActionPerformed
 
     private void btnexcluirpedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirpedActionPerformed
-        //regra botoes
+        int nitem,aux,idprod;
+        double estoqueatu,qtdatu;
+
+//regra botoes
         btnnovoped.setEnabled(true);
         btnexcluirped.setEnabled(false);
         btnBuscaPedido.setEnabled(true);
@@ -6042,6 +6070,28 @@ public class frmPrincipal extends javax.swing.JFrame {
          //altera campos busca
         id_pedido.setVisible(true);
         id_pedidoN.setVisible(false);
+        
+        //exclui itens
+        QueryVeItem.setSQL("select max(num_item) as uitem from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
+        QueryVeItem.execQuery();
+        nitem=QueryVeItem.getCurrentFieldValueAsInteger("uitem");
+   
+        for(aux=1;aux<=nitem;aux++){
+            QueryVeItem.setSQL("select * from cpiteped where id_pedido = '"+ id_pedido.getText()+"' and num_item='"+aux+"'");
+            QueryVeItem.execQuery();
+            //volta pro estoque
+            idprod=QueryVeItem.getCurrentFieldValueAsInteger("idproduto");
+            QueryAltEst.setSQL("select * from escadpro where idproduto ='"+idprod+"'");
+            QueryAltEst.execQuery();
+            estoqueatu = QueryAltEst.getCurrentFieldValueAsDouble("quantidade");
+            qtdatu = estoqueatu+QueryVeItem.getCurrentFieldValueAsDouble("qntde");
+            
+             QueryAltEst.edit();
+             QueryAltEst.setNewCurrentFieldValueAsDouble("quantidade", qtdatu);
+             QueryAltEst.save();
+             //deleta item
+            QueryVeItem.delete();
+        }
     }//GEN-LAST:event_btnexcluirpedActionPerformed
 
     private void btnexcluiitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluiitemActionPerformed
@@ -6599,7 +6649,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btncancelaveActionPerformed
 
     private void btnexcluiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluiveActionPerformed
-        //regra botoes
+        int nitem,aux,idprod;
+        double estoqueatu,qtdatu;
+//regra botoes
         btnnovave.setEnabled(true);
         btncancelave.setEnabled(false);
         btnsalvave.setEnabled(false);
@@ -6608,6 +6660,28 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         txtidpedido.setEnabled(true);
         txtidpedidoN.setVisible(false);
+        
+        //exclui itens
+        QueryVeItem.setSQL("select max(item) as uitem from veiteped where id_pedido = '"+ txtidpedido.getText()+"'");
+        QueryVeItem.execQuery();
+        nitem=QueryVeItem.getCurrentFieldValueAsInteger("uitem");
+   
+        for(aux=1;aux<=nitem;aux++){
+            QueryVeItem.setSQL("select * from veiteped where id_pedido = '"+ txtidpedido.getText()+"' and item='"+aux+"'");
+            QueryVeItem.execQuery();
+            //volta pro estoque
+            idprod=QueryVeItem.getCurrentFieldValueAsInteger("ESCADPRO_idproduto");
+            QueryAltEst.setSQL("select * from escadpro where idproduto ='"+idprod+"'");
+            QueryAltEst.execQuery();
+            estoqueatu = QueryAltEst.getCurrentFieldValueAsDouble("quantidade");
+            qtdatu = estoqueatu+QueryVeItem.getCurrentFieldValueAsDouble("qtde");
+            
+             QueryAltEst.edit();
+             QueryAltEst.setNewCurrentFieldValueAsDouble("quantidade", qtdatu);
+             QueryAltEst.save();
+             //deleta item
+            QueryVeItem.delete();
+        }
     }//GEN-LAST:event_btnexcluiveActionPerformed
 
     private void btnsairveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsairveActionPerformed
