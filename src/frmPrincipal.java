@@ -50,7 +50,6 @@ public class frmPrincipal extends javax.swing.JFrame {
          //QueryPedidoItem.execQuery();
         // System.out.println(QueryPedido.getParameters().toString());
         instrucaoTipoPessoa.setVisible(false);
-        txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
     }
 
 
@@ -140,12 +139,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBComboBox3 = new lib.jdb.control.jdbcombobox.JDBComboBox();
         btnProxCad1 = new lib.jdb.control.jdbbuttonnext.JDBButtonNext();
         btnAntCad1 = new lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious();
-        txtCnpjCad = new javax.swing.JFormattedTextField();
         jDBTextField14 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel103 = new javax.swing.JLabel();
         jDBTextField16 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel104 = new javax.swing.JLabel();
         instrucaoTipoPessoa = new javax.swing.JLabel();
+        txtCnpjForn = new lib.jdb.control.jdbtextfield.JDBTextField();
         frmPedido = new javax.swing.JPanel();
         id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         txtidforn = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -829,6 +828,31 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        PaneCompras.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PaneComprasFocusLost(evt);
+            }
+        });
+        PaneCompras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PaneComprasMouseEntered(evt);
+            }
+        });
+
+        frmFornecedor.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                frmFornecedorMouseMoved(evt);
+            }
+        });
+        frmFornecedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                frmFornecedorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                frmFornecedorFocusLost(evt);
+            }
+        });
+
         btnCancelCad1.setJDBQuery(QueryFornecedor);
         btnCancelCad1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -999,12 +1023,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        try {
-            txtCnpjCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         jDBTextField14.setJDBQuery(QueryFornecedor);
         jDBTextField14.setFieldName("cod_mun");
 
@@ -1016,6 +1034,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel104.setText("Numero");
 
         instrucaoTipoPessoa.setText("Selecione Pessoa Física/Jurídica para habilitar os campos abaixo");
+
+        txtCnpjForn.setJDBQuery(QueryFornecedor);
+        txtCnpjForn.setFieldName("cnpj");
 
         javax.swing.GroupLayout frmFornecedorLayout = new javax.swing.GroupLayout(frmFornecedor);
         frmFornecedor.setLayout(frmFornecedorLayout);
@@ -1061,8 +1082,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                    .addComponent(txtCnpjForn, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1114,7 +1135,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                                     .addComponent(jDBTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel103)))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmFornecedorLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(343, 343, 343)
                                                 .addComponent(instrucaoTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(50, 50, 50))))
                                     .addComponent(jDBTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1167,7 +1188,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(txtRazaoCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtInsEstCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCnpjForn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBLabelCount6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1223,6 +1244,11 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         PaneCompras.addTab("Fornecedores", frmFornecedor);
 
+        frmPedido.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                frmPedidoMouseMoved(evt);
+            }
+        });
         frmPedido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 frmPedidoMouseClicked(evt);
@@ -5480,8 +5506,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnNewCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCad1ActionPerformed
         instrucaoTipoPessoa.setVisible(true);
-        txtCnpjCad.setText("");
-        txtCnpjCad.setEnabled(false);
+        txtCnpjForn.setEnabled(false);
         txtCpfCad.setEnabled(false);
         txtInsEstCad.setEnabled(false);
         btnDeleteCad1.setEnabled(false);
@@ -5516,11 +5541,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_id_pedidoFocusLost
 
     private void jDBButtonSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave1ActionPerformed
-        QueryFornecedor.setNewCurrentFieldValue("tipo", "Fornecedor");
-        QueryFornecedor.setNewCurrentFieldValue("id_usuario", usuario);
-        btnDeleteCad1.setEnabled(true);
-        btnAntCad1.setEnabled(true);
-        btnProxCad1.setEnabled(true);
+        
     }//GEN-LAST:event_jDBButtonSave1ActionPerformed
 
     private void txtanoopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtanoopActionPerformed
@@ -5707,6 +5728,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnDeleteCad1.setEnabled(true);
         btnAntCad1.setEnabled(true);
         btnProxCad1.setEnabled(true);
+        QueryFornecedor.last();
+        
     }//GEN-LAST:event_btnCancelCad1ActionPerformed
 
     private void cboxTipoPessoaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboxTipoPessoaFocusLost
@@ -5715,8 +5738,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     public void bloqueiaCamposTipoPessoa(){
       if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
-          txtCnpjCad.setEnabled(false);
-          txtCnpjCad.setText("");
+          txtCnpjForn.setEnabled(false);
           txtInsEstCad.setEnabled(false);
           txtInsEstCad.setText("");
           txtCpfCad.setEnabled(true);
@@ -5725,12 +5747,12 @@ public class frmPrincipal extends javax.swing.JFrame {
       else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica")){
           txtCpfCad.setEnabled(false);
           txtCpfCad.setText("");
-          txtCnpjCad.setEnabled(true);
+          txtCnpjForn.setEnabled(true);
           txtInsEstCad.setEnabled(true);
           instrucaoTipoPessoa.setVisible(false);
       }
       else{
-          txtCnpjCad.setEnabled(false);
+          txtCnpjForn.setEnabled(false);
           txtInsEstCad.setEnabled(false);
           txtCpfCad.setEnabled(false);
           instrucaoTipoPessoa.setVisible(true);
@@ -6543,7 +6565,6 @@ public class frmPrincipal extends javax.swing.JFrame {
       String razao = QueryFornecedor.getNewCurrentFieldValue("razao");
       String fantasia = QueryFornecedor.getNewCurrentFieldValue("fantasia");
       String cpf = QueryFornecedor.getNewCurrentFieldValue("cpf");
-      QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
       String cnpj = QueryFornecedor.getNewCurrentFieldValue("cnpj");
       String inscEst = QueryFornecedor.getNewCurrentFieldValue("inscEst");
       String cidade = QueryFornecedor.getNewCurrentFieldValue("cidade");
@@ -6635,8 +6656,14 @@ public class frmPrincipal extends javax.swing.JFrame {
       }
       
       if(msg.equals("")){
-        QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
-        QueryFornecedor.save();
+        QueryFornecedor.setNewCurrentFieldValue("tipo", "Fornecedor");
+        QueryFornecedor.setNewCurrentFieldValue("id_usuario", usuario);
+        if(QueryFornecedor.save()){
+          JOptionPane.showMessageDialog(this, "Registro salvo com sucesso!");
+          btnDeleteCad1.setEnabled(true);
+          btnAntCad1.setEnabled(true);
+          btnProxCad1.setEnabled(true);
+        }
       }
       else{
           JOptionPane.showMessageDialog(this, msg);
@@ -6648,15 +6675,15 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRazaoCadActionPerformed
 
     private void txtIdFornecedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFornecedorFocusLost
-      atualizaCnpjFornecedor();
+
     }//GEN-LAST:event_txtIdFornecedorFocusLost
 
     private void btnAntCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCad1ActionPerformed
-        atualizaCnpjFornecedor();
+
     }//GEN-LAST:event_btnAntCad1ActionPerformed
 
     private void btnProxCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCad1ActionPerformed
-        atualizaCnpjFornecedor();
+
     }//GEN-LAST:event_btnProxCad1ActionPerformed
 
     private void cboxTipoPessoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoaMouseClicked
@@ -6906,9 +6933,32 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void atualizaCnpjFornecedor(){
-        txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
-    }
+    private void frmFornecedorMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frmFornecedorMouseMoved
+      bloqueiaCamposTipoPessoa();
+
+    }//GEN-LAST:event_frmFornecedorMouseMoved
+
+    private void frmFornecedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_frmFornecedorFocusGained
+
+    }//GEN-LAST:event_frmFornecedorFocusGained
+
+    private void frmFornecedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_frmFornecedorFocusLost
+
+    }//GEN-LAST:event_frmFornecedorFocusLost
+
+    private void PaneComprasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PaneComprasMouseEntered
+      
+    }//GEN-LAST:event_PaneComprasMouseEntered
+
+    private void PaneComprasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PaneComprasFocusLost
+       
+    }//GEN-LAST:event_PaneComprasFocusLost
+
+    private void frmPedidoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frmPedidoMouseMoved
+        QueryFornecedor.cancel();
+    }//GEN-LAST:event_frmPedidoMouseMoved
+
+    
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
       int rows = tableiteped.getRowCount();
@@ -7515,7 +7565,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave salvaiteop;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave salvaop;
     private lib.jdb.control.jdbtable.JDBTable tableiteped;
-    private javax.swing.JFormattedTextField txtCnpjCad;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtCnpjForn;
     private lib.jdb.control.jdbtextfield.JDBTextField txtCpfCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtIdFornecedor;
     private lib.jdb.control.jdbtextfield.JDBTextField txtInsEstCad;

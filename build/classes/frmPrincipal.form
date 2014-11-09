@@ -421,10 +421,19 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JTabbedPane" name="PaneCompras">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="PaneComprasFocusLost"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PaneComprasMouseEntered"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="frmFornecedor">
+          <Events>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="frmFornecedorMouseMoved"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="frmFornecedorFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="frmFornecedorFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Fornecedores">
@@ -485,9 +494,9 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jDBLabelCount7" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtCnpjCad" min="-2" pref="239" max="-2" attributes="0"/>
+                                          <Component id="txtCnpjForn" min="-2" pref="255" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtCpfCad" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                           <Component id="jDBLabelCount8" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -556,7 +565,7 @@
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="343" max="-2" attributes="0"/>
                                                       <Component id="instrucaoTipoPessoa" min="-2" pref="381" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                                   </Group>
@@ -625,7 +634,7 @@
                           <Component id="txtRazaoCad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCpfCad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtInsEstCad" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCnpjCad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCnpjForn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1046,13 +1055,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAntCad1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtCnpjCad">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##.###.###/####-##" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField14">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1084,10 +1086,19 @@
                 <Property name="text" type="java.lang.String" value="Selecione Pessoa F&#xed;sica/Jur&#xed;dica para habilitar os campos abaixo"/>
               </Properties>
             </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCnpjForn">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryFornecedor"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cnpj"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="frmPedido">
           <Events>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="frmPedidoMouseMoved"/>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="frmPedidoMouseClicked"/>
           </Events>
           <Constraints>
