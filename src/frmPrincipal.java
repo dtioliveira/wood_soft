@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-
 public class frmPrincipal extends javax.swing.JFrame {
     static String usuario;
     //variaveis busca produto
@@ -235,6 +234,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         idpedrecN = new lib.jdb.control.jdbtextfield.JDBTextField();
         frmRelComp = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         PaneEstoque = new javax.swing.JTabbedPane();
         frmGrupoPro = new javax.swing.JPanel();
         jDBTextField50 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -2065,6 +2065,13 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Recebimento de Notas Fiscais");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout frmRelCompLayout = new javax.swing.GroupLayout(frmRelComp);
         frmRelComp.setLayout(frmRelCompLayout);
         frmRelCompLayout.setHorizontalGroup(
@@ -2073,13 +2080,19 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(995, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
+            .addGroup(frmRelCompLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         frmRelCompLayout.setVerticalGroup(
             frmRelCompLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frmRelCompLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jButton14)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(504, Short.MAX_VALUE))
         );
 
         PaneCompras.addTab("Relatórios", frmRelComp);
@@ -6527,82 +6540,98 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void QueryFornecedorOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryFornecedorOnSaveManually
       String msg = "";
+      String razao = QueryFornecedor.getNewCurrentFieldValue("razao");
+      String fantasia = QueryFornecedor.getNewCurrentFieldValue("fantasia");
+      String cpf = QueryFornecedor.getNewCurrentFieldValue("cpf");
+      QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
+      String cnpj = QueryFornecedor.getNewCurrentFieldValue("cnpj");
+      String inscEst = QueryFornecedor.getNewCurrentFieldValue("inscEst");
+      String cidade = QueryFornecedor.getNewCurrentFieldValue("cidade");
+      String uf = QueryFornecedor.getNewCurrentFieldValue("uf");
+      String endereco = QueryFornecedor.getNewCurrentFieldValue("endereco");
+      String numero = QueryFornecedor.getNewCurrentFieldValue("numero");
+      String bairro = QueryFornecedor.getNewCurrentFieldValue("bairro");
+      String cep = QueryFornecedor.getNewCurrentFieldValue("cep");
+      String telefone = QueryFornecedor.getNewCurrentFieldValue("telefone");
+      String cod_mun = QueryFornecedor.getNewCurrentFieldValue("cod_mun");
+      String contato = QueryFornecedor.getNewCurrentFieldValue("contato");
+      String email = QueryFornecedor.getNewCurrentFieldValue("email");
       
       if(evt.isInserting()){
-        QueryFornecedor.setNewCurrentFieldValue("pais", "Brasil");
-        QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
-        // Verifica de Razão Social foi preenchida
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("razao")){
-          msg += "O campo \"Razão Social\" não pode estar vazio!\n";
-        }
-        // Verifica de Nome fantasia foi preenchida
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("fantasia")){
-          msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n";
-        }
-        
-        //Verifica se é pessoa Fisica ou Jurídica
+        QueryFornecedor.setNewCurrentFieldValue("pais", "Brasil");        
+        if(razao.equals("")){ msg += "O campo \"Razão Social\" não pode estar vazio!\n"; }
+        if(fantasia.equals("")){ msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n"; }
         if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
-          if(QueryFornecedor.checkNewCurrentFieldEmpty("cpf")){
-            msg += "O campo \"CPF\" não pode estar vazio!\n";
-          }
-        }
+          if(cpf.equals("")){ msg += "O campo \"CPF\" não pode estar vazio!\n"; }
+        } 
         else{
-          if(QueryFornecedor.checkNewCurrentFieldEmpty("cnpj")){
-            msg += "O campo \"CNPJ\" não pode estar vazio!\n";
-          }
-          if(QueryFornecedor.checkNewCurrentFieldEmpty("inscEst")){
-            msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n";
-          }
+          if(cnpj.equals("  .   .   /    -  ")){ msg += "O campo \"CNPJ\" não pode estar vazio!\n"; }
+          if(inscEst.equals("")){ msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n"; }
         }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("cidade")){
-          msg += "O campo \"Cidade\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("uf")){
-          msg += "O campo \"UF\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("endereco")){
-          msg += "O campo \"Endereco\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("numero")){
-          msg += "O campo \"Número\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("bairro")){
-          msg += "O campo \"Bairro\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("cep")){
-          msg += "O campo \"CEP\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("cod_mun")){
-          msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("telefone")){
-          msg += "O campo \"Telefone\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("contato")){
-          msg += "O campo \"Nome Contato\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("email")){
-          msg += "O campo \"Email\" não pode estar vazio!\n";
-        }
-        
-        
-        
-        
-        
+        if(cidade.equals("")){ msg += "O campo \"Cidade\" não pode estar vazio!\n"; }
+        if(uf.equals("")){ msg += "O campo \"UF\" não pode estar vazio!\n"; }
+        if(endereco.equals("")){ msg += "O campo \"Endereco\" não pode estar vazio!\n"; }
+        if(numero.equals("")){ msg += "O campo \"Número\" não pode estar vazio!\n"; }
+        if(bairro.equals("")){ msg += "O campo \"Bairro\" não pode estar vazio!\n"; }
+        if(cep.equals("")){ msg += "O campo \"CEP\" não pode estar vazio!\n"; }
+        if(cod_mun.equals("")){ msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n"; }
+        if(telefone.equals("")){ msg += "O campo \"Telefone\" não pode estar vazio!\n"; }
+        if(contato.equals("")){ msg += "O campo \"Nome Contato\" não pode estar vazio!\n"; }
+        if(email.equals("")){ msg += "O campo \"Email\" não pode estar vazio!\n"; }
       }
       
       if(evt.isEditing()){
+        if(!razao.equals(QueryFornecedor.IGNORE)){
+            if(razao.equals("")){ msg += "O campo \"Razão Social\" não pode estar vazio!\n"; }
+        }
+        if(!fantasia.equals(QueryFornecedor.IGNORE)){
+            if(fantasia.equals("")){ msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n"; }
+        }
         
+        if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
+          if(!cpf.equals(QueryFornecedor.IGNORE)){
+            if(cpf.equals("")){ msg += "O campo \"CPF\" não pode estar vazio!\n"; }
+          }
+        } 
+        else{
+          if(!cnpj.equals(QueryFornecedor.IGNORE)){
+            if(cnpj.equals("  .   .   /    -  ")){ msg += "O campo \"CNPJ\" não pode estar vazio!\n"; }
+          }
+          if(!inscEst.equals(QueryFornecedor.IGNORE)){
+            if(inscEst.equals("")){ msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n"; }
+          }
+        }
+        
+        if(!cidade.equals(QueryFornecedor.IGNORE)){
+            if(cidade.equals("")){ msg += "O campo \"Cidade\" não pode estar vazio!\n"; }
+        }
+        if(!uf.equals(QueryFornecedor.IGNORE)){
+            if(uf.equals("")){ msg += "O campo \"UF\" não pode estar vazio!\n"; }
+        }
+        if(!endereco.equals(QueryFornecedor.IGNORE)){
+            if(endereco.equals("")){ msg += "O campo \"Endereco\" não pode estar vazio!\n"; }
+        }
+        if(!numero.equals(QueryFornecedor.IGNORE)){
+            if(numero.equals("")){ msg += "O campo \"Número\" não pode estar vazio!\n"; }
+        }
+        if(!bairro.equals(QueryFornecedor.IGNORE)){
+            if(bairro.equals("")){ msg += "O campo \"Bairro\" não pode estar vazio!\n"; }
+        }
+        if(!cep.equals(QueryFornecedor.IGNORE)){
+            if(cep.equals("")){ msg += "O campo \"CEP\" não pode estar vazio!\n"; }
+        }
+        if(!cod_mun.equals(QueryFornecedor.IGNORE)){
+            if(cod_mun.equals("")){ msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n"; }
+        }
+        if(!telefone.equals(QueryFornecedor.IGNORE)){
+            if(telefone.equals("")){ msg += "O campo \"Telefone\" não pode estar vazio!\n"; }
+        }
+        if(!contato.equals(QueryFornecedor.IGNORE)){
+            if(contato.equals("")){ msg += "O campo \"Nome Contato\" não pode estar vazio!\n"; }
+        }
+        if(!email.equals(QueryFornecedor.IGNORE)){
+            if(email.equals("")){ msg += "O campo \"Email\" não pode estar vazio!\n"; }
+        }
       }
       
       if(msg.equals("")){
@@ -6873,6 +6902,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         btultimosub.setEnabled(true);
     }//GEN-LAST:event_btexcluisubActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void atualizaCnpjFornecedor(){
         txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
     }
@@ -7073,6 +7106,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrec;
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrecN;
     private javax.swing.JLabel instrucaoTipoPessoa;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
