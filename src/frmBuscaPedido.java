@@ -44,7 +44,7 @@ public class frmBuscaPedido extends javax.swing.JFrame {
         ConBusca.setDriver("com.mysql.jdbc.Driver");
         ConBusca.setUserName("root");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(new java.awt.Rectangle(500, 200, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
