@@ -243,6 +243,14 @@
         <Property name="SQL" type="java.lang.String" value=""/>
       </Properties>
     </Component>
+    <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryBuscaId">
+      <Properties>
+        <Property name="JDBConnection" type="lib.jdb.connection.JDBConnection" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="DBCon"/>
+        </Property>
+        <Property name="SQL" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -1159,7 +1167,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="id_pedidoN" min="-2" pref="38" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -1467,6 +1475,8 @@
                                       <Component id="btnatualizaitem" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnbuscapro" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btfinaliza" min="-2" pref="116" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1478,7 +1488,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnnovoitem" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btncancelitem" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnanterioritem" alignment="0" max="32767" attributes="0"/>
@@ -1486,11 +1496,12 @@
                                   <Component id="btnatualizaitem" max="32767" attributes="0"/>
                                   <Component id="btnexcluiitem" max="32767" attributes="0"/>
                                   <Component id="btnsaveitens" max="32767" attributes="0"/>
+                                  <Component id="btfinaliza" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnbuscapro" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="209" max="-2" attributes="0"/>
-                              <EmptySpace pref="76" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1621,6 +1632,14 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbuscaproActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JButton" name="btfinaliza">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Finaliza Itens"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btfinalizaActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -1736,21 +1755,10 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="id_pedidoN">
+            <Component class="javax.swing.JTextField" name="id_pedidoN">
               <Properties>
-                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="QueryPedido"/>
-                </Property>
                 <Property name="enabled" type="boolean" value="false"/>
-                <Property name="fieldName" type="java.lang.String" value="id_pedido"/>
-                <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="id_pedidoNKeyPressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_pedidoNActionPerformed"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="id_pedidoNMouseClicked"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="id_pedidoNFocusLost"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

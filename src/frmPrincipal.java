@@ -89,6 +89,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryBuscaCli = new lib.jdb.jdbquery.JDBQuery();
         QueryNFE = new lib.jdb.jdbquery.JDBQuery();
         QueryVisao = new lib.jdb.jdbquery.JDBQuery();
+        QueryBuscaId = new lib.jdb.jdbquery.JDBQuery();
         jToolBar1 = new javax.swing.JToolBar();
         jDBImageBlob1 = new lib.jdb.control.jdbimageblob.JDBImageBlob();
         btnCompras = new javax.swing.JButton();
@@ -178,6 +179,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnsaveitens = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
         btnatualizaitem = new lib.jdb.control.jdbbuttonrefresh.JDBButtonRefresh();
         btnbuscapro = new javax.swing.JButton();
+        btfinaliza = new javax.swing.JButton();
         btnexcluirped = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
         btnnovoped = new lib.jdb.control.jdbbuttonnew.JDBButtonNew();
         btnsalvaped = new lib.jdb.control.jdbbuttonsave.JDBButtonSave();
@@ -192,7 +194,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtValorIpi = new javax.swing.JTextField();
         txtValorIcms = new javax.swing.JTextField();
         txtValorTotal = new javax.swing.JTextField();
-        id_pedidoN = new lib.jdb.control.jdbtextfield.JDBTextField();
+        id_pedidoN = new javax.swing.JTextField();
         frmRecebimento = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
@@ -762,6 +764,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryNFE.setSQL("");
 
         QueryVisao.setSQL("");
+
+        QueryBuscaId.setJDBConnection(DBCon);
+        QueryBuscaId.setSQL("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WOOD SOFT");
@@ -1420,6 +1425,13 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btfinaliza.setText("Finaliza Itens");
+        btfinaliza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btfinalizaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1444,6 +1456,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addComponent(btnatualizaitem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnbuscapro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btfinaliza, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1451,7 +1465,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnnovoitem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btncancelitem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnanterioritem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1459,10 +1473,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(btnatualizaitem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnexcluiitem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnsaveitens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btfinaliza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnbuscapro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(76, 76, 76))
         );
 
         paneItensPed.addTab("Itens do Pedido", jPanel2);
@@ -1540,30 +1555,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         txtValorTotal.setEnabled(false);
 
-        id_pedidoN.setJDBQuery(QueryPedido);
         id_pedidoN.setEnabled(false);
-        id_pedidoN.setFieldName("id_pedido");
-        id_pedidoN.setName(""); // NOI18N
-        id_pedidoN.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                id_pedidoNKeyPressed(evt);
-            }
-        });
-        id_pedidoN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_pedidoNActionPerformed(evt);
-            }
-        });
-        id_pedidoN.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                id_pedidoNMouseClicked(evt);
-            }
-        });
-        id_pedidoN.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                id_pedidoNFocusLost(evt);
-            }
-        });
 
         javax.swing.GroupLayout frmPedidoLayout = new javax.swing.GroupLayout(frmPedido);
         frmPedido.setLayout(frmPedidoLayout);
@@ -5486,7 +5478,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 1165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PaneProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 1151, Short.MAX_VALUE)
+                .addComponent(PaneProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 1151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -5646,8 +5638,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnsalvaped.setEnabled(true);
         btnexcluirped.setEnabled(false);
         //altera campos busca
-        id_pedidoN.setVisible(true);
-        id_pedido.setVisible(false);
+        //id_pedidoN.setVisible(true);
+        //id_pedido.setVisible(false);
         
         
     }//GEN-LAST:event_btnnovopedActionPerformed
@@ -5926,6 +5918,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnatualizaitemActionPerformed
 
     private void btnsalvapedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvapedActionPerformed
+        int id;
         String dataatu=null,datasistema=null;
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
        
@@ -5954,15 +5947,20 @@ public class frmPrincipal extends javax.swing.JFrame {
         id_pedido.setEnabled(false);
         
         // Salvar Valores Totais no Banco
-        
+       /* 
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_frete", Double.parseDouble(txtValorFrete.getText().replaceAll(",", ".")));
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_ipi_total", Double.parseDouble(txtValorIpi.getText().replaceAll(",", ".")));
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_icms_total", Double.parseDouble(txtValorIcms.getText().replaceAll(",", ".")));
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_total", Double.parseDouble(txtValorTotal.getText().replaceAll(",", ".")));
-        
-         //altera campos busca
-        id_pedido.setVisible(true);
-        id_pedidoN.setVisible(false);
+        */
+        QueryBuscaId.setSQL("select max(id_pedido) as uid from cpcadped");
+        QueryBuscaId.execQuery();
+        id= QueryBuscaId.getCurrentFieldValueAsInteger("uid")+1;
+        id_pedidoN.setText(String.valueOf(id));
+        QueryPedido.setNewCurrentFieldValueAsInteger("id_pedido", id);
+//altera campos busca
+        //id_pedido.setVisible(true);
+       // id_pedidoN.setVisible(false);
     }//GEN-LAST:event_btnsalvapedActionPerformed
 
     private void btnsaveitensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveitensActionPerformed
@@ -5989,14 +5987,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnsaveitens.setEnabled(false);
         btnexcluiitem.setEnabled(true);
         btnatualizaitem.setEnabled(true);
-
+        btfinaliza.setEnabled(true);
         //soma valores totais do pedido
        // double tfrete;
         
-        QuerySomaItensPed.setSQL("select SUM(frete) as totfrete from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
+       /* QuerySomaItensPed.setSQL("select SUM(frete) as totfrete from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
         QuerySomaItensPed.execQuery();
        // tfrete = QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete");
-        QueryPedido.setNewCurrentFieldValueAsDouble("vlr_frete", QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete"));
+        QueryPedido.setNewCurrentFieldValueAsDouble("vlr_frete", QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete"));*/
     }//GEN-LAST:event_btnsaveitensActionPerformed
 
     private void btnDeleteCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCad1ActionPerformed
@@ -6108,8 +6106,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtValorTotal.setText("");
         
          //altera campos busca
-        id_pedido.setVisible(true);
-        id_pedidoN.setVisible(false);
+       // id_pedido.setVisible(true);
+        //id_pedidoN.setVisible(false);
     }//GEN-LAST:event_btncancelapedActionPerformed
 
     private void btnexcluirpedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirpedActionPerformed
@@ -6125,8 +6123,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         id_pedido.setEnabled(true);
         
          //altera campos busca
-        id_pedido.setVisible(true);
-        id_pedidoN.setVisible(false);
+        //id_pedido.setVisible(true);
+        //id_pedidoN.setVisible(false);
         
         //exclui itens
         QueryVeItem.setSQL("select max(num_item) as uitem from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
@@ -6419,15 +6417,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         result = QueryVeItem.getCurrentFieldValueAsInteger("uitem");
         result+=1;
         QueryIteOP.setNewCurrentFieldValueAsInteger("item", result);
-        JOptionPane.showMessageDialog(null, result);
+       // JOptionPane.showMessageDialog(null, result);
         QueryIteOP.setNewCurrentFieldValueAsInteger("idproduto", codbuscaproduto);
-        JOptionPane.showMessageDialog(null, codbuscaproduto);
+       // JOptionPane.showMessageDialog(null, codbuscaproduto);
         QueryIteOP.setNewCurrentFieldValue("desc_pro", descricao);
-        JOptionPane.showMessageDialog(null, descricao);
+      //  JOptionPane.showMessageDialog(null, descricao);
         QueryIteOP.setNewCurrentFieldValue("unidade", unidade);
-        JOptionPane.showMessageDialog(null, unidade);
+       // JOptionPane.showMessageDialog(null, unidade);
         QueryIteOP.setNewCurrentFieldValueAsInteger("tipo", idtipopro);
-        JOptionPane.showMessageDialog(null, idtipopro);
+       // JOptionPane.showMessageDialog(null, idtipopro);
         
        
         
@@ -7156,22 +7154,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtidpedidoNFocusLost
 
-    private void id_pedidoNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_pedidoNKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_pedidoNKeyPressed
-
-    private void id_pedidoNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_pedidoNMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_pedidoNMouseClicked
-
-    private void id_pedidoNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_pedidoNFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_pedidoNFocusLost
-
-    private void id_pedidoNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pedidoNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_pedidoNActionPerformed
-
     private void btnBuscaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaPedidoActionPerformed
         new frmBuscaPedido().setVisible(true);
     }//GEN-LAST:event_btnBuscaPedidoActionPerformed
@@ -7501,6 +7483,24 @@ public class frmPrincipal extends javax.swing.JFrame {
       bloqueiaCamposTipoPessoa();
     }//GEN-LAST:event_cboxTipoPessoa1FocusLost
 
+    private void btfinalizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btfinalizaActionPerformed
+         //soma valores totais do pedido
+       // double tfrete;
+        
+        QuerySomaItensPed.setSQL("select SUM(frete) as totfrete from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
+        QuerySomaItensPed.execQuery();
+       // tfrete = QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete");
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_frete", QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete"));
+        // Salvar Valores Totais no Banco
+        
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_frete", Double.parseDouble(txtValorFrete.getText().replaceAll(",", ".")));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_ipi_total", Double.parseDouble(txtValorIpi.getText().replaceAll(",", ".")));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_icms_total", Double.parseDouble(txtValorIcms.getText().replaceAll(",", ".")));
+        QueryPedido.setNewCurrentFieldValueAsDouble("valor_total", Double.parseDouble(txtValorTotal.getText().replaceAll(",", ".")));
+        
+        btfinaliza.setEnabled(false);
+    }//GEN-LAST:event_btfinalizaActionPerformed
+
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
       int rows = tableiteped.getRowCount();
@@ -7576,6 +7576,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.jdbquery.JDBQuery QueryAltEst;
     private lib.jdb.jdbquery.JDBQuery QueryBuscaCli;
     private lib.jdb.jdbquery.JDBQuery QueryBuscaForn;
+    private lib.jdb.jdbquery.JDBQuery QueryBuscaId;
     private lib.jdb.jdbquery.JDBQuery QueryCliente;
     private lib.jdb.jdbquery.JDBQuery QueryEstabelecimento;
     private lib.jdb.jdbquery.JDBQuery QueryFornecedor;
@@ -7618,6 +7619,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete btexcluipro;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete btexcluisub;
     private lib.jdb.control.jdbbuttondelete.JDBButtonDelete btexcluitipo;
+    private javax.swing.JButton btfinaliza;
     private javax.swing.JButton btnAdmin;
     private lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious btnAntCad1;
     private javax.swing.JButton btnBuscaPedido;
@@ -7698,7 +7700,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel frmTipoPro;
     private javax.swing.JPanel frmUsuario;
     private lib.jdb.control.jdbtextfield.JDBTextField id_pedido;
-    private lib.jdb.control.jdbtextfield.JDBTextField id_pedidoN;
+    private javax.swing.JTextField id_pedidoN;
     private lib.jdb.control.jdbtextfield.JDBTextField idforrec;
     private lib.jdb.control.jdbtextfield.JDBTextField idforrecN;
     private lib.jdb.control.jdbtextfield.JDBTextField idpedrec;
