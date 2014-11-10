@@ -1080,6 +1080,9 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         instrucaoTipoPessoa.setText("Selecione Pessoa Física/Jurídica para habilitar os campos abaixo");
 
+        txtCnpjCad.setJDBQuery(QueryFornecedor);
+        txtCnpjCad.setFieldName("cnpj");
+
         javax.swing.GroupLayout frmFornecedorLayout = new javax.swing.GroupLayout(frmFornecedor);
         frmFornecedor.setLayout(frmFornecedorLayout);
         frmFornecedorLayout.setHorizontalGroup(
@@ -1828,9 +1831,17 @@ public class frmPrincipal extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id Pedido", "Id Fornecedor", "Item", "Id Produto", "Qtde", "Valor Unit.", "Perc. ICMS", "Perc. IPI", "Título 9", "Valor Total"
+                "Pedido", "Fornecedor", "Item", "Produto", "Quantidade", "Valor Unit.", "Perc. ICMS", "Perc. IPI", "Título 9", "Valor Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true, true, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jDBTable2.setJDBQuery(QueryRecebimentoItem);
         jScrollPane2.setViewportView(jDBTable2);
 
@@ -5505,7 +5516,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 1165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PaneProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 1151, Short.MAX_VALUE)
+                .addComponent(PaneProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 1151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -6041,15 +6052,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     public void bloqueiaCamposTipoPessoa(){
       if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
           txtCnpjCad.setEnabled(false);
-          txtCnpjCad.setText("");
           txtInsEstCad.setEnabled(false);
-          txtInsEstCad.setText("");
           txtCpfCad.setEnabled(true);
           instrucaoTipoPessoa.setVisible(false);
       }
       else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica")){
-          txtCpfCad.setEnabled(false);
-          txtCpfCad.setText("");             
+          txtCpfCad.setEnabled(false);             
           txtCnpjCad.setEnabled(true);          
           txtInsEstCad.setEnabled(true);
           instrucaoTipoPessoa.setVisible(false);
@@ -7535,8 +7543,14 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void QueryRecebimentoItemOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryRecebimentoItemOnSaveManually
       if(QueryRecebimentoItem.save()){
         JOptionPane.showMessageDialog(this, "Recebimento de produto concluido com sucesso.");
-        QueryRecebimentoItem.last();
-        QueryRecebimento.last();
+        //limpar registro na query
+        QueryRecebimentoItem.setSQL("select * from cpiterec where id_pedido = -1");
+        QueryRecebimentoItem.execQuery();
+        QueryRecebimento.setSQL("select * from cpcadrec where id_pedido = -1");
+        QueryRecebimento.execQuery();
+        
+        QueryProduto.setSQL("select * from escadpro where idproduto = -1");
+        QueryProduto.execQuery();
       }
     }//GEN-LAST:event_QueryRecebimentoItemOnSaveManually
 

@@ -1108,6 +1108,12 @@
               </Properties>
             </Component>
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCnpjCad">
+              <Properties>
+                <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="QueryFornecedor"/>
+                </Property>
+                <Property name="fieldName" type="java.lang.String" value="cnpj"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -2255,16 +2261,16 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="10" rowCount="4">
-                                <Column editable="true" title="Id Pedido" type="java.lang.Object"/>
-                                <Column editable="true" title="Id Fornecedor" type="java.lang.Object"/>
-                                <Column editable="true" title="Item" type="java.lang.Object"/>
-                                <Column editable="true" title="Id Produto" type="java.lang.Object"/>
-                                <Column editable="true" title="Qtde" type="java.lang.Object"/>
+                                <Column editable="false" title="Pedido" type="java.lang.Object"/>
+                                <Column editable="false" title="Fornecedor" type="java.lang.Object"/>
+                                <Column editable="false" title="Item" type="java.lang.Object"/>
+                                <Column editable="false" title="Produto" type="java.lang.Object"/>
+                                <Column editable="true" title="Quantidade" type="java.lang.Object"/>
                                 <Column editable="true" title="Valor Unit." type="java.lang.Object"/>
                                 <Column editable="true" title="Perc. ICMS" type="java.lang.Object"/>
                                 <Column editable="true" title="Perc. IPI" type="java.lang.Object"/>
-                                <Column editable="true" title="T&#xed;tulo 9" type="java.lang.Object"/>
-                                <Column editable="true" title="Valor Total" type="java.lang.Object"/>
+                                <Column editable="false" title="T&#xed;tulo 9" type="java.lang.Object"/>
+                                <Column editable="false" title="Valor Total" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
