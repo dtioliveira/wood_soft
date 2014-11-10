@@ -668,6 +668,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryPedido.setJDBConnection(DBCon);
         QueryPedido.setSQL("select * from CPCADPED");
+        QueryPedido.setSaveManually(true);
+        QueryPedido.addSaveManuallyEventListener(new lib.jdb.jdbquery.event.SaveManuallyEventListener() {
+            public void onSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {
+                QueryPedidoOnSaveManually(evt);
+            }
+        });
 
         DBCon.setURL("jdbc:mysql://localhost/woodsoft");
         DBCon.setDriver("com.mysql.jdbc.Driver");
@@ -687,6 +693,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryRecebimento.setJDBConnection(DBCon);
         QueryRecebimento.setSQL("select * from cpcadrec where id_pedido = -1");
+        QueryRecebimento.setSaveManually(true);
+        QueryRecebimento.addSaveManuallyEventListener(new lib.jdb.jdbquery.event.SaveManuallyEventListener() {
+            public void onSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {
+                QueryRecebimentoOnSaveManually(evt);
+            }
+        });
 
         QueryProduto.setJDBConnection(DBCon);
         QueryProduto.setSQL("");
@@ -744,6 +756,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         QueryRecebimentoItem.setJDBConnection(DBCon);
         QueryRecebimentoItem.setSQL("");
+        QueryRecebimentoItem.setSaveManually(true);
+        QueryRecebimentoItem.addSaveManuallyEventListener(new lib.jdb.jdbquery.event.SaveManuallyEventListener() {
+            public void onSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {
+                QueryRecebimentoItemOnSaveManually(evt);
+            }
+        });
 
         QueryPedRec.setJDBConnection(DBCon);
         QueryPedRec.setSQL("");
@@ -6195,7 +6213,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsalvarrecActionPerformed
 
     private void btnsalvaitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvaitemActionPerformed
-         btnsalvaitem.setEnabled(false);
+        btnsalvaitem.setEnabled(false);
         btnverificaitem.setEnabled(true);
         
                      // Gerencia campos do novo item
@@ -7513,6 +7531,26 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void ClientesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientesMouseMoved
       bloqueiaCamposTipoPessoa1();
     }//GEN-LAST:event_ClientesMouseMoved
+
+    private void QueryRecebimentoItemOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryRecebimentoItemOnSaveManually
+      if(QueryRecebimentoItem.save()){
+        JOptionPane.showMessageDialog(this, "Recebimento de produto concluido com sucesso.");
+        QueryRecebimentoItem.last();
+        QueryRecebimento.last();
+      }
+    }//GEN-LAST:event_QueryRecebimentoItemOnSaveManually
+
+    private void QueryRecebimentoOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryRecebimentoOnSaveManually
+      if(QueryRecebimento.save()){
+        JOptionPane.showMessageDialog(this, "Cabeçalho salvo com sucesso. Confirme os itens do recebimento.");
+      }
+    }//GEN-LAST:event_QueryRecebimentoOnSaveManually
+
+    private void QueryPedidoOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryPedidoOnSaveManually
+      if(QueryPedido.save()){
+        JOptionPane.showMessageDialog(this, "Cabeçalho salvo com sucesso. Adicione produtos ao pedido.");
+      }
+    }//GEN-LAST:event_QueryPedidoOnSaveManually
 
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;

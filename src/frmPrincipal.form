@@ -8,7 +8,11 @@
           <ComponentRef name="DBCon"/>
         </Property>
         <Property name="SQL" type="java.lang.String" value="select * from CPCADPED"/>
+        <Property name="saveManually" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="onSaveManually" listener="lib.jdb.jdbquery.event.SaveManuallyEventListener" parameters="lib.jdb.jdbquery.event.SaveManuallyEventObject" handler="QueryPedidoOnSaveManually"/>
+      </Events>
     </Component>
     <Component class="lib.jdb.connection.JDBConnection" name="DBCon">
       <Properties>
@@ -48,7 +52,11 @@
           <ComponentRef name="DBCon"/>
         </Property>
         <Property name="SQL" type="java.lang.String" value="select * from cpcadrec where id_pedido = -1"/>
+        <Property name="saveManually" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="onSaveManually" listener="lib.jdb.jdbquery.event.SaveManuallyEventListener" parameters="lib.jdb.jdbquery.event.SaveManuallyEventObject" handler="QueryRecebimentoOnSaveManually"/>
+      </Events>
     </Component>
     <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryProduto">
       <Properties>
@@ -188,7 +196,11 @@
           <ComponentRef name="DBCon"/>
         </Property>
         <Property name="SQL" type="java.lang.String" value=""/>
+        <Property name="saveManually" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="onSaveManually" listener="lib.jdb.jdbquery.event.SaveManuallyEventListener" parameters="lib.jdb.jdbquery.event.SaveManuallyEventObject" handler="QueryRecebimentoItemOnSaveManually"/>
+      </Events>
     </Component>
     <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryPedRec">
       <Properties>
