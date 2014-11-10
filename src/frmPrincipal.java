@@ -3281,6 +3281,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         PaneProducao.addTab("Ordem de Produção", frmProducao);
 
+        Clientes.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ClientesMouseMoved(evt);
+            }
+        });
+
         jLabel35.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel35.setText("Cadastro de Clientes");
 
@@ -3296,6 +3302,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         cboxTipoPessoa1.setJDBQuery(QueryCliente);
         cboxTipoPessoa1.setFieldName("pessoa");
         cboxTipoPessoa1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxTipoPessoa1MouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 cboxTipoPessoa1MouseExited(evt);
             }
@@ -3636,7 +3645,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                             .addComponent(jDBTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDBTextField78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDBTextField82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         PaneVendas.addTab("Cadastro de Clientes", Clientes);
@@ -3930,7 +3939,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel105)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDBTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                 .addGroup(TransportadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBButtonCancel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDBButtonDelete13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3996,7 +4005,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addComponent(jDBTextField88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jDBTextField90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jDBTextField96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(137, Short.MAX_VALUE)))
+                    .addContainerGap(126, Short.MAX_VALUE)))
         );
 
         PaneVendas.addTab("Cadastro de Transportadoras", Transportadora);
@@ -4694,7 +4703,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(txtPedidoNfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
 
         PaneVendas.addTab("NF-e", NFE);
@@ -5478,7 +5487,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 1165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PaneProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 1151, Short.MAX_VALUE)
+                .addComponent(PaneProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 1151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PaneVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -6012,57 +6021,53 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxTipoPessoaFocusLost
 
     public void bloqueiaCamposTipoPessoa(){
-      if(cboxTipoPessoa.getSelectedItem().toString().equals("Física") || cboxTipoPessoa1.getSelectedItem().toString().equals("Física")){
+      if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
           txtCnpjCad.setEnabled(false);
           txtCnpjCad.setText("");
-          
-          txtCnpjCli.setEnabled(false);
-          txtCnpjCli.setText("");
-          
           txtInsEstCad.setEnabled(false);
           txtInsEstCad.setText("");
-          
+          txtCpfCad.setEnabled(true);
+          instrucaoTipoPessoa.setVisible(false);
+      }
+      else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica")){
+          txtCpfCad.setEnabled(false);
+          txtCpfCad.setText("");             
+          txtCnpjCad.setEnabled(true);          
+          txtInsEstCad.setEnabled(true);
+          instrucaoTipoPessoa.setVisible(false);
+      }
+      else{
+          txtCnpjCad.setEnabled(false);         
+          txtInsEstCad.setEnabled(false);       
+          txtCpfCad.setEnabled(false);
+          instrucaoTipoPessoa.setVisible(true);
+      }
+    }
+    
+    public void bloqueiaCamposTipoPessoa1(){
+      if(cboxTipoPessoa1.getSelectedItem().toString().equals("Física")){
+          txtCnpjCli.setEnabled(false);
+          txtCnpjCli.setText("");
           txtInscEstCli.setEnabled(false);
           txtInscEstCli.setText("");
-          
-          txtCpfCad.setEnabled(true);
-          
           txtCpfCli.setEnabled(true);
-          
-          instrucaoTipoPessoa.setVisible(false);
           instrucaoTipoPessoa1.setVisible(false);
       }
-      else if(cboxTipoPessoa.getSelectedItem().toString().equals("Jurídica") || cboxTipoPessoa1.getSelectedItem().toString().equals("Jurídica")){
-          txtCpfCad.setEnabled(false);
-          txtCpfCad.setText("");
-          
+      else if(cboxTipoPessoa1.getSelectedItem().toString().equals("Jurídica")){
           txtCpfCli.setEnabled(false);
           txtCpfCli.setText("");
-          
-          
-          txtCnpjCad.setEnabled(true);
           txtCnpjCli.setEnabled(true);
-          
-          txtInsEstCad.setEnabled(true);
           txtInscEstCli.setEnabled(true);
-          
-          instrucaoTipoPessoa.setVisible(false);
           instrucaoTipoPessoa1.setVisible(false);
       }
       else{
-          txtCnpjCad.setEnabled(false);
           txtCnpjCli.setEnabled(false);
-          
-          txtInsEstCad.setEnabled(false);
           txtInscEstCli.setEnabled(false);
-          
-          txtCpfCad.setEnabled(false);
           txtCpfCli.setEnabled(false);
-          
-          instrucaoTipoPessoa.setVisible(true);
           instrucaoTipoPessoa1.setVisible(true);
       }
     }
+    
     private void btncancelitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelitemActionPerformed
         btnbuscapro.setEnabled(false);
         //libera botoes itens
@@ -7476,11 +7481,11 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_QueryClienteOnSaveManually
 
     private void cboxTipoPessoa1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoa1MouseExited
-      bloqueiaCamposTipoPessoa();
+
     }//GEN-LAST:event_cboxTipoPessoa1MouseExited
 
     private void cboxTipoPessoa1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboxTipoPessoa1FocusLost
-      bloqueiaCamposTipoPessoa();
+
     }//GEN-LAST:event_cboxTipoPessoa1FocusLost
 
     private void btfinalizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btfinalizaActionPerformed
@@ -7500,6 +7505,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         btfinaliza.setEnabled(false);
     }//GEN-LAST:event_btfinalizaActionPerformed
+
+    private void cboxTipoPessoa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoa1MouseClicked
+      bloqueiaCamposTipoPessoa1();
+    }//GEN-LAST:event_cboxTipoPessoa1MouseClicked
+
+    private void ClientesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientesMouseMoved
+      bloqueiaCamposTipoPessoa1();
+    }//GEN-LAST:event_ClientesMouseMoved
 
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
