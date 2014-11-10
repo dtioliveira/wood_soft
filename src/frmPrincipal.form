@@ -112,7 +112,11 @@
           <ComponentRef name="DBCon"/>
         </Property>
         <Property name="SQL" type="java.lang.String" value="select * from CLIFORTR where tipo = &apos;Cliente&apos;"/>
+        <Property name="saveManually" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="onSaveManually" listener="lib.jdb.jdbquery.event.SaveManuallyEventListener" parameters="lib.jdb.jdbquery.event.SaveManuallyEventObject" handler="QueryClienteOnSaveManually"/>
+      </Events>
     </Component>
     <Component class="lib.jdb.jdbquery.JDBQuery" name="QueryTransp">
       <Properties>
@@ -2455,7 +2459,7 @@
                           </Group>
                           <Component id="jDBTextField56" alignment="0" min="-2" pref="618" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="491" max="32767" attributes="0"/>
+                      <EmptySpace pref="596" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -2716,7 +2720,7 @@
                                       <Component id="jDBTextField15" alignment="0" pref="373" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="579" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="684" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -2968,7 +2972,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="592" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="697" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -4330,7 +4334,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jDBLabelCount58" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jDBTextField69" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                                          <Component id="txtIdCliente" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
                                                           <Component id="jDBLabelCount57" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jDBLabelCount56" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
@@ -4419,7 +4423,7 @@
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                                                      <Component id="jDBComboBox4" min="-2" pref="104" max="-2" attributes="0"/>
+                                                      <Component id="cboxTipoPessoa1" min="-2" pref="104" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jDBLabelCount55" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -4431,15 +4435,16 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jDBTextField77" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                                  <Component id="txtCnpjCli" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                                                   <Component id="jDBLabelCount63" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jDBTextField80" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                                  <Component id="txtCpfCli" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                                   <Component id="jDBLabelCount67" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Component id="instrucaoTipoPessoa1" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -4447,7 +4452,7 @@
                                               <Component id="jDBLabelCount68" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jDBTextField81" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtInscEstCli" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -4475,9 +4480,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jDBTextField69" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDBComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxTipoPessoa1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="instrucaoTipoPessoa1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -4490,9 +4496,9 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jDBTextField77" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jDBTextField80" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jDBTextField81" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCnpjCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCpfCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtInscEstCli" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jDBTextField70" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -4559,7 +4565,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="114" max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -4578,7 +4584,7 @@
                 <Property name="text" type="java.lang.String" value="ID Cliente"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField69">
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtIdCliente">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryCliente"/>
@@ -4592,7 +4598,7 @@
                 <Property name="text" type="java.lang.String" value="Pessoa"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="jDBComboBox4">
+            <Component class="lib.jdb.control.jdbcombobox.JDBComboBox" name="cboxTipoPessoa1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -4605,6 +4611,10 @@
                 </Property>
                 <Property name="fieldName" type="java.lang.String" value="pessoa"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoa1MouseExited"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cboxTipoPessoa1FocusLost"/>
+              </Events>
             </Component>
             <Component class="lib.jdb.control.jdblabelcount.JDBLabelCount" name="jDBLabelCount55">
               <Properties>
@@ -4718,7 +4728,7 @@
                 <Property name="text" type="java.lang.String" value="Cidade"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField77">
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCnpjCli">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryCliente"/>
@@ -4805,7 +4815,7 @@
                 <Property name="text" type="java.lang.String" value="UF"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField80">
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCpfCli">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryCliente"/>
@@ -4818,7 +4828,7 @@
                 <Property name="text" type="java.lang.String" value="CPF"/>
               </Properties>
             </Component>
-            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField81">
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtInscEstCli">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryCliente"/>
@@ -4930,6 +4940,11 @@
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="QueryCliente"/>
                 </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="instrucaoTipoPessoa1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Selecione Pessoa F&#xed;sica/Jur&#xed;dica para habilitar os campos abaixo"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -5143,7 +5158,7 @@
                               <Component id="jDBTextField19" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="184" max="32767" attributes="0"/>
+                      <EmptySpace pref="225" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jDBButtonCancel13" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDBButtonDelete13" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -5224,7 +5239,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="96" max="32767" attributes="0"/>
+                          <EmptySpace pref="137" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -6731,7 +6746,7 @@
                       <Component id="txtPedidoNfe" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" pref="61" max="-2" attributes="0"/>
-                      <EmptySpace pref="405" max="32767" attributes="0"/>
+                      <EmptySpace pref="446" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
