@@ -142,12 +142,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBComboBox3 = new lib.jdb.control.jdbcombobox.JDBComboBox();
         btnProxCad1 = new lib.jdb.control.jdbbuttonnext.JDBButtonNext();
         btnAntCad1 = new lib.jdb.control.jdbbuttonprevious.JDBButtonPrevious();
-        txtCnpjCad = new javax.swing.JFormattedTextField();
         jDBTextField14 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel103 = new javax.swing.JLabel();
         jDBTextField16 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel104 = new javax.swing.JLabel();
         instrucaoTipoPessoa = new javax.swing.JLabel();
+        txtCnpjCad = new lib.jdb.control.jdbtextfield.JDBTextField();
         frmPedido = new javax.swing.JPanel();
         id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         txtidforn = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -998,6 +998,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         cboxTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jurídica", "Física" }));
         cboxTipoPessoa.setJDBQuery(QueryFornecedor);
         cboxTipoPessoa.setFieldName("pessoa");
+        cboxTipoPessoa.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cboxTipoPessoaMouseMoved(evt);
+            }
+        });
         cboxTipoPessoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboxTipoPessoaMouseClicked(evt);
@@ -1032,12 +1037,6 @@ public class frmPrincipal extends javax.swing.JFrame {
                 btnAntCad1ActionPerformed(evt);
             }
         });
-
-        try {
-            txtCnpjCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         jDBTextField14.setJDBQuery(QueryFornecedor);
         jDBTextField14.setFieldName("cod_mun");
@@ -1095,8 +1094,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jDBLabelCount7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                    .addComponent(txtCnpjCad, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(frmFornecedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCpfCad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDBLabelCount8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -6953,87 +6952,99 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void QueryFornecedorOnSaveManually(lib.jdb.jdbquery.event.SaveManuallyEventObject evt) {//GEN-FIRST:event_QueryFornecedorOnSaveManually
       String msg = "";
+       String razao = QueryFornecedor.getNewCurrentFieldValue("razao");
+      String fantasia = QueryFornecedor.getNewCurrentFieldValue("fantasia");
+      String cpf = QueryFornecedor.getNewCurrentFieldValue("cpf");
+      String cnpj = QueryFornecedor.getNewCurrentFieldValue("cnpj");
+      String inscEst = QueryFornecedor.getNewCurrentFieldValue("inscEst");
+      String cidade = QueryFornecedor.getNewCurrentFieldValue("cidade");
+      String uf = QueryFornecedor.getNewCurrentFieldValue("uf");
+      String endereco = QueryFornecedor.getNewCurrentFieldValue("endereco");
+      String numero = QueryFornecedor.getNewCurrentFieldValue("numero");
+      String bairro = QueryFornecedor.getNewCurrentFieldValue("bairro");
+      String cep = QueryFornecedor.getNewCurrentFieldValue("cep");
+      String telefone = QueryFornecedor.getNewCurrentFieldValue("telefone");
+      String cod_mun = QueryFornecedor.getNewCurrentFieldValue("cod_mun");
+      String contato = QueryFornecedor.getNewCurrentFieldValue("contato");
+      String email = QueryFornecedor.getNewCurrentFieldValue("email");
       
-      if(evt.isInserting()){
-        QueryFornecedor.setNewCurrentFieldValue("pais", "Brasil");
-        QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
-        // Verifica de Razão Social foi preenchida
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("razao")){
-          msg += "O campo \"Razão Social\" não pode estar vazio!\n";
-        }
-        // Verifica de Nome fantasia foi preenchida
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("fantasia")){
-          msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n";
-        }
-        
-        //Verifica se é pessoa Fisica ou Jurídica
+      if(evt.isInserting()){        
+        if(razao.equals("")){ msg += "O campo \"Razão Social\" não pode estar vazio!\n"; }
+        if(fantasia.equals("")){ msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n"; }
         if(cboxTipoPessoa.getSelectedItem().toString().equals("Física")){
-          if(QueryFornecedor.checkNewCurrentFieldEmpty("cpf")){
-            msg += "O campo \"CPF\" não pode estar vazio!\n";
-          }
-        }
+          if(cpf.equals("")){ msg += "O campo \"CPF\" não pode estar vazio!\n"; }
+        } 
         else{
-          if(QueryFornecedor.checkNewCurrentFieldEmpty("cnpj")){
-            msg += "O campo \"CNPJ\" não pode estar vazio!\n";
-          }
-          if(QueryFornecedor.checkNewCurrentFieldEmpty("inscEst")){
-            msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n";
-          }
+          if(cnpj.equals("")){ msg += "O campo \"CNPJ\" não pode estar vazio!\n"; }
+          if(inscEst.equals("")){ msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n"; }
         }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("cidade")){
-          msg += "O campo \"Cidade\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("uf")){
-          msg += "O campo \"UF\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("endereco")){
-          msg += "O campo \"Endereco\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("numero")){
-          msg += "O campo \"Número\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("bairro")){
-          msg += "O campo \"Bairro\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("cep")){
-          msg += "O campo \"CEP\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("cod_mun")){
-          msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("telefone")){
-          msg += "O campo \"Telefone\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("contato")){
-          msg += "O campo \"Nome Contato\" não pode estar vazio!\n";
-        }
-        
-        if(QueryFornecedor.checkNewCurrentFieldEmpty("email")){
-          msg += "O campo \"Email\" não pode estar vazio!\n";
-        }
-        
-        
-        
-        
-        
+        if(cidade.equals("")){ msg += "O campo \"Cidade\" não pode estar vazio!\n"; }
+        if(uf.equals("")){ msg += "O campo \"UF\" não pode estar vazio!\n"; }
+        if(endereco.equals("")){ msg += "O campo \"Endereco\" não pode estar vazio!\n"; }
+        if(numero.equals("")){ msg += "O campo \"Número\" não pode estar vazio!\n"; }
+        if(bairro.equals("")){ msg += "O campo \"Bairro\" não pode estar vazio!\n"; }
+        if(cep.equals("")){ msg += "O campo \"CEP\" não pode estar vazio!\n"; }
+        if(cod_mun.equals("")){ msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n"; }
+        if(telefone.equals("")){ msg += "O campo \"Telefone\" não pode estar vazio!\n"; }
+        if(contato.equals("")){ msg += "O campo \"Nome Contato\" não pode estar vazio!\n"; }
+        if(email.equals("")){ msg += "O campo \"Email\" não pode estar vazio!\n"; }
       }
       
       if(evt.isEditing()){
-        
+        if(!razao.equals(QueryFornecedor.IGNORE)){
+            if(razao.equals("")){ msg += "O campo \"Razão Social\" não pode estar vazio!\n"; }
+        }
+        if(!fantasia.equals(QueryFornecedor.IGNORE)){
+            if(fantasia.equals("")){ msg += "O campo \"Nome Fantasia\" não pode estar vazio!\n"; }
+        }
+        if(!cpf.equals(QueryFornecedor.IGNORE)){
+            if(cpf.equals("")){ msg += "O campo \"CPF\" não pode estar vazio!\n"; }
+        }
+        else{
+          if(!cnpj.equals(QueryFornecedor.IGNORE)){
+            if(cnpj.equals("  .   .   /    -  ")){ msg += "O campo \"CNPJ\" não pode estar vazio!\n"; }
+          }
+          if(!inscEst.equals(QueryFornecedor.IGNORE)){
+            if(inscEst.equals("")){ msg += "O campo \"Inscrição Estadual\" não pode estar vazio!\n"; }
+          }
+          if(!cidade.equals(QueryFornecedor.IGNORE)){
+            if(cidade.equals("")){ msg += "O campo \"Cidade\" não pode estar vazio!\n"; }
+          }
+          if(!uf.equals(QueryFornecedor.IGNORE)){
+            if(uf.equals("")){ msg += "O campo \"UF\" não pode estar vazio!\n"; }
+          }
+          if(!endereco.equals(QueryFornecedor.IGNORE)){
+            if(endereco.equals("")){ msg += "O campo \"Endereco\" não pode estar vazio!\n"; }
+          }
+          if(!numero.equals(QueryFornecedor.IGNORE)){
+            if(numero.equals("")){ msg += "O campo \"Número\" não pode estar vazio!\n"; }
+          }
+          if(!bairro.equals(QueryFornecedor.IGNORE)){
+            if(bairro.equals("")){ msg += "O campo \"Bairro\" não pode estar vazio!\n"; }
+          }
+          if(!cep.equals(QueryFornecedor.IGNORE)){
+            if(cep.equals("")){ msg += "O campo \"CEP\" não pode estar vazio!\n"; }
+          }
+          if(!cod_mun.equals(QueryFornecedor.IGNORE)){
+            if(cod_mun.equals("")){ msg += "O campo \"Cod. Município IBGE\" não pode estar vazio!\n"; }
+          }
+          if(!telefone.equals(QueryFornecedor.IGNORE)){
+            if(telefone.equals("")){ msg += "O campo \"Telefone\" não pode estar vazio!\n"; }
+          }
+          if(!contato.equals(QueryFornecedor.IGNORE)){
+            if(contato.equals("")){ msg += "O campo \"Nome Contato\" não pode estar vazio!\n"; }
+          }
+          if(!email.equals(QueryFornecedor.IGNORE)){
+            if(email.equals("")){ msg += "O campo \"Email\" não pode estar vazio!\n"; }
+          }
+        }
       }
       
       if(msg.equals("")){
-        QueryFornecedor.setNewCurrentFieldValue("cnpj", txtCnpjCad.getText());
-        QueryFornecedor.save();
+        QueryFornecedor.setNewCurrentFieldValue("pais", "Brasil");
+        if(QueryFornecedor.save()){
+          JOptionPane.showMessageDialog(this, "Registro Salvo com Sucesso");
+        }
       }
       else{
           JOptionPane.showMessageDialog(this, msg);
@@ -7045,15 +7056,15 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRazaoCadActionPerformed
 
     private void txtIdFornecedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFornecedorFocusLost
-      atualizaCnpjFornecedor();
+
     }//GEN-LAST:event_txtIdFornecedorFocusLost
 
     private void btnAntCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCad1ActionPerformed
-        atualizaCnpjFornecedor();
+
     }//GEN-LAST:event_btnAntCad1ActionPerformed
 
     private void btnProxCad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCad1ActionPerformed
-        atualizaCnpjFornecedor();
+
     }//GEN-LAST:event_btnProxCad1ActionPerformed
 
     private void cboxTipoPessoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoaMouseClicked
@@ -7319,9 +7330,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         PaneAdm.setVisible(false);
     }//GEN-LAST:event_btnsairve3ActionPerformed
 
-    public void atualizaCnpjFornecedor(){
-        txtCnpjCad.setText(QueryFornecedor.getCurrentFieldValue("cnpj"));
-    }
+    private void cboxTipoPessoaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxTipoPessoaMouseMoved
+      bloqueiaCamposTipoPessoa();
+    }//GEN-LAST:event_cboxTipoPessoaMouseMoved
+
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
       int rows = tableiteped.getRowCount();
@@ -7957,7 +7969,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave salvaiteop;
     private lib.jdb.control.jdbbuttonsave.JDBButtonSave salvaop;
     private lib.jdb.control.jdbtable.JDBTable tableiteped;
-    private javax.swing.JFormattedTextField txtCnpjCad;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtCnpjCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtCpfCad;
     private lib.jdb.control.jdbtextfield.JDBTextField txtIdFornecedor;
     private lib.jdb.control.jdbtextfield.JDBTextField txtInsEstCad;

@@ -490,9 +490,9 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jDBLabelCount7" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtCnpjCad" min="-2" pref="239" max="-2" attributes="0"/>
+                                          <Component id="txtCnpjCad" min="-2" pref="186" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtCpfCad" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                           <Component id="jDBLabelCount8" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1009,6 +1009,7 @@
                 <Property name="fieldName" type="java.lang.String" value="pessoa"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMouseMoved"/>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMouseClicked"/>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMousePressed"/>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboxTipoPessoaMouseReleased"/>
@@ -1051,13 +1052,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAntCad1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtCnpjCad">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##.###.###/####-##" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="jDBTextField14">
               <Properties>
                 <Property name="JDBQuery" type="lib.jdb.jdbquery.JDBQuery" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1088,6 +1082,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Selecione Pessoa F&#xed;sica/Jur&#xed;dica para habilitar os campos abaixo"/>
               </Properties>
+            </Component>
+            <Component class="lib.jdb.control.jdbtextfield.JDBTextField" name="txtCnpjCad">
             </Component>
           </SubComponents>
         </Container>

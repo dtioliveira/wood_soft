@@ -19,3 +19,5 @@ nbproject\private\private.properties
 *.properties
 *.xml
 build/classes/reports/relatorio_recebimentos.jasper
+nbproject/private/private.properties
+nbproject/private/private.xml
