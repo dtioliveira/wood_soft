@@ -150,7 +150,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         instrucaoTipoPessoa = new javax.swing.JLabel();
         txtCnpjCad = new lib.jdb.control.jdbtextfield.JDBTextField();
         frmPedido = new javax.swing.JPanel();
-        id_pedido = new lib.jdb.control.jdbtextfield.JDBTextField();
         txtidforn = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField5 = new lib.jdb.control.jdbtextfield.JDBTextField();
         txtnomefor = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -187,14 +186,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jDBTextField4 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBLabelCount1 = new lib.jdb.control.jdblabelcount.JDBLabelCount();
-        txtsituacao = new javax.swing.JTextField();
-        txtdataemi = new com.toedter.calendar.JDateChooser();
         btnBuscaPedido = new javax.swing.JButton();
         txtValorFrete = new javax.swing.JTextField();
         txtValorIpi = new javax.swing.JTextField();
         txtValorIcms = new javax.swing.JTextField();
         txtValorTotal = new javax.swing.JTextField();
         id_pedidoN = new javax.swing.JTextField();
+        txtdataemi = new lib.jdb.control.jdbtextfield.JDBTextField();
+        txtsituacao = new lib.jdb.control.jdbtextfield.JDBTextField();
+        id_pedido = new javax.swing.JTextField();
         frmRecebimento = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
@@ -610,12 +610,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBTextField97 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField98 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jDBTextField99 = new lib.jdb.control.jdbtextfield.JDBTextField();
-        jDBTextField100 = new lib.jdb.control.jdbtextfield.JDBTextField();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
@@ -637,6 +635,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBButtonDelete14 = new lib.jdb.control.jdbbuttondelete.JDBButtonDelete();
         jDBRadioButton1 = new lib.jdb.control.jdbradiobutton.JDBRadioButton();
         btnsairve3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         jLabel112 = new javax.swing.JLabel();
@@ -1295,25 +1294,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        id_pedido.setJDBQuery(QueryPedido);
-        id_pedido.setFieldName("id_pedido");
-        id_pedido.setName(""); // NOI18N
-        id_pedido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                id_pedidoKeyPressed(evt);
-            }
-        });
-        id_pedido.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                id_pedidoMouseClicked(evt);
-            }
-        });
-        id_pedido.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                id_pedidoFocusLost(evt);
-            }
-        });
-
         txtidforn.setJDBQuery(QueryPedido);
         txtidforn.setFieldName("cod_fornecedor");
         txtidforn.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -1552,10 +1532,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jDBLabelCount1.setText("id usuario");
 
-        txtsituacao.setEnabled(false);
-
-        txtdataemi.setMaxSelectableDate(new java.util.Date(253370775684000L));
-
         btnBuscaPedido.setText("Buscar Pedido");
         btnBuscaPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1577,6 +1553,19 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtValorTotal.setEnabled(false);
 
         id_pedidoN.setEnabled(false);
+
+        txtdataemi.setJDBQuery(QueryPedido);
+        txtdataemi.setFieldName("data_cad");
+
+        txtsituacao.setJDBQuery(QueryPedido);
+        txtsituacao.setEnabled(false);
+        txtsituacao.setFieldName("situacao");
+
+        id_pedido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                id_pedidoFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout frmPedidoLayout = new javax.swing.GroupLayout(frmPedido);
         frmPedido.setLayout(frmPedidoLayout);
@@ -1600,7 +1589,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                                                 .addComponent(jLabel1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE))
                                             .addGroup(frmPedidoLayout.createSequentialGroup()
-                                                .addComponent(id_pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(id_pedido)
                                                 .addGap(46, 46, 46)))
                                         .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtidforn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1642,19 +1631,19 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(frmPedidoLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jDBTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(frmPedidoLayout.createSequentialGroup()
-                                                    .addComponent(jLabel4)
-                                                    .addGap(72, 72, 72)
-                                                    .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel5)))
-                                                .addGroup(frmPedidoLayout.createSequentialGroup()
-                                                    .addComponent(txtsituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(txtdataemi, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGroup(frmPedidoLayout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(72, 72, 72)
+                                                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3)
+                                                    .addComponent(jLabel5))
+                                                .addGap(24, 24, 24))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, frmPedidoLayout.createSequentialGroup()
+                                                .addComponent(txtsituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtdataemi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addGroup(frmPedidoLayout.createSequentialGroup()
                                         .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel8)
@@ -1695,23 +1684,21 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnBuscaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton8))))
                 .addGap(43, 43, 43)
-                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(frmPedidoLayout.createSequentialGroup()
-                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtidforn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnomefor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcnpjfor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtsituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtdataemi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtidforn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnomefor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcnpjfor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdataemi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frmPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -3138,7 +3125,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBComboBox2.setFieldName("tipo");
 
         BtnEncerraOp.setText("Encerrar O.P");
-        BtnEncerraOp.setEnabled(false);
         BtnEncerraOp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEncerraOpActionPerformed(evt);
@@ -5083,9 +5069,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jDBTextField99.setJDBQuery(QueryUsuario);
         jDBTextField99.setFieldName("login");
 
-        jDBTextField100.setJDBQuery(QueryUsuario);
-        jDBTextField100.setFieldName("senha");
-
         jLabel39.setText("ID Usuário");
 
         jLabel40.setText("Nome Do Usuário");
@@ -5093,8 +5076,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel41.setText("Setor");
 
         jLabel42.setText("Login");
-
-        jLabel43.setText("Senha");
 
         jLabel44.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel44.setText("Estoque");
@@ -5174,6 +5155,8 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Resetar Senha");
+
         javax.swing.GroupLayout frmUsuarioLayout = new javax.swing.GroupLayout(frmUsuario);
         frmUsuario.setLayout(frmUsuarioLayout);
         frmUsuarioLayout.setHorizontalGroup(
@@ -5217,10 +5200,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                             .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jDBTextField99, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel42))
-                            .addGap(97, 97, 97)
-                            .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel43)
-                                .addComponent(jDBTextField100, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton2))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmUsuarioLayout.createSequentialGroup()
                             .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(frmUsuarioLayout.createSequentialGroup()
@@ -5272,14 +5253,12 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jDBTextField97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDBTextField98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
-                .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel43))
+                .addComponent(jLabel42)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jDBTextField99, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDBTextField100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addComponent(jButton2))
+                .addGap(47, 47, 47)
                 .addComponent(jLabel49)
                 .addGap(26, 26, 26)
                 .addGroup(frmUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -5308,7 +5287,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jDBButtonPrevious6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDBButtonNext6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDBButtonLast4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         PaneAdm.addTab("Usuários", frmUsuario);
@@ -5677,7 +5656,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnexcluirped.setEnabled(false);
         //altera campos busca
         //id_pedidoN.setVisible(true);
-        //id_pedido.setVisible(false);
+        id_pedido.setEnabled(false);
         
         
     }//GEN-LAST:event_btnnovopedActionPerformed
@@ -5812,31 +5791,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         txtIdFornecedor.setEnabled(false);
     }//GEN-LAST:event_btnNewCad1ActionPerformed
 
-    private void id_pedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_pedidoFocusLost
-        QueryPedidoItem.setSQL(" select * from CPITEPED where id_pedido = '" + id_pedido.getText() + "' order by num_item" );
-        QueryPedidoItem.execQuery();       
-        
-        QueryPedido.setSQL(" select * from CPCADPED where id_pedido = '" + id_pedido.getText() + "'" );
-        txtsituacao.setText(QueryPedido.getCurrentFieldValue("situacao"));
-        QueryPedido.execQuery(); 
-        
-        QueryBuscaForn.setSQL("select * from CLIFORTR where idclifor = '"+ txtidforn.getText() + "'");
-        QueryBuscaForn.execQuery();
-        
-        
-        txtdataemi.setDate(QueryPedido.getCurrentFieldValueAsSQLDate("data_ent"));
-        
-          //regra botoes
-        btnnovoped.setEnabled(false);
-        btnexcluirped.setEnabled(true);
-        btnBuscaPedido.setEnabled(false);
-        btncancelaped.setEnabled(true);
-        btnsalvaped.setEnabled(true);
-        id_pedido.setEnabled(false);
-        
-        atualizaElementos();
-    }//GEN-LAST:event_id_pedidoFocusLost
-
     private void jDBButtonSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave1ActionPerformed
         QueryFornecedor.setNewCurrentFieldValue("tipo", "Fornecedor");
         QueryFornecedor.setNewCurrentFieldValue("id_usuario", usuario);
@@ -5869,7 +5823,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jDBTextField79ActionPerformed
 
     private void jDBButtonSave11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave11ActionPerformed
-       QueryFornecedor.setNewCurrentFieldValue("tipo", "Cliente");
+       QueryCliente.setNewCurrentFieldValue("tipo", "Cliente");
+       QueryCliente.setNewCurrentFieldValue("id_usuario", usuario);
     }//GEN-LAST:event_jDBButtonSave11ActionPerformed
 
     private void jDBButtonNew13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonNew13ActionPerformed
@@ -5894,6 +5849,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void jDBButtonSave12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBButtonSave12ActionPerformed
         QueryTransp.setNewCurrentFieldValue("tipo", "Transportadora");
+        QueryTransp.setNewCurrentFieldValue("id_usuario", usuario);
     }//GEN-LAST:event_jDBButtonSave12ActionPerformed
 
     private void jDBRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDBRadioButton4ActionPerformed
@@ -5970,11 +5926,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnexcluiitem.setEnabled(true);
         btnatualizaitem.setEnabled(false);
           
-        dataatu = String.valueOf(dateFormat.format(txtdataemi.getDate()));
+        //dataatu = String.valueOf(dateFormat.format(txtdataemi.getText()));
         datasistema = String.valueOf(dateFormat.format(new Date())); 
         QueryPedido.setNewCurrentFieldValue("id_usuario", usuario);
-        QueryPedido.setNewCurrentFieldValue("data_cad", dataatu);
+        //QueryPedido.setNewCurrentFieldValue("data_cad", dataatu);
         QueryPedido.setNewCurrentFieldValue("data_alt", datasistema);
+        QueryPedido.setNewCurrentFieldValue("situacao", "Em Aberto");
         
          //regra botoes
         btnnovoped.setEnabled(true);
@@ -5991,13 +5948,17 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_icms_total", Double.parseDouble(txtValorIcms.getText().replaceAll(",", ".")));
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_total", Double.parseDouble(txtValorTotal.getText().replaceAll(",", ".")));
         */
-        QueryBuscaId.setSQL("select max(id_pedido) as uid from cpcadped");
+        
+       /* QueryBuscaId.setSQL("select max(id_pedido) as uid from cpcadped");
         QueryBuscaId.execQuery();
         id= QueryBuscaId.getCurrentFieldValueAsInteger("uid")+1;
         id_pedidoN.setText(String.valueOf(id));
-        QueryPedido.setNewCurrentFieldValueAsInteger("id_pedido", id);
+        QueryPedido.setNewCurrentFieldValueAsInteger("id_pedido", id);*/
+       
 //altera campos busca
-        //id_pedido.setVisible(true);
+        JOptionPane.showMessageDialog(null,QueryPedido.getCurrentFieldValueAsInteger("id_pedido"));
+        QueryPedido.save();
+        id_pedido.setText(QueryPedido.getCurrentFieldValueAsInteger("id_pedido").toString());
        // id_pedidoN.setVisible(false);
     }//GEN-LAST:event_btnsalvapedActionPerformed
 
@@ -6026,6 +5987,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnexcluiitem.setEnabled(true);
         btnatualizaitem.setEnabled(true);
         btfinaliza.setEnabled(true);
+        
+        
+        
         //soma valores totais do pedido
        // double tfrete;
         
@@ -6224,11 +6188,23 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnsalvaitem.setEnabled(false);
         btnverificaitem.setEnabled(true);
         
-                     // Gerencia campos do novo item
+        // Gerencia campos do novo item
         idforrecN.setVisible(false);
         idpedrecN.setVisible(false);
         idforrec.setVisible(true);
         idpedrec.setVisible(true);
+        
+        //muda situacao pedido
+        
+        QueryPedido.setSQL("select * from cpcadped where id_pedido ='"+idpedrecN.getText()+"'");
+        QueryPedido.execQuery();
+        QueryPedido.edit();
+        QueryPedido.setNewCurrentFieldValue("situacao", "Recebido");
+        QueryPedido.save();
+        
+        //limpar query
+        QueryPedido.setSQL("select * from cpcadped where id_pedido =-1");
+        QueryPedido.execQuery();
        
         
     }//GEN-LAST:event_btnsalvaitemActionPerformed
@@ -6287,14 +6263,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         idforrec.setVisible(true);
         idpedrec.setVisible(true);
     }//GEN-LAST:event_btncancelrecActionPerformed
-
-    private void id_pedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_id_pedidoMouseClicked
-      atualizaElementos();
-    }//GEN-LAST:event_id_pedidoMouseClicked
-
-    private void id_pedidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_pedidoKeyPressed
-        atualizaElementos();
-    }//GEN-LAST:event_id_pedidoKeyPressed
 
     private void txtValorFreteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorFreteActionPerformed
         // TODO add your handling code here:
@@ -6586,7 +6554,7 @@ public class frmPrincipal extends javax.swing.JFrame {
        // QueryBuscaForn.execQuery();
         
         
-        txtdataemi.setDate(QueryPedido.getCurrentFieldValueAsSQLDate("data_ent"));
+        
         
           //regra botoes
         btnnovoped.setEnabled(false);
@@ -6630,7 +6598,7 @@ public class frmPrincipal extends javax.swing.JFrame {
        // QueryBuscaForn.execQuery();
         
         
-        txtdataemi.setDate(QueryPedido.getCurrentFieldValueAsSQLDate("data_ent"));
+        
         
           //regra botoes
         btnnovoped.setEnabled(false);
@@ -6870,6 +6838,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         int cod_cliente=0,cod_produto=0,cod_transp=0;    
         String datasaida=null,dataemissao=null;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        
       
         
 //Buscas da NFE
@@ -6889,20 +6859,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         //variaveis da nfe
         //Dados da nota 
+        dataemissao = String.valueOf(dateFormat.format(QueryVendas.getCurrentFieldValueAsSQLDate("data_emissao")));
+        datasaida = String.valueOf(dateFormat.format(QueryVendas.getCurrentFieldValueAsSQLDate("data_saida")));
         txtSerie = QueryVendas.getCurrentFieldValue("serie");
         txtNf = QueryVendas.getCurrentFieldValue("nota_fiscal");
-        txtDataemissao = QueryVendas.getCurrentFieldValue("data_emissao");
-        txtDatasaida = QueryVendas.getCurrentFieldValue("data_saida");
+        txtDataemissao = dataemissao;
+        txtDatasaida = datasaida;
         txtHoraSaida = QueryVendas.getCurrentFieldValue("hora_saida");
         //Dados Estabelecimento
         XNome = QueryEstabelecimento.getCurrentFieldValue("razao_social");
         XFantasia = QueryEstabelecimento.getCurrentFieldValue("razao_social");
-        IE = QueryEstabelecimento.getCurrentFieldValue("ins_est");
+        IE = QueryEstabelecimento.getCurrentFieldValue("ins_est").replace(".", "");
         IEST = "";
         IM = QueryEstabelecimento.getCurrentFieldValue("ins_Mun");
-        CNAE = QueryEstabelecimento.getCurrentFieldValue("CNAE");
+        CNAE = QueryEstabelecimento.getCurrentFieldValue("CNAE").replace("-","").replace("/", "");
         CRT=String.valueOf(QueryEstabelecimento.getCurrentFieldValueAsInteger("crt"));
-        CNPJ= QueryEstabelecimento.getCurrentFieldValue("cnpj");
+        CNPJ= QueryEstabelecimento.getCurrentFieldValue("cnpj").replace(".", "").replace("/", "").replace("-", "");
         XLgr= QueryEstabelecimento.getCurrentFieldValue("endereco");
         Nro = QueryEstabelecimento.getCurrentFieldValue("numero");
         Cpl= QueryEstabelecimento.getCurrentFieldValue("complemento");
@@ -6910,21 +6882,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         CMun = String.valueOf(QueryEstabelecimento.getCurrentFieldValueAsInteger("cod_Mun"));
         XMun= QueryEstabelecimento.getCurrentFieldValue("cidade");
         UF = QueryEstabelecimento.getCurrentFieldValue("uf");
-        CEP = QueryEstabelecimento.getCurrentFieldValue("cep").replaceAll("-", "");
-        fone = QueryEstabelecimento.getCurrentFieldValue("telefone").replaceAll("-", "");
+        CEP = QueryEstabelecimento.getCurrentFieldValue("cep").replace("-", "");
+        fone = QueryEstabelecimento.getCurrentFieldValue("telefone").replace("-", "");
         //Dados Cliente
         razaoCliente = QueryCliente.getCurrentFieldValue("razao");
-        IECliente= QueryCliente.getCurrentFieldValue("inscEst");
+        IECliente= QueryCliente.getCurrentFieldValue("inscEst").replace(".","");;
         emailCliente= QueryCliente.getCurrentFieldValue("e-mail");
-        CNPJCli= QueryCliente.getCurrentFieldValue("cnpj");
+        CNPJCli= QueryCliente.getCurrentFieldValue("cnpj").replace(".", "").replace("/", "").replace("-", "");
         LogrCli = QueryCliente.getCurrentFieldValue("endereco");
         NroCli = QueryCliente.getCurrentFieldValue("numero");
         BairroCli=QueryCliente.getCurrentFieldValue("bairro");
         codMunCli = QueryCliente.getCurrentFieldValue("cod_mun");
         MunCli = QueryCliente.getCurrentFieldValue("cidade");
         UFCli = QueryCliente.getCurrentFieldValue("uf");
-        CEPCli= QueryCliente.getCurrentFieldValue("cep").replaceAll("-", "");
-        foneCli=QueryCliente.getCurrentFieldValue("telefone").replaceAll("-", "");
+        CEPCli= QueryCliente.getCurrentFieldValue("cep").replace("-", "");
+        foneCli=QueryCliente.getCurrentFieldValue("telefone").replace("-", "");
         //Dados Item
         nItem= String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("item"));
         codProd=String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("ESCADPRO_idproduto"));
@@ -6938,14 +6910,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         UnidTrib=QueryProduto.getCurrentFieldValue("unidMed");
         QtdeTrib=String.valueOf(QueryVendasItem.getCurrentFieldValueAsInteger("qtde"));
         vlrUnitTrib=String.valueOf(QueryVendasItem.getCurrentFieldValueAsDouble("vlr_unit"));
-        //Dados de Transportadora
+       //Dados de Transportadora
         RazaoTransp=QueryTransp.getCurrentFieldValue("razao");
-        IETransp=QueryTransp.getCurrentFieldValue("inscEst");
+        IETransp=QueryTransp.getCurrentFieldValue("inscEst").replace(".","");
         LogrTransp=QueryTransp.getCurrentFieldValue("endereco");
         UFTransp=QueryTransp.getCurrentFieldValue("uf");
         CidadeTransp=QueryTransp.getCurrentFieldValue("cidade");
-        CNPJTransp=QueryTransp.getCurrentFieldValue("cnpj");
-        Placa= QueryVendas.getCurrentFieldValue("placa_vei");
+        CNPJTransp=QueryTransp.getCurrentFieldValue("cnpj").replace(".", "").replace("/", "").replace("-", "");
+        Placa= QueryVendas.getCurrentFieldValue("placa_vei").replace("-","");
         UFPlaca= QueryVendas.getCurrentFieldValue("uf_vei");
         NFat = QueryVendas.getCurrentFieldValue("nota_fiscal"); 
         pesoBruto= String.valueOf(QueryVendas.getCurrentFieldValueAsDouble("pesobruto"));
@@ -7023,7 +6995,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                          + System.getProperty("line.separator")+
                          "Y07|"+nDup+"|"+dataVenc+"|"+VlrDup+"|"
                          + System.getProperty("line.separator")+
-                         "Z||Texto Legal:"+textolegal;
+                         "Z||Texto Legal:"+textolegal+"|";
 
                     ;  
             fos.write(texto.getBytes());  
@@ -7521,6 +7493,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QuerySomaItensPed.setSQL("select SUM(frete) as totfrete from cpiteped where id_pedido = '"+ id_pedido.getText()+"'");
         QuerySomaItensPed.execQuery();
        // tfrete = QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete");
+        QueryPedido.edit();
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_frete", QuerySomaItensPed.getCurrentFieldValueAsDouble("totfrete"));
         // Salvar Valores Totais no Banco
         
@@ -7528,6 +7501,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_ipi_total", Double.parseDouble(txtValorIpi.getText().replaceAll(",", ".")));
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_icms_total", Double.parseDouble(txtValorIcms.getText().replaceAll(",", ".")));
         QueryPedido.setNewCurrentFieldValueAsDouble("valor_total", Double.parseDouble(txtValorTotal.getText().replaceAll(",", ".")));
+        QueryPedido.save();
         
         btfinaliza.setEnabled(false);
     }//GEN-LAST:event_btfinalizaActionPerformed
@@ -7565,6 +7539,29 @@ public class frmPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Cabeçalho salvo com sucesso. Adicione produtos ao pedido.");
       }
     }//GEN-LAST:event_QueryPedidoOnSaveManually
+
+    private void id_pedidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_id_pedidoFocusLost
+        
+        QueryPedidoItem.setSQL(" select * from CPITEPED where id_pedido = '" + id_pedido.getText() + "' order by num_item" );
+        QueryPedidoItem.execQuery();
+
+        QueryPedido.setSQL(" select * from CPCADPED where id_pedido = '" + id_pedido.getText() + "'" );
+        txtsituacao.setText(QueryPedido.getCurrentFieldValue("situacao"));
+        QueryPedido.execQuery();
+
+        QueryBuscaForn.setSQL("select * from CLIFORTR where idclifor = '"+ txtidforn.getText() + "'");
+        QueryBuscaForn.execQuery();
+
+        //regra botoes
+        btnnovoped.setEnabled(false);
+        btnexcluirped.setEnabled(true);
+        btnBuscaPedido.setEnabled(false);
+        btncancelaped.setEnabled(true);
+        btnsalvaped.setEnabled(true);
+        id_pedido.setEnabled(false);
+
+        atualizaElementos();
+    }//GEN-LAST:event_id_pedidoFocusLost
 
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
@@ -7764,7 +7761,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel frmSubGrupoPro;
     private javax.swing.JPanel frmTipoPro;
     private javax.swing.JPanel frmUsuario;
-    private lib.jdb.control.jdbtextfield.JDBTextField id_pedido;
+    private javax.swing.JTextField id_pedido;
     private javax.swing.JTextField id_pedidoN;
     private lib.jdb.control.jdbtextfield.JDBTextField idforrec;
     private lib.jdb.control.jdbtextfield.JDBTextField idforrecN;
@@ -7780,6 +7777,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -7925,7 +7923,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextarea.JDBTextArea jDBTextArea3;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField1;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField10;
-    private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField100;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField101;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField102;
     private lib.jdb.control.jdbtextfield.JDBTextField jDBTextField103;
@@ -8117,7 +8114,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
@@ -8219,7 +8215,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField txtanoop;
     private lib.jdb.control.jdbtextfield.JDBTextField txtcnpjfor;
     private lib.jdb.control.jdbtextfield.JDBTextField txtdatacad;
-    private com.toedter.calendar.JDateChooser txtdataemi;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtdataemi;
     private javax.swing.JTextField txtdatafim;
     private javax.swing.JTextField txtdataini;
     private lib.jdb.control.jdbtextfield.JDBTextField txtdatapedido;
@@ -8233,7 +8229,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private lib.jdb.control.jdbtextfield.JDBTextField txtidtransp;
     private lib.jdb.control.jdbtextfield.JDBTextField txtiduser;
     private lib.jdb.control.jdbtextfield.JDBTextField txtnomefor;
-    private javax.swing.JTextField txtsituacao;
+    private lib.jdb.control.jdbtextfield.JDBTextField txtsituacao;
     private lib.jdb.control.jdbtextfield.JDBTextField txttransp;
     // End of variables declaration//GEN-END:variables
 }
