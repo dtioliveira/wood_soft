@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c42222f9-fb11-4991-8328-90e087a19e47">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="recebimentos" uuid="135f8088-82cf-45af-8464-7c57469ae0d0">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     *,
+     CPCADREC.`nota_fiscal` AS CPCADREC_nota_fiscal,
+     CPCADREC.`serie` AS CPCADREC_serie
+FROM
+     `CPCADREC` CPCADREC]]>
+		</queryString>
+		<field name="nota_fiscal" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="serie" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="125" uuid="5f1a53c4-e77d-4f74-98e1-4656d903151d"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="recebimentos" uuid="25b66fa7-e8b0-4795-9761-ac7b78b8690a">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="028f487c-cde9-4fc8-872f-6630ced708e7">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="e88b1c8a-c5ba-4d0f-ace4-7d946a05fee7">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="ffb36a27-9db1-458a-80ab-46414c59d274">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+					<jr:column width="90" uuid="617a819d-6017-4678-819d-d2edcf1cb0ac">
+						<jr:tableHeader height="30"/>
+						<jr:tableFooter height="30"/>
+						<jr:columnHeader height="30"/>
+						<jr:columnFooter height="30"/>
+						<jr:detailCell height="20"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
