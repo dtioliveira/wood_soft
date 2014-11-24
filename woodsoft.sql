@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Nov-2014 às 01:41
+-- Generation Time: 24-Nov-2014 às 21:48
 -- Versão do servidor: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -48,18 +48,17 @@ CREATE TABLE IF NOT EXISTS `clifortr` (
   `id_usuario` int(11) NOT NULL,
   `pais` varchar(25) NOT NULL,
   `cod_mun` varchar(7) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Extraindo dados da tabela `clifortr`
 --
 
 INSERT INTO `clifortr` (`idclifor`, `pessoa`, `tipo`, `razao`, `fantasia`, `cnpj`, `cpf`, `inscEst`, `endereco`, `numero`, `bairro`, `telefone`, `email`, `situacao`, `contato`, `cep`, `cidade`, `uf`, `id_usuario`, `pais`, `cod_mun`) VALUES
-(2, 'Jurídica', 'Fornecedor', 'Empresa Teste', 'Empresa TESTE', '  .   .   /    -  ', '234.234.234-11', '', 'Rua Principal', '', 'Centro', '', '', '', '', '12.123-123', 'Itararé', '', 2, '', ''),
-(4, '', '', 'Fornecedor Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '', ''),
-(7, 'Física', 'Cliente', 'Lucas Henrique', '', '', '500.500.500-12', '', 'rua são pedro', '', 'centro', '15-1234-1234', '', 'Ativo', '', '18460-000', '', 'SP', 2, '', ''),
-(8, 'Jurídica', 'Transportadora', 'Transportadora Rapidão', '', '', '', '', 'Rua São João 123', '', 'Centro', '(11)3453-3456', 'lucas@', 'Ativo', 'lucas', '12734-000', 'SÃ£o Paulo', 'SP', 2, '', ''),
-(9, 'Jurídica', 'Fornecedor', 'Nestlé', '', '1231245123', '', '', '', '', '', '', '', 'Ativo', '', '', 'São Paulo', 'SP', 2, 'Brasil', '');
+(11, 'Jurídica', 'Fornecedor', 'Madesoft Madeiras LTDA', 'Madesoft', '34.012.245/0001-00', '', '234453235', 'Rua São Pedro', '3450', 'Dist. Industrial', '15-3532-2345', 'contato@madesoft.com.br', 'Ativo', 'João', '18460-000', 'Itararé', 'SP', 2, 'Brasil', '3523206'),
+(12, 'Jurídica', 'Fornecedor', 'Madeplen Florestadora LTDA', 'MadePlen', '25.234.235/0001-00', '', '564323432', 'Rua Frei Caneca', '345', 'Centro', '15-3531-3456', 'contato@madeplen.com.br', 'Ativo', 'Maria', '18460-000', 'Itararé', 'SP', 2, 'Brasil', '3523206'),
+(13, 'Jurídica', 'Cliente', 'Pregos Sta Barbara', 'Sta Barbara', '69020915000599', NULL, '418524588', 'Rua Sao Pedro', '1223', 'Centro', '15-1233-1234', 'joao@exemplo.com', 'Ativo', 'Joao', '18460-000', 'Itarare', 'SP', 2, 'Brasil', '23445'),
+(15, 'Jurídica', 'Transportadora', 'Transportadora Rapidao', 'Transportadora Rapidao', '34556345000100', '', '345678345', 'Rua Frei Caneca', '123', 'Centro', '15-3455-3456', 'maria@teste.com', 'Ativo', 'Maria', '18460-000', 'Itarare', 'SP', 2, '', '345657');
 
 -- --------------------------------------------------------
 
@@ -78,21 +77,24 @@ CREATE TABLE IF NOT EXISTS `cpcadped` (
   `valor_ipi_total` double DEFAULT NULL,
   `valor_icms_total` double DEFAULT NULL,
   `valor_total` double DEFAULT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `valor_iss_total` double NOT NULL,
-  `valor_merc_total` double NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  `id_usuario` int(11) DEFAULT NULL,
+  `valor_iss_total` double DEFAULT NULL,
+  `valor_merc_total` double DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `cpcadped`
 --
 
 INSERT INTO `cpcadped` (`id_pedido`, `cod_fornecedor`, `data_cad`, `situacao`, `data_alt`, `data_ent`, `valor_frete`, `valor_ipi_total`, `valor_icms_total`, `valor_total`, `id_usuario`, `valor_iss_total`, `valor_merc_total`) VALUES
-(3, 2, '2014-10-22', '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
-(4, 2, NULL, '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
-(5, 2, NULL, '', '0014-10-24', NULL, 0, 0, 0, 0, 2, 0, 0),
-(6, 2, '2014-10-25', '', NULL, NULL, 0, 0, 0, 0, 2, 0, 0),
-(7, 2, '2014-10-15', '', '2014-10-23', NULL, 0, 0, 0, 0, 2, 0, 0);
+(1, 11, '2014-11-10', 'Em aberto', '2014-11-10', NULL, 0, 0, 0, 0, 2, 0, 0),
+(2, 11, '2014-11-10', 'Em aberto', '2014-11-10', NULL, 0, 0, 0, 0, 2, 0, 0),
+(3, 11, '2014-11-10', 'Em aberto', '2014-11-10', NULL, 0, 0, 0, 0, 2, 0, 0),
+(4, 11, '2014-11-10', 'Em aberto', '2014-11-10', NULL, 0, 0, 0, 0, 2, 0, 0),
+(5, 11, '2014-11-10', 'Recebido', '2014-11-10', NULL, 0, 0, 0, 0, 2, 0, 0),
+(6, 11, '2014-11-10', 'Em aberto', '2014-11-10', NULL, 0, 0, 0, 0, 2, 0, 0),
+(7, 11, '2014-11-18', 'Em Aberto', '2014-11-18', NULL, 0, 0, 0, 0, 2, 0, 0),
+(8, 11, '2014-11-18', 'Em Aberto', '2014-11-18', NULL, 0, 0, 0, 0, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -121,9 +123,9 @@ CREATE TABLE IF NOT EXISTS `cpcadrec` (
 --
 
 INSERT INTO `cpcadrec` (`id_fornecedor`, `id_pedido`, `nota_fiscal`, `serie`, `vlr_merc`, `vlr_frete`, `vlr_iss`, `vlr_ipi`, `vlr_icms`, `vlr_total`, `data_rec`, `data_cad`, `id_usuario`) VALUES
-(2, 4, '123', '23', 0, 0, 0, 0, 0, 0, NULL, '2014-10-31', 2),
-(2, 5, '123', '123', 0, 0, 0, 0, 0, 0, NULL, '2014-10-31', 2),
-(2, 7, '234', '12', 0, 0, 0, 0, 0, 0, NULL, '2014-10-30', 2);
+(11, 4, '123', '1', 0, 0, 0, 0, 0, 0, '2014-11-10', '2014-11-10', 2),
+(11, 5, '345', '2', 0, 0, 0, 0, 0, 0, '2014-11-17', '2014-11-17', 2),
+(11, 6, '222', '1', 0, 0, 0, 0, 0, 0, '2014-11-06', '2014-11-10', 2);
 
 -- --------------------------------------------------------
 
@@ -156,11 +158,15 @@ CREATE TABLE IF NOT EXISTS `cpiteped` (
 --
 
 INSERT INTO `cpiteped` (`id_pedido`, `num_item`, `idproduto`, `descricao_item`, `qntde`, `unidade`, `fator_conv`, `valor_unit`, `valor_ipi`, `valor_icms`, `valor_total_item`, `per_ipi`, `per_icms`, `perc_iss`, `frete`, `desconto`, `total_item`) VALUES
-(4, 1, 6, 'Produto de teste 3', 10, '12', 0, 12, 0, 0, 120, 0, 0, 0, 0, 0, 0),
-(5, 1, 4, 'Produto de teste', 15, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0),
-(7, 1, 4, 'Produto de teste', 10, 'kg', 0, 89, 78, 789, 6, 0, 0, 0, 0, 0, 0),
-(7, 2, 6, 'Produto de teste 3', 5, '12', 0, 56, 67, 67, 0, 0, 0, 0, 0, 0, 0),
-(7, 3, 6, NULL, 6, NULL, 0, 1, 0, 0, 0, 0, 0, 0, 10, 0, 0);
+(1, 1, 7, 'TORA PINUS', 10, 'KG', 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 1, 7, 'TORA PINUS', 10, 'KG', 0, 50, 10, 10, 0, 0, 0, 0, 0, 0, 0),
+(4, 1, 7, 'TORA PINUS', 10, 'KG', 0, 5, 5, 5, 750, 0, 0, 0, 0, 0, 0),
+(5, 1, 7, 'TORA PINUS', 45, 'KG', 0, 10, 30, 15, 450, 0, 0, 0, 30, 0, 0),
+(6, 1, 8, 'Torete de Eucalipto', 20, 'KG', 0, 20, 0, 0, 150, 0, 0, 0, 0, 0, 0),
+(8, 1, 8, 'Torete de Eucalipto', 10, 'KG', 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 2, 8, 'Torete de Eucalipto', 30, 'KG', 0, 25, 40, 10, 0, 0, 0, 0, 200, 0, 0),
+(6, 2, 7, 'TORA PINUS', 10, 'KG', 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 2, 8, 'Torete de Eucalipto', 10, 'KG', 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -180,18 +186,16 @@ CREATE TABLE IF NOT EXISTS `cpiterec` (
   `id_fornecedor` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL,
 `cod_rec_item` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=73 ;
 
 --
 -- Extraindo dados da tabela `cpiterec`
 --
 
 INSERT INTO `cpiterec` (`item`, `qtde`, `vlr_unit`, `perc_icms`, `perc_ipi`, `perc_iss`, `vlr_total`, `idproduto`, `id_fornecedor`, `id_pedido`, `cod_rec_item`) VALUES
-(1, 10, 89, 0, 0, 0, 6, 4, 2, 7, 55),
-(2, 5, 56, 0, 0, 0, 0, 6, 2, 7, 56),
-(3, 6, 1, 0, 0, 0, 0, 6, 2, 7, 57),
-(1, 10, 12, 0, 0, 0, 120, 6, 2, 4, 60),
-(1, 15, 0, 0, 0, 0, 0, 4, 2, 5, 61);
+(1, 20, 20, 0, 0, 0, 150, 8, 11, 6, 67),
+(2, 10, 15, 0, 0, 0, 0, 7, 11, 6, 68),
+(1, 45, 10, 0, 0, 0, 450, 7, 11, 5, 72);
 
 -- --------------------------------------------------------
 
@@ -216,16 +220,16 @@ CREATE TABLE IF NOT EXISTS `escadpro` (
   `id_usuario` int(11) NOT NULL,
   `cfop` varchar(5) NOT NULL,
   `quantidade` double NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `escadpro`
 --
 
 INSERT INTO `escadpro` (`idproduto`, `nome`, `comprimento`, `largura`, `espessura`, `peso`, `unidMed`, `conversao`, `descricao`, `obs`, `ncm`, `idtipoProduto`, `idsubgrupopro`, `id_usuario`, `cfop`, `quantidade`) VALUES
-(4, 'Produto de teste', 1, 1, 1, 1, 'kg', 12, 'Produto para teste', 'cad pelo sistema', '1234', 4, 0, 1, '', 60),
-(5, 'teste', 21, 12, 12, 40, 'pç', 32.3, 'teste 2', '', '11111', 1, 1, 1, '', 0),
-(6, 'Produto de teste 3', 234, 12, 123, 234, '12', 12.9, 'teste', '', '123124', 1, 1, 2, '', 44);
+(7, 'TORA PINUS', 1, 30, 25, 100, 'KG', 0, 'Tora para producao de compensado', '', '44121400', 6, 1, 2, '1.102', 285),
+(8, 'Torete de Eucalipto', 40, 30, 20, 200, 'KG', 0, 'Para Producao', '', '', 7, 1, 2, '1.102', 110),
+(9, 'Palete para Venda', 20, 20, 10, 30, 'KG', 0, '', '', '345323', 6, 3, 2, '1.002', 90);
 
 -- --------------------------------------------------------
 
@@ -238,15 +242,16 @@ CREATE TABLE IF NOT EXISTS `esgrupro` (
   `nome` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `abrev` varchar(5) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `esgrupro`
 --
 
 INSERT INTO `esgrupro` (`idgrupoProduto`, `nome`, `tipo`, `abrev`) VALUES
-(1, 'testegrupo', 'testetipo', 'TG'),
-(2, 'Grupo cadastrado pelo sistema', 'Matéria Prima', 'GPS');
+(3, 'Matéria Prima', 'Vendas/Produção', 'MP'),
+(4, 'Resíduos', 'Vendas', 'RE'),
+(5, 'Producao', 'Produzido pelo estabelecimento', 'PR');
 
 -- --------------------------------------------------------
 
@@ -255,18 +260,19 @@ INSERT INTO `esgrupro` (`idgrupoProduto`, `nome`, `tipo`, `abrev`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `essubgru` (
-  `idsubgrupopro` int(11) NOT NULL,
+`idsubgrupopro` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `idgrupoProduto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `essubgru`
 --
 
 INSERT INTO `essubgru` (`idsubgrupopro`, `nome`, `idgrupoProduto`) VALUES
-(0, 'estoque direto', 2),
-(1, 'teste sub grupo', 1);
+(1, 'Madeira TON', 3),
+(2, 'Pó de serra', 4),
+(3, 'Palete', 5);
 
 -- --------------------------------------------------------
 
@@ -292,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `estab` (
   `data_cad` date DEFAULT NULL,
   `data_alt` date DEFAULT NULL,
   `ins_Mun` varchar(15) NOT NULL,
-  `CNAE` varchar(7) NOT NULL,
+  `CNAE` varchar(12) NOT NULL,
   `crt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -301,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `estab` (
 --
 
 INSERT INTO `estab` (`id_estab`, `razao_social`, `cnpj`, `ins_est`, `endereco`, `numero`, `complemento`, `bairro`, `cidade`, `cod_Mun`, `uf`, `cep`, `telefone`, `email`, `data_cad`, `data_alt`, `ins_Mun`, `CNAE`, `crt`) VALUES
-(0, 'WoodSoft Corporate', '23.123.123/0001-01', '123.123.1234', 'Rua São Pedro 1123', '0', '', '', 'Itararé', 0, 'SP', '18460-000', '15-1234-1234', 'woodsoft@woodsoft.com.br', '2001-01-01', '2014-11-01', '', '', 0);
+(0, 'WoodSoft Corporate', '23.123.123/0001-01', '123.123.1234', 'Rua São Pedro 1123', '125', 'Escritorio', 'Centro', 'Itararé', 3523206, 'SP', '18460-000', '15-1234-1234', 'woodsoft@woodsoft.com.br', '2001-01-01', '2014-11-01', '', '1610-2/01', 1);
 
 -- --------------------------------------------------------
 
@@ -313,16 +319,15 @@ CREATE TABLE IF NOT EXISTS `estippro` (
 `idtipoProduto` int(11) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `abrev` varchar(3) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `estippro`
 --
 
 INSERT INTO `estippro` (`idtipoProduto`, `tipo`, `abrev`) VALUES
-(1, 'Matéria Prima', 'MP'),
-(4, 'Produto Acabado', 'PA'),
-(5, 'Resíduos', 'RE');
+(6, 'Pinus', 'PI'),
+(7, 'Eucalipto', 'EC');
 
 -- --------------------------------------------------------
 
@@ -342,16 +347,17 @@ CREATE TABLE IF NOT EXISTS `procadop` (
   `cod_cliente` int(11) DEFAULT NULL,
   `obs` text,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Extraindo dados da tabela `procadop`
 --
 
 INSERT INTO `procadop` (`id_op`, `ano_op`, `pedido_venda`, `data`, `tipo`, `situacao`, `hora_inicio`, `hora_termino`, `cod_cliente`, `obs`, `id_usuario`) VALUES
-(2, 2014, 0, NULL, 'Estoque', 'Em Aberto', '10:10:10', '10:15:10', 0, '', 2),
-(3, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2),
-(5, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2);
+(17, 2014, 0, NULL, 'Estoque', 'Em Aberto', NULL, NULL, 0, '', 2),
+(20, 2014, 0, NULL, 'Estoque', 'Encerrado', NULL, NULL, 0, '', 2),
+(21, 2014, 0, NULL, 'Estoque', 'Encerrado', NULL, NULL, 0, '', 2),
+(23, 2014, 0, NULL, 'Com Pedido', 'Em Aberto', NULL, NULL, 0, '', 2);
 
 -- --------------------------------------------------------
 
@@ -375,9 +381,11 @@ CREATE TABLE IF NOT EXISTS `proiteop` (
 --
 
 INSERT INTO `proiteop` (`ano_op`, `item`, `tipo`, `qntde`, `id_op`, `idproduto`, `desc_pro`, `unidade`) VALUES
-(2014, 1, 0, 10, 2, 4, '', ''),
-(2014, 1, 1, 0, 3, 6, 'Produto de teste 3', '12'),
-(2014, 1, 1, 0, 5, 6, 'Produto de teste 3', '12');
+(2014, 1, 6, 10, 17, 7, 'TORA PINUS', 'KG'),
+(2014, 1, 6, 40, 20, 7, 'TORA PINUS', 'KG'),
+(2014, 1, 6, 10, 21, 7, 'TORA PINUS', 'KG'),
+(2014, 1, 7, 200, 23, 8, 'Torete de Eucalipto', 'KG'),
+(2014, 2, 6, 60, 23, 7, 'TORA PINUS', 'KG');
 
 -- --------------------------------------------------------
 
@@ -403,8 +411,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`, `compras`, `estoque`, `producao`, `vendas`, `administracao`) VALUES
-(1, 'teste', NULL, 'teste', 'teste', 1, 0, 0, 1, 0),
-(2, 'lucas Henrique', 'TI', 'lucas', '123', 1, 1, 1, 1, 1);
+(2, 'woodsoft', 'master', 'woodsoft', '12345', 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -413,15 +420,15 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `setor`, `login`, `senha`, `compras
 --
 
 CREATE TABLE IF NOT EXISTS `vecadped` (
-`id_pedido` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
   `data` date DEFAULT NULL,
-  `transportador` varchar(45) DEFAULT NULL,
+  `transportador` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `vlr_mercadoria` double DEFAULT NULL,
   `vlr_iss` double DEFAULT NULL,
   `total` double DEFAULT NULL,
   `data_entrega` date DEFAULT NULL,
-  `nota_fiscal` varchar(45) DEFAULT NULL,
-  `serie` varchar(5) DEFAULT NULL,
+  `nota_fiscal` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `serie` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `data_emissao` date DEFAULT NULL,
   `data_saida` date DEFAULT NULL,
   `hora_saida` time DEFAULT NULL,
@@ -435,19 +442,21 @@ CREATE TABLE IF NOT EXISTS `vecadped` (
   `desp_acessorias` double DEFAULT NULL,
   `vlr_ipi` double DEFAULT NULL,
   `id_transportador` int(11) DEFAULT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `id_estab` int(11) NOT NULL,
-  `placa_vei` varchar(10) NOT NULL,
-  `uf_vei` varchar(2) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_estab` int(11) DEFAULT NULL,
+  `placa_vei` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `uf_vei` varchar(4) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `pesobruto` double DEFAULT NULL,
+  `textolegal` text CHARACTER SET utf8 COLLATE utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `vecadped`
 --
 
-INSERT INTO `vecadped` (`id_pedido`, `data`, `transportador`, `vlr_mercadoria`, `vlr_iss`, `total`, `data_entrega`, `nota_fiscal`, `serie`, `data_emissao`, `data_saida`, `hora_saida`, `base_icms`, `vlr_icms`, `base_icms_subs`, `vlr_icms_subs`, `vlr_frete`, `vlr_seguro`, `desconto`, `desp_acessorias`, `vlr_ipi`, `id_transportador`, `id_usuario`, `id_cliente`, `id_estab`, `placa_vei`, `uf_vei`) VALUES
-(1, '2014-11-01', '', 50, 15, 550, '2014-11-02', '123', '1', '2014-11-01', '2014-11-01', NULL, 18, 13, 1, 1, 12, 13, 4, 3, 14, 8, 2, 7, 0, '', '');
+INSERT INTO `vecadped` (`id_pedido`, `data`, `transportador`, `vlr_mercadoria`, `vlr_iss`, `total`, `data_entrega`, `nota_fiscal`, `serie`, `data_emissao`, `data_saida`, `hora_saida`, `base_icms`, `vlr_icms`, `base_icms_subs`, `vlr_icms_subs`, `vlr_frete`, `vlr_seguro`, `desconto`, `desp_acessorias`, `vlr_ipi`, `id_transportador`, `id_usuario`, `id_cliente`, `id_estab`, `placa_vei`, `uf_vei`, `pesobruto`, `textolegal`) VALUES
+(1, '2014-11-10', NULL, 234.23, 23, 500, '2014-11-10', '3456', '1', '2014-11-10', '2014-11-10', '05:15:00', 0, 0, 0, 0, 123, 0, 0, 0, 34, 15, 2, 13, 0, 'ASD-1235', 'SP', 1555, 'TEXTO LEGAL DE TESTE');
 
 -- --------------------------------------------------------
 
@@ -464,15 +473,17 @@ CREATE TABLE IF NOT EXISTS `veiteped` (
   `perc_iss` double DEFAULT NULL,
   `vlr_total` double DEFAULT NULL,
   `id_pedido` int(11) NOT NULL,
-  `ESCADPRO_idproduto` int(11) NOT NULL
+  `ESCADPRO_idproduto` int(11) NOT NULL,
+  `desc_pro` varchar(45) NOT NULL,
+  `unid` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `veiteped`
 --
 
-INSERT INTO `veiteped` (`item`, `qtde`, `vlr_unit`, `perc_icms`, `perc_ipi`, `perc_iss`, `vlr_total`, `id_pedido`, `ESCADPRO_idproduto`) VALUES
-(1, 5, 10, 18, 10, 10, 550, 1, 4);
+INSERT INTO `veiteped` (`item`, `qtde`, `vlr_unit`, `perc_icms`, `perc_ipi`, `perc_iss`, `vlr_total`, `id_pedido`, `ESCADPRO_idproduto`, `desc_pro`, `unid`) VALUES
+(1, 34, 45, 0, 0, 0, 345, 1, 9, 'Palete para Venda', 'KG');
 
 --
 -- Indexes for dumped tables
@@ -576,47 +587,47 @@ ALTER TABLE `veiteped`
 -- AUTO_INCREMENT for table `clifortr`
 --
 ALTER TABLE `clifortr`
-MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `idclifor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `cpcadped`
 --
 ALTER TABLE `cpcadped`
-MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `cpiterec`
 --
 ALTER TABLE `cpiterec`
-MODIFY `cod_rec_item` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
+MODIFY `cod_rec_item` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `escadpro`
 --
 ALTER TABLE `escadpro`
-MODIFY `idproduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idproduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `esgrupro`
 --
 ALTER TABLE `esgrupro`
-MODIFY `idgrupoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `idgrupoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `essubgru`
+--
+ALTER TABLE `essubgru`
+MODIFY `idsubgrupopro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `estippro`
 --
 ALTER TABLE `estippro`
-MODIFY `idtipoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idtipoProduto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `procadop`
 --
 ALTER TABLE `procadop`
-MODIFY `id_op` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id_op` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
 MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `vecadped`
---
-ALTER TABLE `vecadped`
-MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

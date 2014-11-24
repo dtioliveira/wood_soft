@@ -2,6 +2,7 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 
@@ -238,6 +239,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         idpedrecN = new lib.jdb.control.jdbtextfield.JDBTextField();
         frmRelComp = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         PaneEstoque = new javax.swing.JTabbedPane();
         frmGrupoPro = new javax.swing.JPanel();
         jDBTextField50 = new lib.jdb.control.jdbtextfield.JDBTextField();
@@ -2113,21 +2115,35 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Relatorio de Recebimentos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout frmRelCompLayout = new javax.swing.GroupLayout(frmRelComp);
         frmRelComp.setLayout(frmRelCompLayout);
         frmRelCompLayout.setHorizontalGroup(
             frmRelCompLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRelCompLayout.createSequentialGroup()
-                .addContainerGap(995, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 759, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
         frmRelCompLayout.setVerticalGroup(
             frmRelCompLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frmRelCompLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jButton14)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addGroup(frmRelCompLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frmRelCompLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton14))
+                    .addGroup(frmRelCompLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
         PaneCompras.addTab("Relatórios", frmRelComp);
@@ -7563,6 +7579,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         atualizaElementos();
     }//GEN-LAST:event_id_pedidoFocusLost
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+//            JasperPrint jpPrint = JasperFillManager.fillReport("ireport/relatorio.jasper", new HashMap(),relatResul);
+  //          JasperView jv = new JasperView(jpprint);
+    //        jv.setVisible()true;
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     public void atualizaElementos(){
       double valor_total =0, ipi_total = 0, icms_total = 0, frete_total = 0;
       int rows = tableiteped.getRowCount();
@@ -7779,6 +7801,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
